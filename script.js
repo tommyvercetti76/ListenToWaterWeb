@@ -32,12 +32,12 @@ function playVideo(index) {
     videoIframe.src = `https://www.youtube.com/embed/${videoIds[index]}?autoplay=1&rel=0`;
 }
 
-document.getElementById('next').addEventListener('click', () => {
+document.getElementById('next-btn').addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % videoIds.length;
     playVideo(currentIndex);
 });
 
-document.getElementById("share").addEventListener("click", function() {
+document.getElementById("share-btn").addEventListener("click", function() {
     const videoIframe = document.getElementById("video-iframe");
     const videoUrl = videoIframe.src;
     
