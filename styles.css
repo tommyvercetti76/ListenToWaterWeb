@@ -29,7 +29,7 @@ body, html {
 
 .buttons-container {
   display: flex;
-  justify-content: center;
+  justify-content: baseline;
 }
 
 .button {
