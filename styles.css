@@ -1,25 +1,25 @@
-body {
+body, html {
   margin: 0;
   padding: 0;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: black;
 }
 
-.content {
-  text-align: center;
-}
-
-.video-container {
+.video-player {
   position: relative;
   width: 100%;
-  height: 100%;
-  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  max-width: 100%;
+  height: 0;
+  padding-bottom: calc(50% + 20px); /* Half the height of the screen with 20px padding */
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Add margin below the frame */
 }
 
-.video-container iframe {
+.video-player iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -27,8 +27,20 @@ body {
   height: 100%;
 }
 
-.buttons {
+.buttons-container {
   display: flex;
   justify-content: center;
-  gap: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.button:hover {
+  background-color: #d0d0d0;
 }

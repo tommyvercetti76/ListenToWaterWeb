@@ -59,23 +59,3 @@ document.getElementById("share-btn").addEventListener("click", function() {
     }
 });
 loadFirstVideo();
-window.addEventListener("resize", resizeVideo);
-
-function resizeVideo() {
-  const video = document.getElementById("video");
-  const videoContainer = video.parentElement;
-  const containerWidth = videoContainer.clientWidth;
-  const containerHeight = videoContainer.clientHeight;
-  const aspectRatio = 16 / 9;
-
-  if (containerWidth / containerHeight < aspectRatio) {
-    video.style.width = containerWidth + "px";
-    video.style.height = (containerWidth / aspectRatio) + "px";
-  } else {
-    video.style.width = (containerHeight * aspectRatio) + "px";
-    video.style.height = containerHeight + "px";
-  }
-}
-
-resizeVideo();
-
