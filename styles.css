@@ -12,10 +12,11 @@ body, html {
 .video-player {
     position: relative;
     width: 100%;
-    max-width: calc(100vh * 16/9);
+    max-width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* Maintain 16:9 aspect ratio */
+    padding-bottom: calc(50% + 20px); /* Half the height of the screen with 20px padding */
     overflow: hidden;
+    margin-bottom: 20px; /* Add margin below the frame */
 }
 
 .video-player iframe {
@@ -29,7 +30,6 @@ body, html {
 .buttons-container {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
 }
 
 .button {
