@@ -58,6 +58,4 @@ document.getElementById("share-btn").addEventListener("click", function() {
         alert("Video URL copied to clipboard");
     }
 });
-
-
 loadFirstVideo();
