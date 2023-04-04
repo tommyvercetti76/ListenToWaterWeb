@@ -64,7 +64,7 @@ nav {
 .video-player {
   position: relative;
   width: 320px;
-  height: 320px;
+  height: 160px;
   padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
   overflow: hidden;
 }

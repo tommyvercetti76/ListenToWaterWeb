@@ -60,4 +60,8 @@ document.getElementById("share-btn").addEventListener("click", function() {
 });
 loadFirstVideo();
 
+function toggleMenu() {
+    const menuItems = document.getElementById('menu-items');
+    menuItems.classList.toggle('open');
+}
 
