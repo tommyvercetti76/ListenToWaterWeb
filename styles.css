@@ -46,7 +46,7 @@ nav {
 }
 
 .menu-items {
-  display: none;
+  display: block; /* Change display to block */
   position: absolute;
   top: 40px;
   left: 0;
@@ -57,13 +57,14 @@ nav {
   border-radius: 5px;
   opacity: 0;
   transform: translateY(-10px);
-  transition: all 0.3s ease; /* Add a transition */
+  transition: all 0.3s ease;
+  visibility: hidden; /* Add visibility property */
 }
 
 .menu-items.open {
-  display: block;
-  opacity: 1; /* Add opacity */
-  transform: translateY(0); /* Add translateY */
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible; /* Add visibility property */
 }
 
 .menu-items li {
