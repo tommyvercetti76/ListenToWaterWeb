@@ -67,10 +67,14 @@ function toggleMenu() {
     hamburgerMenu.classList.toggle('open');
   }
   
-  function openModal() {
-    const aboutModal = document.getElementById('about-modal');
-    aboutModal.style.display = 'block';
+  function openModal(modalId, callback) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'block';
+    if (callback && typeof callback === 'function') {
+      callback();
+    }
   }
+  
   
   function closeModal() {
     const aboutModal = document.getElementById('about-modal');
