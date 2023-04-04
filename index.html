@@ -8,6 +8,20 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <nav>
+        <div class="hamburger-menu">
+          <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <ul class="menu-items" id="menu-items">
+            <li><a href="#about">About</a></li>
+            <li><a href="#donate">Donate</a></li>
+            <li><a href="#contact">Get In Touch</a></li>
+          </ul>
+        </div>
+      </nav>
     <div class="video-player">
         <iframe id="video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
