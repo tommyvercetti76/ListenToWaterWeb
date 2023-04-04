@@ -94,16 +94,16 @@ nav {
 }
 
 .modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
+  position: relative;
+  background-color: #ffffff;
+  margin: auto;
   padding: 20px;
+  border: 1px solid #888;
   border-radius: 5px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  max-width: 80%;
-  text-align: center;
+  width: fit-content;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.3s;
 }
 
 .close-modal {
