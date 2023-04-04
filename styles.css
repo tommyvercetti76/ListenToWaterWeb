@@ -12,9 +12,9 @@ body, html {
 .video-player {
   position: relative;
   width: 100%;
-  max-width: 100%;
+  max-width: 200%; /* Increase the max-width to 200% */
   height: 0;
-  padding-bottom: calc(50% + 20px); /* Half the height of the screen with 20px padding */
+  padding-bottom: calc(100% + 20px); /* Double the height of the screen with 20px padding */
   overflow: hidden;
   margin-bottom: 20px; /* Add margin below the frame */
 }
