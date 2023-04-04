@@ -109,10 +109,16 @@ function toggleMenu() {
   function openModal(modalId, callback) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'block';
-    if (callback) {
-      callback();
+  
+    if (callback && typeof callback === 'function') {
+      // Wait for the modal's transition to complete before calling the callback function
+      const modalContent = modal.querySelector('.modal-content');
+      modalContent.addEventListener('transitionend', () => {
+        callback();
+      }, { once: true });
     }
   }
+  
   
 
   // To Display Map
