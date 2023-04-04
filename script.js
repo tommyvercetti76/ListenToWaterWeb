@@ -122,7 +122,7 @@ function initMap(lat, lng) {
     const location = { lat: lat, lng: lng };
     const map = new google.maps.Map(document.getElementById("map"), {
       center: location,
-      zoom: 14,
+      zoom: 12,
     });
   
     const service = new google.maps.places.PlacesService(map);
@@ -130,24 +130,24 @@ function initMap(lat, lng) {
     service.nearbySearch(
       {
         location: location,
-        radius: 50000,
+        radius: 500000,
         type: "natural_feature",
         keyword: "lake",
       },
       (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           if (results.length > 0) {
-            // Zoom in on the nearest lake
-            const nearestLake = results[0].geometry.location;
-            map.setCenter(nearestLake);
-            map.setZoom(16);
-  
-            // Add a marker for the nearest lake
-            const marker = new google.maps.Marker({
-              position: nearestLake,
-              map: map,
-              title: results[0].name,
+            // Add markers for all nearby lakes
+            results.forEach((lake) => {
+              const marker = new google.maps.Marker({
+                position: lake.geometry.location,
+                map: map,
+                title: lake.name,
+              });
             });
+  
+            // Display list of nearby lakes
+            displayLakeList(results);
           } else {
             alert("No nearby lakes found.");
           }
@@ -156,6 +156,31 @@ function initMap(lat, lng) {
         }
       }
     );
+  }  
+  
+  function displayLakeList(lakes) {
+    const lakeListContainer = document.getElementById("lake-list");
+  
+    // Clear the existing list
+    lakeListContainer.innerHTML = "";
+  
+    // Add a header for the list
+    const listHeader = document.createElement("h3");
+    listHeader.textContent = "Nearby Lakes:";
+    lakeListContainer.appendChild(listHeader);
+  
+    // Create a list element
+    const lakeList = document.createElement("ul");
+  
+    // Add each lake's name to the list
+    lakes.forEach((lake) => {
+      const listItem = document.createElement("li");
+      listItem.textContent = lake.name;
+      lakeList.appendChild(listItem);
+    });
+  
+    // Add the list to the container
+    lakeListContainer.appendChild(lakeList);
   }
   
 
