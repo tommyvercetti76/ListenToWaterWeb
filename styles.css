@@ -27,6 +27,7 @@ body, html {
 .buttons-container {
   display: flex;
   justify-content: baseline;
+  padding-top: 10%;
 }
 
 .button {
