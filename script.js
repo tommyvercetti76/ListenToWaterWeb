@@ -109,14 +109,13 @@ function closeModal(modalId) {
 function openModal(modalId, callback) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'block';
-
+  
     if (callback && typeof callback === 'function') {
-        // Use setTimeout to delay the callback execution
-        setTimeout(() => {
-            callback();
-        }, 300); // 300 ms matches the transition duration in the CSS
+      // Call the callback function without using setTimeout
+      callback();
     }
-}
+  }
+  
 
 // To Display Map
 function initMap(lat, lng) {
