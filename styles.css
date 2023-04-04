@@ -11,8 +11,8 @@ body, html {
 
 .video-player {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 400px;
+  height: 400px;
   overflow: hidden;
 }
 
