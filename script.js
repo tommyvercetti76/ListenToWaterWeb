@@ -37,10 +37,10 @@ document.getElementById('next-btn').addEventListener('click', () => {
     playVideo(currentIndex);
 });
 
-document.getElementById("share-btn").addEventListener("click", function() {
+document.getElementById("share-btn").addEventListener("click", function () {
     const videoIframe = document.getElementById("video-iframe");
     const videoUrl = videoIframe.src;
-    
+
     if (navigator.clipboard) {
         navigator.clipboard.writeText(videoUrl)
             .then(() => alert("Video URL copied to clipboard"))
@@ -65,87 +65,85 @@ function toggleMenu() {
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     menuItems.classList.toggle('open');
     hamburgerMenu.classList.toggle('open');
-  }
-  
-  function openModal(modalId, callback) {
+}
+
+function openModal(modalId, callback) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'block';
     if (callback && typeof callback === 'function') {
-      callback();
+        callback();
     }
-  }
-  
-  
-  function closeModal() {
+}
+
+
+function closeModal() {
     const aboutModal = document.getElementById('about-modal');
     aboutModal.style.display = 'none';
-  }
+}
 
-  // To Get Permission and Location
-  function getLocation() {
+// To Get Permission and Location
+function getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition, showError);
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
-      alert("Geolocation is not supported by this browser.");
+        alert("Geolocation is not supported by this browser.");
     }
-  }
-  
-  function showPosition(position) {
+}
+
+function showPosition(position) {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     openModal('get-in-touch-modal', () => initMap(lat, lng));
-  }
-  
-  
-  function showError(error) {
+}
+
+
+function showError(error) {
     alert("Error: " + error.message);
-  }
-  
-  function closeModal(modalId) {
+}
+
+function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'none';
-  }
-  
-  function openModal(modalId, callback) {
+}
+
+function openModal(modalId, callback) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'block';
-  
+
     if (callback && typeof callback === 'function') {
-      // Use setTimeout to delay the callback execution
-      setTimeout(() => {
-        callback();
-      }, 300); // 300 ms matches the transition duration in the CSS
+        // Use setTimeout to delay the callback execution
+        setTimeout(() => {
+            callback();
+        }, 300); // 300 ms matches the transition duration in the CSS
     }
-  }
-  
-    // To Display Map
-  function initMap(lat, lng) {
+}
+
+// To Display Map
+function initMap(lat, lng) {
     const location = { lat: lat, lng: lng };
     const map = new google.maps.Map(document.getElementById("map"), {
-      center: location,
-      zoom: 14,
+        center: location,
+        zoom: 14,
     });
-  
-    const request = {
-      location: location,
-      radius: '500',
-      type: ['natural_feature'],
-      keyword: ['water']
-    };
-  
-    const service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (let i = 0; i < results.length; i++) {
-          const place = results[i];
-          new google.maps.Marker({
-            position: place.geometry.location,
-            map: map,
-          });
-        }
-      }
+
+    map.addListener('idle', () => {
+        map.data.setStyle((feature) => {
+            const featureType = feature.getGeometry().getType();
+            if (featureType === 'Polygon' && feature.getProperty('kind') === 'water') {
+                return {
+                    fillColor: '#00f',
+                    fillOpacity: 0.5,
+                    strokeColor: '#00f',
+                    strokeWeight: 1,
+                };
+            }
+        });
     });
-  }
-  
-  
+
+    map.data.loadGeoJson(
+        'https://storage.googleapis.com/mapsdevsite/json/water.json'
+    );
+}
+
+
 
