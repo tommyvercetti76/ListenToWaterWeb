@@ -1,45 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relaxing Sounds of Water</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdDkA60ZmAAtB8SjaTFy0XVxMexaxZW74&libraries=places"></script>
 </head>
+
 <body>
     <nav>
         <div class="hamburger-menu">
-          <div class="hamburger-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <ul class="menu-items" id="menu-items">
-            <li><a href="#" onclick="openModal()">About</a></li>
-            <li><a href="#donate">Donate</a></li>
-            <li><a href="#contact">Get In Touch</a></li>
-          </ul>
+            <div class="hamburger-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu-items" id="menu-items">
+                <li><a href="#" onclick="openModal()">About</a></li>
+                <li><a href="#donate">Donate</a></li>
+                <li><a href="#" onclick="getLocation()">Get In Touch</a></li>
+            </ul>
         </div>
-      </nav>
+    </nav>
     <div class="video-player">
-        <iframe id="video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe id="video-iframe" src="" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
     </div>
     <div class="buttons-container">
         <button id="next-btn" class="button">Next</button>
         <button id="share-btn" class="button">Share</button>
     </div>
     <!-- Add a new div with the class "modal" -->
-  <div class="modal" id="about-modal">
-    <div class="modal-content">
-      <button class="close-modal" onclick="closeModal()">&times;</button>
-      <div class="modal-body">
-        <img src="dummy-image.jpg" alt="Dummy" />
-        <p>Contact information</p>
-      </div>
-      <h2>About</h2>
-      <p>Modern world can be chaotic. Our attention span needs a little more attention. This page is created to help our soul sift peace from the cacophony of information. May it heal your senses. </p>
+    <div class="modal" id="about-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div class="modal-body">
+                <img src="dummy-image.jpg" alt="Dummy" />
+                <p>Contact information</p>
+            </div>
+            <h2>About</h2>
+            <p>Modern world can be chaotic. Our attention span needs a little more attention. This page is created to
+                help our soul sift peace from the cacophony of information. May it heal your senses. </p>
+        </div>
     </div>
-  </div>
+    <!-- Add a new div with the class "modal" for the "Get In Touch" modal -->
+    <div class="modal" id="get-in-touch-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('get-in-touch-modal')">&times;</button>
+            <div id="map" style="width: 100%; height: 400px;"></div>
+        </div>
+    </div>
+
 </body>
+
 </html>

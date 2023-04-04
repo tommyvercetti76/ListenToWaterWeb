@@ -76,5 +76,66 @@ function toggleMenu() {
     const aboutModal = document.getElementById('about-modal');
     aboutModal.style.display = 'none';
   }
+
+  // To Get Permission and Location
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+  
+  function showPosition(position) {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    openModal('get-in-touch-modal');
+    initMap(lat, lng);
+  }
+  
+  function showError(error) {
+    alert("Error: " + error.message);
+  }
+  
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'none';
+  }
+  
+  function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'block';
+  }
+  
+
+  // To Display Map
+  function initMap(lat, lng) {
+    const location = { lat: lat, lng: lng };
+    const map = new google.maps.Map(document.getElementById("map"), {
+      center: location,
+      zoom: 14,
+    });
+  
+    const request = {
+      location: location,
+      radius: '500',
+      type: ['natural_feature'],
+      keyword: ['water']
+    };
+  
+    const service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (let i = 0; i < results.length; i++) {
+          const place = results[i];
+          new google.maps.Marker({
+            position: place.geometry.location,
+            map: map,
+          });
+        }
+      }
+    });
+  }
+  
   
 
