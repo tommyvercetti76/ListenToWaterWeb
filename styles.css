@@ -11,8 +11,8 @@ body, html {
 
 .video-player {
   position: relative;
-  width: 426px;
-  height: 240px;
+  width: 320px;
+  height: 320px;
   padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
   overflow: hidden;
 }
