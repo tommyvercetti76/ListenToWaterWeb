@@ -63,5 +63,16 @@ loadFirstVideo();
 function toggleMenu() {
     const menuItems = document.getElementById('menu-items');
     menuItems.classList.toggle('open');
-}
+  }
+  
+  function openModal() {
+    const aboutModal = document.getElementById('about-modal');
+    aboutModal.style.display = 'block';
+  }
+  
+  function closeModal() {
+    const aboutModal = document.getElementById('about-modal');
+    aboutModal.style.display = 'none';
+  }
+  
 

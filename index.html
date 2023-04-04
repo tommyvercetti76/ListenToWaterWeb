@@ -16,7 +16,7 @@
             <span></span>
           </div>
           <ul class="menu-items" id="menu-items">
-            <li><a href="#about">About</a></li>
+            <li><a href="#" onclick="openModal()">About</a></li>
             <li><a href="#donate">Donate</a></li>
             <li><a href="#contact">Get In Touch</a></li>
           </ul>
@@ -29,5 +29,17 @@
         <button id="next-btn" class="button">Next</button>
         <button id="share-btn" class="button">Share</button>
     </div>
+    <!-- Add a new div with the class "modal" -->
+  <div class="modal" id="about-modal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">&times;</button>
+      <div class="modal-body">
+        <img src="dummy-image.jpg" alt="Dummy" />
+        <p>Contact information</p>
+      </div>
+      <h2>Header</h2>
+      <p>Dummy message</p>
+    </div>
+  </div>
 </body>
 </html>
