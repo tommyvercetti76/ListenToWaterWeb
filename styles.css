@@ -11,11 +11,9 @@ body, html {
 
 .video-player {
   position: relative;
-  width: 400px;
+  width: 200px;
   height: 200px;
-  padding-left: calc(100% + 20px); /* Double the height of the screen with 20px padding */
   overflow: hidden;
-  margin-bottom: 20px; /* Add margin below the frame */
 }
 
 .video-player iframe {
