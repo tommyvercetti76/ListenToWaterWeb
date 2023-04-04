@@ -121,28 +121,43 @@ function openModal(modalId, callback) {
 function initMap(lat, lng) {
     const location = { lat: lat, lng: lng };
     const map = new google.maps.Map(document.getElementById("map"), {
-        center: location,
-        zoom: 14,
+      center: location,
+      zoom: 14,
     });
-
-    map.addListener('idle', () => {
-        map.data.setStyle((feature) => {
-            const featureType = feature.getGeometry().getType();
-            if (featureType === 'Polygon' && feature.getProperty('kind') === 'water') {
-                return {
-                    fillColor: '#00f',
-                    fillOpacity: 0.5,
-                    strokeColor: '#00f',
-                    strokeWeight: 1,
-                };
-            }
-        });
-    });
-
-    map.data.loadGeoJson(
-        'https://storage.googleapis.com/mapsdevsite/json/water.json'
+  
+    const service = new google.maps.places.PlacesService(map);
+  
+    service.nearbySearch(
+      {
+        location: location,
+        radius: 50000,
+        type: "natural_feature",
+        keyword: "lake",
+      },
+      (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          if (results.length > 0) {
+            // Zoom in on the nearest lake
+            const nearestLake = results[0].geometry.location;
+            map.setCenter(nearestLake);
+            map.setZoom(16);
+  
+            // Add a marker for the nearest lake
+            const marker = new google.maps.Marker({
+              position: nearestLake,
+              map: map,
+              title: results[0].name,
+            });
+          } else {
+            alert("No nearby lakes found.");
+          }
+        } else {
+          alert("An error occurred while searching for nearby lakes.");
+        }
+      }
     );
-}
+  }
+  
 
 
 
