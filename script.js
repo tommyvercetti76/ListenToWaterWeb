@@ -111,17 +111,14 @@ function toggleMenu() {
     modal.style.display = 'block';
   
     if (callback && typeof callback === 'function') {
-      // Wait for the modal's transition to complete before calling the callback function
-      const modalContent = modal.querySelector('.modal-content');
-      modalContent.addEventListener('transitionend', () => {
+      // Use setTimeout to delay the callback execution
+      setTimeout(() => {
         callback();
-      }, { once: true });
+      }, 300); // 300 ms matches the transition duration in the CSS
     }
   }
   
-  
-
-  // To Display Map
+    // To Display Map
   function initMap(lat, lng) {
     const location = { lat: lat, lng: lng };
     const map = new google.maps.Map(document.getElementById("map"), {
