@@ -89,9 +89,9 @@ function toggleMenu() {
   function showPosition(position) {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
-    openModal('get-in-touch-modal');
-    initMap(lat, lng);
+    openModal('get-in-touch-modal', () => initMap(lat, lng));
   }
+  
   
   function showError(error) {
     alert("Error: " + error.message);
@@ -102,9 +102,12 @@ function toggleMenu() {
     modal.style.display = 'none';
   }
   
-  function openModal(modalId) {
+  function openModal(modalId, callback) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'block';
+    if (callback) {
+      callback();
+    }
   }
   
 
