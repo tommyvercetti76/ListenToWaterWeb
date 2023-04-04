@@ -59,3 +59,12 @@ document.getElementById("share-btn").addEventListener("click", function() {
     }
 });
 loadFirstVideo();
+
+const videoPlayer = document.querySelector('.video-player');
+const videoIframe = document.querySelector('#video-iframe');
+const zoomButton = document.querySelector('#zoom-btn');
+
+zoomButton.addEventListener('click', () => {
+  videoPlayer.style.paddingBottom = 'calc(40% + 40px)'; // Increase the video player height by 20%
+});
+
