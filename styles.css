@@ -109,15 +109,20 @@ nav {
 
 
 .close-modal {
-  color: #aaaaaa;
-  font-size: 28px;
-  font-weight: bold;
   position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 1000; /* Add this line to raise the close button above the map */
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
   cursor: pointer;
+  z-index: 10;
 }
+
+.close-modal:hover {
+  color: #999
+}
+
 
 .modal-body {
   display: flex;
