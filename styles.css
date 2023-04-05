@@ -171,6 +171,9 @@ nav {
   transform: scale(0.95);
 }
 
+.pressed {
+  transform: scale(0.95);
+}
 
 .button:hover {
   background-color: #d0d0d0;
