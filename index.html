@@ -45,8 +45,8 @@
     </div>
     <!-- Add a new div with the class "modal" -->
     <div class="modal" id="about-modal">
+        <button class="close-modal" onclick="closeModal('about-modal')">&times;</button>
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('about-modal')">&times;</button>
             <div class="modal-body">
                 <img src="dummy-image.jpg" alt="Dummy" />
                 <p>Contact information</p>
@@ -58,8 +58,8 @@
     </div>
     <!-- Add a new div with the class "modal" for the "Get In Touch" modal -->
     <div id="get-in-touch-modal" class="modal">
+        <button class="close-modal" onclick="closeModal('get-in-touch-modal')">&times;</button>
         <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('get-in-touch-modal')">&times;</button>
             <div id="map" style="width: 320px; height: 320px;"></div>
             <div id="lake-list" style="margin-top: 20px;"></div> <!-- Add this line -->
             <style>
