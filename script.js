@@ -67,12 +67,9 @@ function toggleMenu() {
     hamburgerMenu.classList.toggle('open');
 }
 
-var backdrop = document.querySelector('.modal-backdrop');
-
 function openModal(modalId, callback) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'block';
-    backdrop.style.display = "block";
     if (callback && typeof callback === 'function') {
         callback();
     }
@@ -81,7 +78,6 @@ function openModal(modalId, callback) {
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'none';
-    backdrop.style.display = "none";
 }
 
 // To Get Permission and Location
