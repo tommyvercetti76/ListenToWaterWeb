@@ -67,9 +67,12 @@ function toggleMenu() {
     hamburgerMenu.classList.toggle('open');
 }
 
+var backdrop = document.querySelector('.modal-backdrop');
+
 function openModal(modalId, callback) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'block';
+    backdrop.style.display = "block";
     if (callback && typeof callback === 'function') {
         callback();
     }
@@ -98,6 +101,7 @@ function showError(error) {
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'none';
+    backdrop.style.display = "block";
 }
 
 function openModal(modalId, callback) {
@@ -193,21 +197,6 @@ document.addEventListener('DOMContentLoaded', function () {
     shareButton.addEventListener('mousedown', buttonPressHandler);
     shareButton.addEventListener('touchstart', buttonPressHandler);
 });
-
-var backdrop = document.querySelector('.modal-backdrop');
-
-function openModal(modalId) {
-    var modal = document.getElementById(modalId);
-    modal.style.display = "block";
-    backdrop.style.display = "block"; // Show the backdrop layer when the modal is opened
-}
-
-function closeModal(modalId) {
-    var modal = document.getElementById(modalId);
-    modal.style.display = "none";
-    backdrop.style.display = "none"; // Hide the backdrop layer when the modal is closed
-}
-
 
 
 
