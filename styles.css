@@ -119,11 +119,6 @@ nav {
   z-index: 10;
 }
 
-.close-modal:hover {
-  color: #999
-}
-
-
 .modal-body {
   display: flex;
   justify-content: center;
