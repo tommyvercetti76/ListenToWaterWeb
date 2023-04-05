@@ -75,12 +75,6 @@ function openModal(modalId, callback) {
     }
 }
 
-
-function closeModal() {
-    const aboutModal = document.getElementById('about-modal');
-    aboutModal.style.display = 'none';
-}
-
 // To Get Permission and Location
 function getLocation() {
     if (navigator.geolocation) {
