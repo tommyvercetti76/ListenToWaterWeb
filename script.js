@@ -78,6 +78,12 @@ function openModal(modalId, callback) {
     }
 }
 
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = 'none';
+    backdrop.style.display = "none";
+}
+
 // To Get Permission and Location
 function getLocation() {
     if (navigator.geolocation) {
@@ -97,23 +103,6 @@ function showPosition(position) {
 function showError(error) {
     alert("Error: " + error.message);
 }
-
-function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    modal.style.display = 'none';
-    backdrop.style.display = "block";
-}
-
-function openModal(modalId, callback) {
-    const modal = document.getElementById(modalId);
-    modal.style.display = 'block';
-
-    if (callback && typeof callback === 'function') {
-        // Call the callback function without using setTimeout
-        callback();
-    }
-}
-
 
 // To Display Map
 function initMap(lat, lng) {
