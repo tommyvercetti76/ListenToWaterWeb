@@ -182,6 +182,24 @@ function initMap(lat, lng) {
     // Add the list to the container
     lakeListContainer.appendChild(lakeList);
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const nextButton = document.getElementById('next-btn');
+    const shareButton = document.getElementById('share-btn');
+  
+    function buttonPressHandler(e) {
+      e.target.classList.add('pressed');
+      setTimeout(() => {
+        e.target.classList.remove('pressed');
+      }, 100);
+    }
+  
+    nextButton.addEventListener('mousedown', buttonPressHandler);
+    nextButton.addEventListener('touchstart', buttonPressHandler);
+    shareButton.addEventListener('mousedown', buttonPressHandler);
+    shareButton.addEventListener('touchstart', buttonPressHandler);
+  });
+  
   
 
 
