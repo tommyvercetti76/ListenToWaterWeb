@@ -7,8 +7,16 @@
     <title>Relaxing Sounds of Water</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://storage.googleapis.com/mapsdevsite/json/water.json"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdDkA60ZmAAtB8SjaTFy0XVxMexaxZW74&libraries=places"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdDkA60ZmAAtB8SjaTFy0XVxMexaxZW74&libraries=places"></script>
+    <style>
+        .navbar a {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,17 +59,17 @@
     <!-- Add a new div with the class "modal" for the "Get In Touch" modal -->
     <div id="get-in-touch-modal" class="modal">
         <div class="modal-content">
-          <span id="close-map-modal" class="close-modal">&times;</span>
-          <div id="map" style="width: 320px; height: 320px;"></div>
-          <div id="lake-list" style="margin-top: 20px;"></div> <!-- Add this line -->
-          <style>
-            #lake-list {
-              max-height: 150px;
-              overflow-y: scroll;
-            }
+            <span id="close-map-modal" class="close-modal">&times;</span>
+            <div id="map" style="width: 320px; height: 320px;"></div>
+            <div id="lake-list" style="margin-top: 20px;"></div> <!-- Add this line -->
+            <style>
+                #lake-list {
+                    max-height: 150px;
+                    overflow-y: scroll;
+                }
             </style>
         </div>
-      </div>
+    </div>
 </body>
 
 </html>
