@@ -103,98 +103,112 @@ function closeModal(modalId) {
 function openModal(modalId, callback) {
     const modal = document.getElementById(modalId);
     modal.style.display = 'block';
-  
+
     if (callback && typeof callback === 'function') {
-      // Call the callback function without using setTimeout
-      callback();
+        // Call the callback function without using setTimeout
+        callback();
     }
-  }
-  
+}
+
 
 // To Display Map
 function initMap(lat, lng) {
     const location = { lat: lat, lng: lng };
     const map = new google.maps.Map(document.getElementById("map"), {
-      center: location,
-      zoom: 12,
+        center: location,
+        zoom: 12,
     });
-  
+
     const service = new google.maps.places.PlacesService(map);
-  
+
     service.nearbySearch(
-      {
-        location: location,
-        radius: 500000,
-        type: "natural_feature",
-        keyword: "lake",
-      },
-      (results, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          if (results.length > 0) {
-            // Add markers for all nearby lakes
-            results.forEach((lake) => {
-              const marker = new google.maps.Marker({
-                position: lake.geometry.location,
-                map: map,
-                title: lake.name,
-              });
-            });
-  
-            // Display list of nearby lakes
-            displayLakeList(results);
-          } else {
-            alert("No nearby lakes found.");
-          }
-        } else {
-          alert("An error occurred while searching for nearby lakes.");
+        {
+            location: location,
+            radius: 500000,
+            type: "natural_feature",
+            keyword: "lake",
+        },
+        (results, status) => {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                if (results.length > 0) {
+                    // Add markers for all nearby lakes
+                    results.forEach((lake) => {
+                        const marker = new google.maps.Marker({
+                            position: lake.geometry.location,
+                            map: map,
+                            title: lake.name,
+                        });
+                    });
+
+                    // Display list of nearby lakes
+                    displayLakeList(results);
+                } else {
+                    alert("No nearby lakes found.");
+                }
+            } else {
+                alert("An error occurred while searching for nearby lakes.");
+            }
         }
-      }
     );
-  }  
-  
-  function displayLakeList(lakes) {
+}
+
+function displayLakeList(lakes) {
     const lakeListContainer = document.getElementById("lake-list");
-  
+
     // Clear the existing list
     lakeListContainer.innerHTML = "";
-  
+
     // Add a header for the list
     const listHeader = document.createElement("h3");
     listHeader.textContent = "Nearby Lakes:";
     lakeListContainer.appendChild(listHeader);
-  
+
     // Create a list element
     const lakeList = document.createElement("ul");
-  
+
     // Add each lake's name to the list
     lakes.forEach((lake) => {
-      const listItem = document.createElement("li");
-      listItem.textContent = lake.name;
-      lakeList.appendChild(listItem);
+        const listItem = document.createElement("li");
+        listItem.textContent = lake.name;
+        lakeList.appendChild(listItem);
     });
-  
+
     // Add the list to the container
     lakeListContainer.appendChild(lakeList);
-  }
+}
 
-  document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     const nextButton = document.getElementById('next-btn');
     const shareButton = document.getElementById('share-btn');
-  
+
     function buttonPressHandler(e) {
-      e.target.classList.add('pressed');
-      setTimeout(() => {
-        e.target.classList.remove('pressed');
-      }, 100);
+        e.target.classList.add('pressed');
+        setTimeout(() => {
+            e.target.classList.remove('pressed');
+        }, 100);
     }
-  
+
     nextButton.addEventListener('mousedown', buttonPressHandler);
     nextButton.addEventListener('touchstart', buttonPressHandler);
     shareButton.addEventListener('mousedown', buttonPressHandler);
     shareButton.addEventListener('touchstart', buttonPressHandler);
-  });
-  
-  
+});
+
+var backdrop = document.querySelector('.modal-backdrop');
+
+function openModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = "block";
+    backdrop.style.display = "block"; // Show the backdrop layer when the modal is opened
+}
+
+function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = "none";
+    backdrop.style.display = "none"; // Hide the backdrop layer when the modal is closed
+}
+
+
 
 
 
