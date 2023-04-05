@@ -46,7 +46,7 @@ nav {
 }
 
 .menu-items {
-  display: block; /* Change display to block */
+  display: block;
   position: absolute;
   top: 40px;
   left: 0;
@@ -58,17 +58,21 @@ nav {
   opacity: 0;
   transform: translateY(-10px);
   transition: all 0.3s ease;
-  visibility: hidden; /* Add visibility property */
+  visibility: hidden;
 }
+
+.menu-items li {
+  font-size: 16px; /* Adjust font size */
+  line-height: 1.5; /* Adjust line height */
+  padding: 5px 0; /* Adjust padding for each menu item */
+  margin: 10px 0;
+}
+
 
 .menu-items.open {
   opacity: 1;
   transform: translateY(0);
   visibility: visible; /* Add visibility property */
-}
-
-.menu-items li {
-  margin: 10px 0;
 }
 
 .menu-items a {
