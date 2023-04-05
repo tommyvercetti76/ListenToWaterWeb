@@ -105,11 +105,14 @@ nav {
   padding: 20px;
   border: 1px solid #888;
   border-radius: 5px;
-  width: fit-content;
+  width: 80vw; /* Set width to 80% of viewport width */
+  max-height: 80vh; /* Set max-height to 80% of viewport height */
+  overflow-y: auto; /* Add vertical scrolling if necessary */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatetop;
   animation-duration: 0.3s;
 }
+
 
 
 .close-modal {
