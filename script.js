@@ -3,16 +3,6 @@ const apiKey = 'AIzaSyC4EZV2EEKABIz90yURDjNAcAahQhDoAW0'; // Replace with your Y
 let currentIndex = 0;
 let videoIds = [];
 
-import Carousel from './carousel.vue';
-
-const app = new Vue({
-  el: '#app',
-  components: {
-    Carousel,
-  },
-});
-
-
 async function fetchVideoIds() {
     try {
         const response = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${playlistId}&key=${apiKey}`);
