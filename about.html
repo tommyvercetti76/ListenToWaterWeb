@@ -4,27 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Listen to Water</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <style>
-        .carousel img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 20px;
-        }
-
-        .carousel {
-            display: flex;
-            gap: 15px;
-            overflow-x: scroll;
-            padding: 20px;
-        }
-
-        .message {
-            margin: 20px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/menu.css">
 </head>
 <body>
     <nav>
@@ -35,25 +16,43 @@
                 <span></span>
             </div>
         </div>
-        <ul class="menu-items">
+        <ul id="menu-items" class="menu-items">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#" onclick="openModal('get-in-touch-modal'); toggleMenu();">Get In Touch</a></li>
-            <li><a href="#">Contribute</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="get-in-touch.html">Get In Touch</a></li>
+            <li><a href="contribute.html">Contribute</a></li>
         </ul>
     </nav>
-
-    <section>
+    <main>
         <h1>About Us</h1>
-        <div class="carousel">
-            <img src="images/Falls1.PNG" alt="Image 1">
-            <img src="images/Falls2.PNG" alt="Image 2">
-            <img src="images/SN1.PNG" alt="Image 3">
-            <img src="images/SN2.PNG" alt="Image 4">
-            <img src="images/SN3.PNG" alt="Image 5">
-        </div>
-        <h2>Our Mission</h2>
-        <p class="message">This is a short message about our mission.</p>
-        <p class="message">This is a longer message about our organization and what we aim to achieve. You can add more details about the organization, its history, and other relevant information to help visitors understand the purpose and values of your organization.</p>
-    </section>
+        <section>
+            <h2>Our Mission</h2>
+            <p>
+                Our mission is to raise awareness about the importance of water conservation and
+                to inspire people to take action in preserving our planet's most precious resource.
+            </p>
+        </section>
+        <section>
+            <h2>Image Gallery</h2>
+            <div class="carousel">
+                <img src="images/SN1.PNG" alt="Image 1">
+                <img src="images/SN2.PNG" alt="Image 2">
+                <img src="images/SN3.PNG" alt="Image 3">
+                <img src="images/Falls1.PNG" alt="Image 4">
+                <img src="images/Falls2.png" alt="Image 5">
+            </div>
+            <p>
+                Explore our collection of images showcasing the beauty and importance of water in our lives.
+            </p>
+        </section>
+        <section>
+            <h2>A Message from Our Founder</h2>
+            <p>
+                "Water is the essence of life, and we must do everything in our power to protect and preserve it.
+                By working together, we can create a more sustainable future for generations to come."
+            </p>
+        </section>
+    </main>
+    <script src="scripts/menu.js"></script>
 </body>
 </html>
