@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - Listen to Water</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Listen to Water</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="carousel.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="carousel.js" defer></script>
 </head>
 <body>
-  <div id="app">
-    <nav>
-      <div class="hamburger-menu" @click="toggleMenu">
-        <div class="hamburger-icon">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <ul class="menu-items" :class="{ open: menuOpen }">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/get-in-touch">Get In Touch</a></li>
-        <li><a href="/contribute">Contribute</a></li>
-      </ul>
-    </nav>
-
     <header>
-      <h1>About Listen to Water</h1>
+        <h1>About Listen to Water</h1>
     </header>
 
-    <carousel></carousel>
+    <div class="carousel">
+        <div class="carousel-item">
+            <img src="image1.jpg" alt="Image 1">
+        </div>
+        <div class="carousel-item">
+            <img src="image2.jpg" alt="Image 2">
+        </div>
+        <div class="carousel-item">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
+        <div class="carousel-item">
+            <img src="image4.jpg" alt="Image 4">
+        </div>
+        <div class="carousel-item">
+            <img src="image5.jpg" alt="Image 5">
+        </div>
+    </div>
 
-    <section class="about-content">
-      <h2>Our Mission</h2>
-      <p>
-        Listen to Water is dedicated to promoting awareness and understanding of
-        the importance of water conservation and the beauty of aquatic ecosystems
-        around the world.
-      </p>
+    <section>
+        <h2>Our Mission</h2>
+        <p>
+            Listen to Water is a non-profit organization dedicated to raising awareness about water conservation and providing resources for individuals to make a positive impact on the environment. Our mission is to inspire people to care for our planet by promoting sustainable water use and supporting innovative solutions to water scarcity. Through education, outreach, and collaboration, we aim to create a global community of individuals who are committed to protecting and preserving our precious water resources for future generations.
+        </p>
     </section>
-  </div>
-  
-  <script src="script.js"></script>
+    
 </body>
 </html>
