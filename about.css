@@ -27,29 +27,29 @@ p {
     line-height: 1.5;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: 10px;
-    grid-gap: 10px;
+.gallery {
+    column-count: 3;
+    column-gap: 10px;
+    max-width: 100%;
 }
 
-.grid img {
+.gallery img {
     width: 100%;
     height: auto;
     border-radius: 5px;
     object-fit: cover;
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
-.grid::before {
-    content: "";
-    width: 0;
-    padding-bottom: 100%;
-    grid-row: 1 / 1;
-    grid-column: 1 / 1;
+@media screen and (max-width: 768px) {
+    .gallery {
+        column-count: 2;
+    }
 }
 
-.grid > *:first-child {
-    grid-row: 1 / 1;
-    grid-column: 1 / 1;
+@media screen and (max-width: 480px) {
+    .gallery {
+        column-count: 1;
+    }
 }
