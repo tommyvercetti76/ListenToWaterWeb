@@ -1,4 +1,3 @@
-// Replace with the actual playlist ID from Wander Sensei's YouTube channel
 const playlistId = 'PLxxuC2dcJeMeobJ7W9-kJ9ZzS4T9zz_zn&pp=gAQB';
 const apiKey = 'AIzaSyC4EZV2EEKABIz90yURDjNAcAahQhDoAW0'; // Replace with your YouTube Data API key
 let currentIndex = 0;
@@ -67,121 +66,122 @@ function toggleMenu() {
     hamburgerMenu.classList.toggle('open');
 }
 
-function openModal(modalId, callback) {
-    const modal = document.getElementById(modalId);
-    modal.style.display = 'block';
-    if (callback && typeof callback === 'function') {
-        callback();
-    }
-}
 
-function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    modal.style.display = 'none';
-}
+// function openModal(modalId, callback) {
+//     const modal = document.getElementById(modalId);
+//     modal.style.display = 'block';
+//     if (callback && typeof callback === 'function') {
+//         callback();
+//     }
+// }
 
-// To Get Permission and Location
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition, showError);
-    } else {
-        alert("Geolocation is not supported by this browser.");
-    }
-}
+// function closeModal(modalId) {
+//     const modal = document.getElementById(modalId);
+//     modal.style.display = 'none';
+// }
 
-function showPosition(position) {
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
-    openModal('get-in-touch-modal', () => initMap(lat, lng));
-}
+// // To Get Permission and Location
+// function getLocation() {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(showPosition, showError);
+//     } else {
+//         alert("Geolocation is not supported by this browser.");
+//     }
+// }
+
+// function showPosition(position) {
+//     const lat = position.coords.latitude;
+//     const lng = position.coords.longitude;
+//     openModal('get-in-touch-modal', () => initMap(lat, lng));
+// }
 
 
-function showError(error) {
-    alert("Error: " + error.message);
-}
+// function showError(error) {
+//     alert("Error: " + error.message);
+// }
 
-// To Display Map
-function initMap(lat, lng) {
-    const location = { lat: lat, lng: lng };
-    const map = new google.maps.Map(document.getElementById("map"), {
-        center: location,
-        zoom: 12,
-    });
+// // To Display Map
+// function initMap(lat, lng) {
+//     const location = { lat: lat, lng: lng };
+//     const map = new google.maps.Map(document.getElementById("map"), {
+//         center: location,
+//         zoom: 12,
+//     });
 
-    const service = new google.maps.places.PlacesService(map);
+//     const service = new google.maps.places.PlacesService(map);
 
-    service.nearbySearch(
-        {
-            location: location,
-            radius: 500000,
-            type: "natural_feature",
-            keyword: "lake",
-        },
-        (results, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-                if (results.length > 0) {
-                    // Add markers for all nearby lakes
-                    results.forEach((lake) => {
-                        const marker = new google.maps.Marker({
-                            position: lake.geometry.location,
-                            map: map,
-                            title: lake.name,
-                        });
-                    });
+//     service.nearbySearch(
+//         {
+//             location: location,
+//             radius: 500000,
+//             type: "natural_feature",
+//             keyword: "lake",
+//         },
+//         (results, status) => {
+//             if (status === google.maps.places.PlacesServiceStatus.OK) {
+//                 if (results.length > 0) {
+//                     // Add markers for all nearby lakes
+//                     results.forEach((lake) => {
+//                         const marker = new google.maps.Marker({
+//                             position: lake.geometry.location,
+//                             map: map,
+//                             title: lake.name,
+//                         });
+//                     });
 
-                    // Display list of nearby lakes
-                    displayLakeList(results);
-                } else {
-                    alert("No nearby lakes found.");
-                }
-            } else {
-                alert("An error occurred while searching for nearby lakes.");
-            }
-        }
-    );
-}
+//                     // Display list of nearby lakes
+//                     displayLakeList(results);
+//                 } else {
+//                     alert("No nearby lakes found.");
+//                 }
+//             } else {
+//                 alert("An error occurred while searching for nearby lakes.");
+//             }
+//         }
+//     );
+// }
 
-function displayLakeList(lakes) {
-    const lakeListContainer = document.getElementById("lake-list");
+// function displayLakeList(lakes) {
+//     const lakeListContainer = document.getElementById("lake-list");
 
-    // Clear the existing list
-    lakeListContainer.innerHTML = "";
+//     // Clear the existing list
+//     lakeListContainer.innerHTML = "";
 
-    // Add a header for the list
-    const listHeader = document.createElement("h3");
-    listHeader.textContent = "Nearby Lakes:";
-    lakeListContainer.appendChild(listHeader);
+//     // Add a header for the list
+//     const listHeader = document.createElement("h3");
+//     listHeader.textContent = "Nearby Lakes:";
+//     lakeListContainer.appendChild(listHeader);
 
-    // Create a list element
-    const lakeList = document.createElement("ul");
+//     // Create a list element
+//     const lakeList = document.createElement("ul");
 
-    // Add each lake's name to the list
-    lakes.forEach((lake) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = lake.name;
-        lakeList.appendChild(listItem);
-    });
+//     // Add each lake's name to the list
+//     lakes.forEach((lake) => {
+//         const listItem = document.createElement("li");
+//         listItem.textContent = lake.name;
+//         lakeList.appendChild(listItem);
+//     });
 
-    // Add the list to the container
-    lakeListContainer.appendChild(lakeList);
-}
+//     // Add the list to the container
+//     lakeListContainer.appendChild(lakeList);
+// }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const nextButton = document.getElementById('next-btn');
-    const shareButton = document.getElementById('share-btn');
+// document.addEventListener('DOMContentLoaded', function () {
+//     const nextButton = document.getElementById('next-btn');
+//     const shareButton = document.getElementById('share-btn');
 
-    function buttonPressHandler(e) {
-        e.target.classList.add('pressed');
-        setTimeout(() => {
-            e.target.classList.remove('pressed');
-        }, 100);
-    }
+//     function buttonPressHandler(e) {
+//         e.target.classList.add('pressed');
+//         setTimeout(() => {
+//             e.target.classList.remove('pressed');
+//         }, 100);
+//     }
 
-    nextButton.addEventListener('mousedown', buttonPressHandler);
-    nextButton.addEventListener('touchstart', buttonPressHandler);
-    shareButton.addEventListener('mousedown', buttonPressHandler);
-    shareButton.addEventListener('touchstart', buttonPressHandler);
-});
+//     nextButton.addEventListener('mousedown', buttonPressHandler);
+//     nextButton.addEventListener('touchstart', buttonPressHandler);
+//     shareButton.addEventListener('mousedown', buttonPressHandler);
+//     shareButton.addEventListener('touchstart', buttonPressHandler);
+// });
 
 
 

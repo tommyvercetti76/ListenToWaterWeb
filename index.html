@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,59 +17,48 @@
             color: #333;
         }
     </style>
+</head> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wander Sensei</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
 </head>
 
 <body>
     <nav>
-        <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()">
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <div class="hamburger-icon">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <ul class="menu-items" id="menu-items">
-                <li><a href="#" onclick="openModal('about-modal')">About</a></li>
-                <li><a href="#donate">Donate</a></li>
-                <li><a href="#" onclick="getLocation('get-in-touch-modal')">Get In Touch</a></li>
-            </ul>
         </div>
+        <ul id="menu-items" class="menu-items">
+            <li><a href="page1.html">Menu Item 1</a></li>
+            <li><a href="page2.html">Menu Item 2</a></li>
+            <li><a href="page3.html">Menu Item 3</a></li>
+        </ul>
     </nav>
-    <div class="video-player">
-        <iframe id="video-iframe" src="" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-    </div>
-    <div class="buttons-container">
-        <button id="next-btn" class="button">Next</button>
-        <button id="share-btn" class="button">Share</button>
-    </div>
-    <!-- Add a new div with the class "modal" -->
-    <div class="modal" id="about-modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('about-modal')">&times;</button>
-            <div class="modal-body">
-                <img src="dummy-image.jpg" alt="Dummy" />
-                <p>Contact information</p>
-            </div>
-            <h2>About</h2>
-            <p>Modern world can be chaotic. Our attention span needs a little more attention. This page is created to
-                help our soul sift peace from the cacophony of information. May it heal your senses. </p>
+    <div class="content">
+        <h1>Wander Sensei</h1>
+        <p>Watch and share videos from our travel adventures!</p>
+        <div class="video-player">
+            <iframe id="video-iframe" src="https://www.youtube.com/embed/?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-    </div>
-    <!-- Add a new div with the class "modal" for the "Get In Touch" modal -->
-    <div id="get-in-touch-modal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal('get-in-touch-modal')">&times;</button>
-            <div id="map" style="width: 320px; height: 320px;"></div>
-            <div id="lake-list" style="margin-top: 20px;"></div> <!-- Add this line -->
-            <style>
-                #lake-list {
-                    max-height: 150px;
-                    overflow-y: scroll;
-                }
-            </style>
+        <div class="buttons-container">
+            <button id="next-btn" class="button">Next</button>
+            <button id="share-btn" class="button">Share</button>
         </div>
     </div>
 </body>
+
+</html>
+
 
 </html>
