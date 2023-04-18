@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Listen to Water</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+  <div id="app">
+    <nav>
+      <div class="hamburger-menu" @click="toggleMenu">
+        <div class="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <ul class="menu-items" :class="{ open: menuOpen }">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/get-in-touch">Get In Touch</a></li>
+        <li><a href="/contribute">Contribute</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1>About Listen to Water</h1>
+    </header>
+
+    <carousel></carousel>
+
+    <section class="about-content">
+      <h2>Our Mission</h2>
+      <p>
+        Listen to Water is dedicated to promoting awareness and understanding of
+        the importance of water conservation and the beauty of aquatic ecosystems
+        around the world.
+      </p>
+    </section>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
