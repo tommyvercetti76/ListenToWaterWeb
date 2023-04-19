@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/menu.css">
+    
     <script defer src="script.js"></script>
     <script defer src="menu.js"></script>
+    <style>
+        .menu-items {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <div class="hamburger-menu" onclick="toggleMenu()">
-            <div class="hamburger-icon">
+            <div id="hamburger-icon" class="hamburger-icon">
                 <span></span>
                 <span></span>
                 <span></span>
