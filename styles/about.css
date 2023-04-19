@@ -1,5 +1,15 @@
+@font-face {
+    font-family: 'Josefin_Italic';
+    src: url('fonts/Josephine_Italic') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'Josefin_Bold';
+    src: url('fonts/Josefin_Bold') format('truetype');
+  }
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Josefin_Italic', 'Josefin_Bold', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
