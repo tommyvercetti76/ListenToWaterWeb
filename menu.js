@@ -3,8 +3,7 @@ function openPage(url) {
   const closeBtn = document.getElementById("close-btn");
 
   contentIframe.src = url;
-  contentIframe.classList.add('loading');
-  contentIframe.style.display = "block";
+  contentIframe.classList.add('visible');
   closeBtn.style.display = "block";
 }
 
@@ -14,7 +13,6 @@ function closePage() {
 
   contentIframe.src = "";
   contentIframe.classList.remove('visible');
-  contentIframe.style.display = "none";
   closeBtn.style.display = "none";
 }
 
@@ -29,9 +27,4 @@ document.querySelectorAll('.menu-items a').forEach(link => {
       window.location.href = event.target.href;
     }
   });
-});
-
-document.getElementById('content-iframe').addEventListener('load', function() {
-  this.classList.remove('loading');
-  this.classList.add('visible');
 });
