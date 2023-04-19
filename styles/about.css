@@ -28,6 +28,7 @@ body {
 }
 
 .menu-items li a {
+    font-family: 'Josefin_Italic', 'Josefin_Bold', Arial, sans-serif;
     color: white;
     text-decoration: none;
     padding: 8px 16px;

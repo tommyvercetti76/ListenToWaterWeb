@@ -87,6 +87,7 @@ body {
 }
 
 .menu-items li a {
+  font-family: 'Josefin_Italic', 'Josefin_Bold', Arial, sans-serif;
   font-size: 1.5rem;
   text-decoration: none;
   color: #fff;
