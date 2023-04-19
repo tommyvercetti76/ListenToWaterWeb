@@ -91,4 +91,14 @@ main {
     display: block;
     opacity: 1;
   }
+
+  .content-iframe.loading {
+    opacity: 0;
+  }
+  
+  .content-iframe.visible {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
   

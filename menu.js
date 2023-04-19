@@ -3,8 +3,13 @@ function openPage(url) {
   const closeBtn = document.getElementById("close-btn");
 
   contentIframe.src = url;
-  contentIframe.classList.add('visible');
+  contentIframe.classList.add('loading');
   closeBtn.style.display = "block";
+
+  contentIframe.onload = () => {
+    contentIframe.classList.remove('loading');
+    contentIframe.classList.add('visible');
+  };
 }
 
 function closePage() {
