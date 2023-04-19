@@ -8,7 +8,8 @@ function toggleMenu() {
   hamburgerMenu.classList.toggle("open");
 }
 
-function openPage(url) {
+function openPage(e, url) {
+  e.preventDefault();
   if (window.innerWidth <= 768) {
     hamburgerMenu.classList.add("mobile-hidden");
     pageContainer.classList.add("open");
@@ -31,11 +32,7 @@ hamburgerMenu.addEventListener("click", toggleMenu);
 closePage.addEventListener("click", closePageHandler);
 
 document.querySelectorAll(".menu-items li a").forEach((menuItem) => {
-  menuItem.addEventListener("click", (e) => {
-    e.preventDefault();
-    openPage(menuItem.getAttribute("href"));
-    toggleMenu();
-  });
+  menuItem.addEventListener("click", (e) => openPage(e, menuItem.getAttribute("href")));
 });
 
 window.addEventListener("resize", () => {
