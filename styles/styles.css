@@ -211,4 +211,8 @@ body {
     margin-top: auto;
     margin-bottom: auto;
   }
+  .video-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
