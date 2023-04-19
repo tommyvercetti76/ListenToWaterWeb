@@ -3,13 +3,14 @@ function openPage(url) {
   const closeBtn = document.getElementById("close-btn");
 
   contentIframe.src = url;
-  contentIframe.classList.add('loading');
+  contentIframe.style.display = "block";
+  contentIframe.style.opacity = 0;
   closeBtn.style.display = "block";
 
-  contentIframe.onload = () => {
-    contentIframe.classList.remove('loading');
-    contentIframe.classList.add('visible');
-  };
+  setTimeout(() => {
+    contentIframe.style.opacity = 1;
+    contentIframe.style.transition = "opacity 0.5s ease-in-out";
+  }, 100);
 }
 
 function closePage() {
