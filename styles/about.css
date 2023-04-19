@@ -9,8 +9,8 @@
   }
 
   @font-face {
-    font-family: 'Josefin_Regular';
-    src: url('/fonts/JosefinSans-Regular.ttf') format('truetype');
+    font-family: 'Josefin_Light';
+    src: url('/fonts/JosefinSans-Light.ttf') format('truetype');
   }
 
   @font-face {
@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 body {
-    font-family: 'Josefin_Regular', Arial, sans-serif;
+    font-family: 'Josefin_Light', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
