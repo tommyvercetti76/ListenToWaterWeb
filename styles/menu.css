@@ -1,0 +1,23 @@
+nav {
+    background-color: #333;
+    padding: 10px;
+    position: relative;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-items li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+}
+
+.menu-items li a:hover {
+    background-color: #111;
+}
