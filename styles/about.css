@@ -18,10 +18,17 @@
     src: url('/fonts/JosefinSans-SemiBold.ttf') format('truetype');
   }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Josefin_Bold', Arial, sans-serif;
+}
+
+.subheader {
+    font-family: 'Josefin_Semi_Bold', Arial, sans-serif;
+}
 
 
 body {
-    font-family: 'Josefin_Italic', 'Josefin_Bold', Arial, sans-serif;
+    font-family: 'Josefin_Regular', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
