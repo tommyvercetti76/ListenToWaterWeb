@@ -8,6 +8,18 @@
     src: url('/fonts/JosefinSans-Bold.ttf') format('truetype');
   }
 
+  @font-face {
+    font-family: 'Josefin_Regular';
+    src: url('/fonts/JosefinSans-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Josefin_Semi_Bold';
+    src: url('/fonts/JosefinSans-SemiBold.ttf') format('truetype');
+  }
+
+
+
 body {
     font-family: 'Josefin_Italic', 'Josefin_Bold', Arial, sans-serif;
     margin: 0;
