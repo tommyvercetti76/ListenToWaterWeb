@@ -145,15 +145,21 @@ body {
   height: 0;
   overflow-y: scroll;
   z-index: 200;
-  transition: height 0.3s;
   opacity: 0;
   visibility: hidden;
+  transform: translateY(100%);
+  transition: height 0.3s, opacity 0.3s, visibility 0.3s, transform 0.3s;
 }
 
 .page-container.open {
   height: 100%;
   opacity: 1;
   visibility: visible;
+  transform: translateY(0%);
+}
+
+.hamburger-menu.mobile-hidden {
+  display: none;
 }
 
 .close-page {

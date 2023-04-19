@@ -1,41 +1,45 @@
-function toggleMenu() {
-  const menuItems = document.getElementById('menu-items');
-  const hamburgerMenu = document.querySelector('.hamburger-menu');
-  menuItems.classList.toggle('open');
-  hamburgerMenu.classList.toggle('open');
-}
+const menuItems = document.getElementById("menu-items");
+const hamburgerMenu = document.querySelector(".hamburger-menu");
+const pageContainer = document.querySelector(".page-container");
+const closePage = document.querySelector(".close-page");
 
-function isMobile() {
-  return window.innerWidth <= 640;
+function toggleMenu() {
+  menuItems.classList.toggle("open");
+  hamburgerMenu.classList.toggle("open");
 }
 
 function openPage(url) {
-  const contentIframe = document.getElementById("content-iframe");
-  const closeBtn = document.getElementById("close-btn");
-
-  contentIframe.src = url;
-  contentIframe.style.display = "block";
-  closeBtn.style.display = "block";
+  if (window.innerWidth <= 768) {
+    hamburgerMenu.classList.add("mobile-hidden");
+    pageContainer.classList.add("open");
+    document.querySelector(".content-iframe").src = url;
+    document.querySelector(".content-iframe").style.display = "block";
+    document.querySelector(".close-btn").style.display = "block";
+  } else {
+    window.location.href = url;
+  }
 }
 
-function closePage() {
-  const contentIframe = document.getElementById("content-iframe");
-  const closeBtn = document.getElementById("close-btn");
-
-  contentIframe.src = "";
-  contentIframe.style.display = "none";
-  closeBtn.style.display = "none";
+function closePageHandler() {
+  hamburgerMenu.classList.remove("mobile-hidden");
+  pageContainer.classList.remove("open");
+  document.querySelector(".content-iframe").style.display = "none";
+  document.querySelector(".close-btn").style.display = "none";
 }
 
-document.querySelectorAll('.menu-items a').forEach(link => {
-  link.addEventListener('click', event => {
-    event.preventDefault();
+hamburgerMenu.addEventListener("click", toggleMenu);
+closePage.addEventListener("click", closePageHandler);
+
+document.querySelectorAll(".menu-items li a").forEach((menuItem) => {
+  menuItem.addEventListener("click", (e) => {
+    e.preventDefault();
+    openPage(menuItem.getAttribute("href"));
     toggleMenu();
-
-    if (isMobile()) {
-      openPage(event.target.href);
-    } else {
-      window.location.href = event.target.href;
-    }
   });
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
+    hamburgerMenu.classList.remove("mobile-hidden");
+  }
 });
