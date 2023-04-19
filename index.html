@@ -7,16 +7,11 @@
     
     <script defer src="script.js"></script>
     <script defer src="menu.js"></script>
-    <style>
-        .menu-items {
-            display: none;
-        }
-    </style>
 </head>
 <body>
     <nav>
         <div class="hamburger-menu" onclick="toggleMenu()">
-            <div id="hamburger-icon" class="hamburger-icon">
+            <div class="hamburger-icon">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -28,13 +23,10 @@
             <li><a href="page3.html" target="content-iframe">Donate</a></li>
         </ul>
     </nav>   
-    <main style="padding: 16px;"></main>
     <div class="content">
-        <p>Watch and share videos from our travel adventures!</p>
         <div class="video-player">
             <iframe id="video-iframe" src="https://www.youtube.com/embed/?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <h2 id="video-title">Video Title</h2>
         <div class="buttons-container">
             <button id="next-btn" class="button">Next</button>
             <button id="share-btn" class="button">Share</button>
