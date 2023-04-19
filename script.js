@@ -51,8 +51,16 @@ function playRandomVideo(videoId, videoTitle) {
     videoTitleElement.textContent = videoTitle;
 }
 
-document.getElementById('next-btn').addEventListener('click', () => {
-    playRandomVideo();
+document.getElementById('next-btn').addEventListener('click', async () => {
+    if (videoIds.length === 0) {
+        console.error('No video IDs found. Please check your playlist ID and API key.');
+        return;
+    }
+    const randomIndex = Math.floor(Math.random() * videoIds.length);
+    const videoData = await fetchVideoData(videoIds[randomIndex]);
+    if (videoData) {
+        playRandomVideo(videoIds[randomIndex], videoData.title);
+    }
 });
 
 document.getElementById("share-btn").addEventListener("click", function () {
