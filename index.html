@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
     <script defer src="menu.js"></script>
+    <script defer src="pageLoader.js"></script>
 </head>
 <body>
     <nav>
@@ -37,5 +38,9 @@
             </div>
         </div>
     </main>
+    <div id="page-container" class="page-container">
+    <div class="close-page" onclick="closePage()">&#x2715;</div>
+    <div id="page-content"></div>
+  </div>
 </body>
 </html>
