@@ -1,25 +1,12 @@
-function openPage(url) {
-  const contentIframe = document.getElementById("content-iframe");
-  const closeBtn = document.getElementById("close-btn");
-
-  contentIframe.src = url;
-  contentIframe.style.display = "block";
-  contentIframe.style.opacity = 0;
-  closeBtn.style.display = "block";
-
-  setTimeout(() => {
-    contentIframe.style.opacity = 1;
-    contentIframe.style.transition = "opacity 0.5s ease-in-out";
-  }, 100);
+function toggleMenu() {
+  const menuItems = document.getElementById('menu-items');
+  const hamburgerMenu = document.querySelector('.hamburger-menu');
+  menuItems.classList.toggle('open');
+  hamburgerMenu.classList.toggle('open');
 }
 
-function closePage() {
-  const contentIframe = document.getElementById("content-iframe");
-  const closeBtn = document.getElementById("close-btn");
-
-  contentIframe.src = "";
-  contentIframe.classList.remove('visible');
-  closeBtn.style.display = "none";
+function isMobile() {
+  return window.innerWidth <= 640;
 }
 
 document.querySelectorAll('.menu-items a').forEach(link => {
