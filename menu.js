@@ -13,9 +13,9 @@ function openPage(url) {
   const contentIframe = document.getElementById("content-iframe");
   const closeBtn = document.getElementById("close-btn");
 
-  contentIframe.style.opacity = 0;
   contentIframe.src = url;
   contentIframe.style.display = "block";
+  contentIframe.style.opacity = 0;
   closeBtn.style.display = "block";
 
   contentIframe.onload = function () {
