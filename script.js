@@ -35,7 +35,6 @@ document.getElementById('next-btn').addEventListener('click', () => {
     playRandomVideo();
 });
 
-
 document.getElementById("share-btn").addEventListener("click", function () {
     const videoIframe = document.getElementById("video-iframe");
     const videoUrl = videoIframe.src;
