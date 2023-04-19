@@ -1,12 +1,18 @@
-function toggleMenu() {
-  const menuItems = document.getElementById('menu-items');
-  const hamburgerMenu = document.querySelector('.hamburger-menu');
-  menuItems.classList.toggle('open');
-  hamburgerMenu.classList.toggle('open');
-}
+function fadeIn(element) {
+  let opacity = 0;
+  element.style.opacity = opacity;
+  element.style.display = "block";
 
-function isMobile() {
-  return window.innerWidth <= 640;
+  function increaseOpacity() {
+    opacity += 0.05;
+    if (opacity >= 1) {
+      element.style.opacity = 1;
+      return;
+    }
+    element.style.opacity = opacity;
+    requestAnimationFrame(increaseOpacity);
+  }
+  requestAnimationFrame(increaseOpacity);
 }
 
 function openPage(url) {
@@ -14,13 +20,8 @@ function openPage(url) {
   const closeBtn = document.getElementById("close-btn");
 
   contentIframe.src = url;
-  contentIframe.style.display = "block";
-  contentIframe.style.opacity = 0;
+  fadeIn(contentIframe);
   closeBtn.style.display = "block";
-
-  contentIframe.onload = function () {
-    contentIframe.style.opacity = 1;
-  };
 }
 
 function closePage() {

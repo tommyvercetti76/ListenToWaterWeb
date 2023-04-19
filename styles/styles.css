@@ -187,8 +187,6 @@ body {
   z-index: 98;
   display: none;
   border: none;
-  opacity: 0;
-  transition: opacity 0.3s;
 }
 
 .close-btn {
