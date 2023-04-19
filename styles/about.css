@@ -5,8 +5,9 @@ body {
     background-color: #f0f0f0;
 }
 
-.hamburger-menu {
-    display: none;
+h1, h2 {
+    color: #333;
+    font-weight: bold;
 }
 
 main {
@@ -40,6 +41,7 @@ main {
 .gallery figcaption {
     font-size: 14px;
     color: #333;
+    margin-top: auto;
 }
 
 .gallery figcaption a {
