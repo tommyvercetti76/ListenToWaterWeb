@@ -5,9 +5,32 @@ body {
     background-color: #f0f0f0;
 }
 
-h1, h2 {
-    color: #333;
-    font-weight: bold;
+nav {
+    background-color: #333;
+    padding: 10px;
+    position: relative;
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-items li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+}
+
+.menu-items li a:hover {
+    background-color: #111;
 }
 
 main {
@@ -41,7 +64,6 @@ main {
 .gallery figcaption {
     font-size: 14px;
     color: #333;
-    margin-top: auto;
 }
 
 .gallery figcaption a {
