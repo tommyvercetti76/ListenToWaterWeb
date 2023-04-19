@@ -1,26 +1,10 @@
-function fadeIn(element) {
-  let opacity = 0;
-  element.style.opacity = opacity;
-  element.style.display = "block";
-
-  function increaseOpacity() {
-    opacity += 0.05;
-    if (opacity >= 1) {
-      element.style.opacity = 1;
-      return;
-    }
-    element.style.opacity = opacity;
-    requestAnimationFrame(increaseOpacity);
-  }
-  requestAnimationFrame(increaseOpacity);
-}
-
 function openPage(url) {
   const contentIframe = document.getElementById("content-iframe");
   const closeBtn = document.getElementById("close-btn");
 
   contentIframe.src = url;
-  contentIframe.classList.add('fade-in', 'visible');
+  contentIframe.classList.add('loading');
+  contentIframe.style.display = "block";
   closeBtn.style.display = "block";
 }
 
@@ -30,6 +14,7 @@ function closePage() {
 
   contentIframe.src = "";
   contentIframe.classList.remove('visible');
+  contentIframe.style.display = "none";
   closeBtn.style.display = "none";
 }
 
@@ -44,4 +29,9 @@ document.querySelectorAll('.menu-items a').forEach(link => {
       window.location.href = event.target.href;
     }
   });
+});
+
+document.getElementById('content-iframe').addEventListener('load', function() {
+  this.classList.remove('loading');
+  this.classList.add('visible');
 });
