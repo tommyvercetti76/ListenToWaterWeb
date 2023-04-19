@@ -148,7 +148,7 @@ body {
   opacity: 0;
   visibility: hidden;
   transform: translateY(100%);
-  transition: height 0.3s, opacity 0.3s, visibility 0.3s, transform 0.3s;
+  transition: height 0.3s, opacity 0.3s, visibility 0.3s, transform 0.5s ease-out;
 }
 
 .page-container.open {
