@@ -20,7 +20,7 @@ function openPage(url) {
   const closeBtn = document.getElementById("close-btn");
 
   contentIframe.src = url;
-  fadeIn(contentIframe);
+  contentIframe.classList.add('fade-in', 'visible');
   closeBtn.style.display = "block";
 }
 
@@ -29,7 +29,7 @@ function closePage() {
   const closeBtn = document.getElementById("close-btn");
 
   contentIframe.src = "";
-  contentIframe.style.display = "none";
+  contentIframe.classList.remove('visible');
   closeBtn.style.display = "none";
 }
 
