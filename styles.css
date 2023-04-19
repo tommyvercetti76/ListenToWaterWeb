@@ -1,4 +1,65 @@
-/* Add these styles to your existing styles.css file */
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #333;
+}
+
+/* Navigation */
+nav {
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 1rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  display: inline-block;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #444;
+}
+
+.hamburger-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 4px;
+  background-color: white;
+}
+
+/* Content */
+.content {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
 
 .video-player iframe {
   width: 50%;
@@ -12,6 +73,7 @@
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 1rem;
+  color: #333;
 }
 
 .buttons-container {
@@ -39,4 +101,32 @@
 
 .button:hover {
   background-color: #45a049;
+}
+
+/* Responsive menu */
+.hamburger-menu {
+  display: none;
+}
+
+.menu-items.open {
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger-menu {
+      display: block;
+  }
+
+  nav ul {
+      display: none;
+  }
+
+  .menu-items.open {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .menu-items.open li {
+      margin-bottom: 1rem;
+  }
 }
