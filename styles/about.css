@@ -18,6 +18,11 @@
     src: url('/fonts/JosefinSans-SemiBold.ttf') format('truetype');
   }
 
+  @font-face {
+    font-family: 'Josefin_Medium';
+    src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
+  }
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Josefin_Bold', Arial, sans-serif;
 }
@@ -89,6 +94,7 @@ main {
 }
 
 .gallery figcaption {
+    font-family: 'Josefin_Medium', Arial, sans-serif;
     font-size: 14px;
     color: #333;
 }
