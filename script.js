@@ -1,6 +1,5 @@
 const playlistId = 'PLxxuC2dcJeMeobJ7W9-kJ9ZzS4T9zz_zn&pp=gAQB';
 const apiKey = 'AIzaSyC4EZV2EEKABIz90yURDjNAcAahQhDoAW0'; // Replace with your YouTube Data API key
-let currentIndex = 0;
 let videoIds = [];
 
 async function fetchVideoIds() {
@@ -17,24 +16,25 @@ async function fetchVideoIds() {
     }
 }
 
-async function loadFirstVideo() {
+async function loadRandomVideo() {
     await fetchVideoIds();
     if (videoIds.length === 0) {
         console.error('No video IDs found. Please check your playlist ID and API key.');
         return;
     }
-    playVideo(currentIndex);
+    playRandomVideo();
 }
 
-function playVideo(index) {
+function playRandomVideo() {
     const videoIframe = document.getElementById('video-iframe');
-    videoIframe.src = `https://www.youtube.com/embed/${videoIds[index]}?autoplay=1&rel=0`;
+    const randomIndex = Math.floor(Math.random() * videoIds.length);
+    videoIframe.src = `https://www.youtube.com/embed/${videoIds[randomIndex]}?autoplay=1&rel=0`;
 }
 
 document.getElementById('next-btn').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % videoIds.length;
-    playVideo(currentIndex);
+    playRandomVideo();
 });
+
 
 document.getElementById("share-btn").addEventListener("click", function () {
     const videoIframe = document.getElementById("video-iframe");
@@ -58,7 +58,7 @@ document.getElementById("share-btn").addEventListener("click", function () {
     }
 });
 
-loadFirstVideo();
+loadRandomVideo();
 
 function toggleMenu() {
     const menuItems = document.getElementById('menu-items');
