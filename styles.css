@@ -164,3 +164,34 @@ body {
   cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+  .page-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    height: 0;
+    overflow-y: scroll;
+    z-index: 200;
+    transition: height 0.3s;
+  }
+
+  .page-container.open {
+    height: 100%;
+  }
+
+  .close-page {
+    display: none;
+  }
+
+  .page-container.open .close-page {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+}
+
+
