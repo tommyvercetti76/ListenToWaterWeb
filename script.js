@@ -16,19 +16,39 @@ async function fetchVideoIds() {
     }
 }
 
+async function fetchVideoData(videoId) {
+    try {
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=${apiKey}`);
+        const data = await response.json();
+        if (data.error) {
+            console.error('Error fetching video data:', data.error.message);
+            return;
+        }
+        return data.items[0].snippet;
+    } catch (error) {
+        console.error('Error fetching video data:', error);
+    }
+}
+
 async function loadRandomVideo() {
     await fetchVideoIds();
     if (videoIds.length === 0) {
         console.error('No video IDs found. Please check your playlist ID and API key.');
         return;
     }
-    playRandomVideo();
+    const randomIndex = Math.floor(Math.random() * videoIds.length);
+    const videoData = await fetchVideoData(videoIds[randomIndex]);
+    if (videoData) {
+        playRandomVideo(videoIds[randomIndex], videoData.title);
+    }
 }
 
-function playRandomVideo() {
+function playRandomVideo(videoId, videoTitle) {
     const videoIframe = document.getElementById('video-iframe');
-    const randomIndex = Math.floor(Math.random() * videoIds.length);
-    videoIframe.src = `https://www.youtube.com/embed/${videoIds[randomIndex]}?autoplay=1&rel=0`;
+    videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+
+    const videoTitleElement = document.querySelector('.video-title');
+    videoTitleElement.textContent = videoTitle;
 }
 
 document.getElementById('next-btn').addEventListener('click', () => {
