@@ -1,6 +1,9 @@
-function toggleMenu() {
-  const menuItems = document.getElementById('menu-items');
-  const hamburgerMenu = document.querySelector('.hamburger-menu');
-  menuItems.classList.toggle('open');
-  hamburgerMenu.classList.toggle('open');
-}
+document.querySelectorAll(".menu-items li a").forEach((link) =>
+  link.addEventListener("click", (event) => {
+    if (isMobile()) {
+      event.preventDefault();
+      closeMenu();
+      openPage(link.href);
+    }
+  })
+);
