@@ -52,7 +52,7 @@ function generateHaiku() {
     const timeOfDay = getRandomElement(timeOfDayPhrases);
     const sound = getRandomElement(soundPhrases);
     const benefit = getRandomElement(benefitPhrases);
-    return [timeOfDay, sound, benefit];
+    return `${timeOfDay}\n${sound}\n${benefit}`;
   }
   
   function updateHaiku() {
