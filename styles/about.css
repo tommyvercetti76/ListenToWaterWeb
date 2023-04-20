@@ -64,13 +64,12 @@ main {
   padding: 16px 32px;
 }
 
-.gallery img {
-  max-width: 100%;
-  object-fit: cover;
-  height: auto;
-  margin-bottom: 8px; /* Increased the margin between image and text */
-  transition: transform 0.3s ease-in-out;
-  border-radius: 4px;
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 4px;
+  margin-bottom: 8px;
+  padding: 0 4px;
 }
 
 .gallery figure {
@@ -85,20 +84,20 @@ main {
   max-width: 100%;
   object-fit: cover;
   height: auto;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   transition: transform 0.3s ease-in-out;
   border-radius: 4px;
-}
-
-.gallery figure:hover img {
-  transform: scale(1.05);
 }
 
 .gallery figcaption {
   font-family: 'Josefin_Medium', Arial, sans-serif;
   font-size: 14px;
   color: white;
-  padding-top: 8px; /* Added padding-top to create more space between the image and text */
+  padding-top: 8px;
+}
+
+.gallery figure:hover img {
+  transform: scale(1.05);
 }
 
 .gallery figcaption a {
@@ -144,7 +143,7 @@ main {
   
   @media screen and (max-width: 767px) {
     .gallery {
-      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       grid-gap: 8px;
       padding: 0 8px;
     }
