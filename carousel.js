@@ -46,4 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const carousel = document.querySelector('.carousel');
   carousel.addEventListener('touchstart', handleTouchStart, false);
   carousel.addEventListener('touchend', handleTouchEnd, false);
+
+  // Set the first slide as active when the page loads
+  if (slides.length > 0) {
+    slides[0].classList.add('active');
+  }
 });
+
