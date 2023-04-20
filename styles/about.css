@@ -70,8 +70,8 @@ body {
   align-items: center;
   overflow: hidden;
   width: 80%; /* Adjusted width */
-  max-width: 800px;
-  height: 400px;
+  max-width: 600px;
+  height: 300px;
   margin: 0 auto;
   position: relative;
   border-radius: 10px;
