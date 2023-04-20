@@ -156,4 +156,29 @@ main {
       border-radius: 4px;
     }
   }
+
+  /* Add this to your CSS file */
+.carousel {
+  display: none;
+}
+
+.slide {
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+@media screen and (max-width: 767px) {
+  .gallery {
+    display: none;
+  }
+
+  .carousel {
+    display: block;
+  }
+}
+
+  
   
