@@ -53,13 +53,13 @@ function generateHaiku() {
     const sound = getRandomElement(soundPhrases);
     const benefit = getRandomElement(benefitPhrases);
     return `${timeOfDay}\n${sound}\n${benefit}`;
-  }
-  
-  function updateHaiku() {
+}
+
+function updateHaiku() {
     const newHaiku = generateHaiku();
     const haikuElement = document.querySelector('.haiku');
     haikuElement.innerHTML = newHaiku.map(line => `<p class="haiku-line">${line}</p>`).join('');
-  }
+}
 
 function getTodayHaiku() {
     const today = new Date().toDateString();
@@ -79,9 +79,11 @@ function getTodayHaiku() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const haiku = getTodayHaiku();
-    const haikuElement = document.querySelector('.haiku');
-    haikuElement.innerHTML = haiku;
+    const haiku = getTodayHaiku().split('\n');
+    const haikuLines = document.querySelectorAll('.haiku-line');
+    haikuLines.forEach((lineElement, index) => {
+        lineElement.textContent = haiku[index];
+    });
 
     // Change glow effect based on time of the day
     const currentTime = new Date().getHours();
@@ -97,12 +99,13 @@ document.addEventListener('DOMContentLoaded', function () {
         glowColor = '#ADFF2F';
     }
 
-    const haikuElement = document.querySelector('.haiku');
-    haikuElement.innerHTML = haiku.map(line => `<p class="haiku-line">${line}</p>`).join('');
     const opacity = 0.4;
     document.body.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
-    haikuElement.style.textShadow = `0 0 10px ${glowColor}, 0 0 20px ${glowColor}, 0 0 30px ${glowColor}, 0 0 40px ${glowColor}, 0 0 70px ${glowColor}, 0 0 80px ${glowColor}, 0 0 100px ${glowColor}, 0 0 150px ${glowColor}`;
+    haikuLines.forEach(lineElement => {
+        lineElement.style.textShadow = `0 0 10px ${glowColor}, 0 0 20px ${glowColor}, 0 0 30px ${glowColor}, 0 0 40px ${glowColor}, 0 0 70px ${glowColor}, 0 0 80px ${glowColor}, 0 0 100px ${glowColor}, 0 0 150px ${glowColor}`;
+    });
 });
+
 
 refreshButton.addEventListener('click', () => {
     clickCounter++;
