@@ -161,7 +161,7 @@ width: 100%;
 top: 0;
 left: 0;
 opacity: 0;
-transition: opacity 400ms ease-in-out; /* Update the transition duration and easing */
+transition: opacity 800ms ease-in-out; /* Update the transition duration and easing */
 }
 
 .slide.active {
@@ -177,7 +177,7 @@ transform: translateY(-100%);
 display: flex;
 flex-direction: column;
 align-items: center;
-gap: 4px;
+gap: 8px;
 }
 
 .carousel-caption figcaption {
