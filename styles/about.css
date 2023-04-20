@@ -94,18 +94,18 @@ main {
 
 
 .gallery figcaption {
-    font-family: 'Josefin_Medium', Arial, sans-serif;
-    font-size: 14px;
-    color: #333;
+  font-family: 'Josefin_Medium', Arial, sans-serif;
+  font-size: 14px;
+  color: white; /* Changed color to white */
 }
 
 .gallery figcaption a {
-    color: #1a73e8;
-    text-decoration: none;
+  color: #1a73e8;
+  text-decoration: none;
 }
 
 .gallery figcaption a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .loading {
