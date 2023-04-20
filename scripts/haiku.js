@@ -59,16 +59,18 @@ function updateHaiku() {
     const haiku = generateHaiku();
     const haikuElement = document.querySelector('.haiku');
     const haikuLines = haikuElement.querySelectorAll('.haiku-line');
-    
+
     haikuLines.forEach((line, index) => {
-      line.style.opacity = 0;
-      setTimeout(() => {
-        line.textContent = haiku.split('\n')[index];
-        line.style.opacity = 1;
-      }, 500 * index);
+        // Fade out the line
+        line.style.opacity = 0;
+
+        // Update the line content and fade it in after it has faded out
+        setTimeout(() => {
+            line.textContent = haiku.split('\n')[index];
+            line.style.opacity = 1;
+        }, 500 * (index + 1));
     });
-  }
-  
+}
 
 function getTodayHaiku() {
     const today = new Date().toDateString();
