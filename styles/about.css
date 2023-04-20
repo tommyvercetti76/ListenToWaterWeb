@@ -85,12 +85,13 @@ main {
   height: auto;
   margin-bottom: 8px;
   transition: transform 0.3s ease-in-out;
+  padding: 10px; /* Added padding */
+  box-sizing: border-box; /* Added box-sizing to prevent overflow */
 }
 
 .gallery figure:hover img {
-  transform: scale(1.05);
+  transform: scale(1.1); /* Increased scale on hover */
 }
-
 
 .gallery figcaption {
   font-family: 'Josefin_Medium', Arial, sans-serif;
