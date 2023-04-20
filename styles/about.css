@@ -90,7 +90,7 @@ border-radius: 4px; /* Brought back the curved border */
 }
 
 .gallery figure:hover img {
-transform: scale(1.11);
+transform: scale(0.5);
 }
 
 .gallery figcaption {
