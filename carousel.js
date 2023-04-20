@@ -1,7 +1,7 @@
 let touchStartX = null;
 let touchEndX = null;
-
-const slides = document.querySelectorAll('.slide');
+let slideIndex = 0;
+let slides = document.getElementsByClassName("slide");
 
 function handleTouchStart(event) {
   touchStartX = event.touches[0].clientX;
@@ -22,15 +22,8 @@ function setActiveSlide(index) {
   slides.forEach((slide, i) => {
     if (i === index) {
       slide.classList.add('active');
-      slide.style.opacity = 0; // Add this line
-      setTimeout(() => {
-        slide.style.opacity = 1;
-      }, 10);
     } else {
-      slide.style.opacity = 0; // Add this line
-      setTimeout(() => {
-        slide.classList.remove('active');
-      }, 400);
+      slide.classList.remove('active');
     }
   });
 }
@@ -54,25 +47,18 @@ document.addEventListener('DOMContentLoaded', () => {
   carousel.addEventListener('touchstart', handleTouchStart, false);
   carousel.addEventListener('touchend', handleTouchEnd, false);
 
-  // Set the first slide as active when the page loads
   if (slides.length > 0) {
-    slides[0].classList.add('active');
+    setActiveSlide(0);
   }
 });
 
-let slideIndex = 0;
-let slides = document.getElementsByClassName("slide");
-
 function showSlides() {
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
   slideIndex++;
   if (slideIndex > slides.length) {
     slideIndex = 1;
   }
-  slides[slideIndex - 1].style.display = "block";
-  setTimeout(showSlides, 4000); // Change slides every 4 seconds
+  setActiveSlide(slideIndex - 1);
+  setTimeout(showSlides, 4000);
 }
 
 showSlides();
