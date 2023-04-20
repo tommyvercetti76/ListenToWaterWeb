@@ -3,30 +3,25 @@
     src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
     }
 
-    html, body {
-        height: 100%;
-        margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .haiku {
-        font-size: 24px;
-        text-align: center;
-        padding-right: 40px;
-        padding-left: 40px;
-        margin: 0;
-    }
-  
-  .haiku-container {
-    text-align: center;
+    /* Add back the previous styles for the haiku */
+body {
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
   }
-
+  
+  .haiku {
+    font-family: 'Josefin_Medium',Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+  }
+  
+  /* Update the styles for the refresh button */
   .refresh-button {
     position: fixed;
     bottom: 20px;
@@ -35,17 +30,23 @@
     border: none;
     border-radius: 50%;
     color: white;
-    padding: 15px 32px;
+    width: 50px;
+    height: 50px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    font-size: 24px;
+    line-height: 50px;
     transition: transform 0.3s, background-color 0.3s;
   }
   
   .refresh-button:active {
     transform: scale(0.9);
     background-color: #3f8f40;
+  }
+  
+  .refresh-button:before {
+    content: '⟳';
+    display: inline-block;
+    vertical-align: middle;
   }
   
   .greedy-text {
@@ -56,6 +57,4 @@
     font-size: 16px;
     text-align: center;
   }
-  
-
   
