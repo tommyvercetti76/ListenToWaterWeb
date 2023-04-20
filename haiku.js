@@ -44,15 +44,25 @@ const timeOfDayPhrases = [
     return arr[Math.floor(Math.random() * arr.length)];
   }
   
-  function generateHaiku() {
-    const timeOfDay = getRandomElement(timeOfDayPhrases);
-    const sound = getRandomElement(soundPhrases);
-    const benefit = getRandomElement(benefitPhrases);
-    return `${timeOfDay}\n${sound}\n${benefit}`;
-  }
-  
-  document.addEventListener('DOMContentLoaded', function() {
-    const haiku = generateHaiku();
+  function getTodayHaiku() {
+    const today = new Date().toDateString();
+    const storedDate = localStorage.getItem('haikuDate');
+    let haiku;
+
+    if (storedDate === today) {
+        haiku = localStorage.getItem('haiku');
+    } else {
+        haiku = generateHaiku();
+        haiku = haiku.charAt(0).toUpperCase() + haiku.slice(1);
+        localStorage.setItem('haiku', haiku);
+        localStorage.setItem('haikuDate', today);
+    }
+
+    return haiku;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    const haiku = getTodayHaiku();
     const haikuElement = document.querySelector('.haiku');
     haikuElement.innerHTML = haiku;
 
@@ -70,7 +80,10 @@ const timeOfDayPhrases = [
         glowColor = '#ADFF2F';
     }
 
+    const opacity = 0.7;
+    document.body.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
     haikuElement.style.textShadow = `0 0 10px ${glowColor}, 0 0 20px ${glowColor}, 0 0 30px ${glowColor}, 0 0 40px ${glowColor}, 0 0 70px ${glowColor}, 0 0 80px ${glowColor}, 0 0 100px ${glowColor}, 0 0 150px ${glowColor}`;
 });
+
 
   
