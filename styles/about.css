@@ -1,63 +1,63 @@
-  @font-face {
-    font-family: 'Josefin_Bold';
-    src: url('/fonts/JosefinSans-Bold.ttf') format('truetype');
-  }
+@font-face {
+  font-family: 'Josefin_Bold';
+  src: url('/fonts/JosefinSans-Bold.ttf') format('truetype');
+}
 
-  @font-face {
-    font-family: 'Josefin_Light';
-    src: url('/fonts/JosefinSans-Light.ttf') format('truetype');
-  }
+@font-face {
+  font-family: 'Josefin_Light';
+  src: url('/fonts/JosefinSans-Light.ttf') format('truetype');
+}
 
-  @font-face {
-    font-family: 'Josefin_Semi_Bold';
-    src: url('/fonts/JosefinSans-SemiBold.ttf') format('truetype');
-  }
+@font-face {
+  font-family: 'Josefin_Semi_Bold';
+  src: url('/fonts/JosefinSans-SemiBold.ttf') format('truetype');
+}
 
-  @font-face {
-    font-family: 'Josefin_Medium';
-    src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
-  }
+@font-face {
+  font-family: 'Josefin_Medium';
+  src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
+}
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Josefin_Bold', Arial, sans-serif;
+  font-family: 'Josefin_Bold', Arial, sans-serif;
 }
 
 .subheader {
-    font-family: 'Josefin_Semi_Bold', Arial, sans-serif;
+  font-family: 'Josefin_Semi_Bold', Arial, sans-serif;
 }
 
 p {
-    font-family: 'Josefin_Light', Arial, sans-serif;
+  font-family: 'Josefin_Light', Arial, sans-serif;
 }
 
 body {
-    font-family: 'Josefin_Light', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+  font-family: 'Josefin_Light', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
 }
 
 .hamburger-menu {
-    display: none;
+  display: none;
 }
 
 .menu-items {
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .menu-items li a {
-    font-family: 'Josefin_Italic', 'Josefin_Bold', Arial, sans-serif;
-    color: white;
-    text-decoration: none;
-    padding: 8px 16px;
+  font-family: 'Josefin_Italic', 'Josefin_Bold', Arial, sans-serif;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
 }
 
 .menu-items li a:hover {
-    background-color: #111;
+  background-color: #111;
 }
 
 main {
@@ -110,52 +110,52 @@ main {
 }
 
 .loading {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .content-iframe {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 98;
-    display: none;
-    border: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  .content-iframe.visible {
-    display: block;
-    opacity: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.content-iframe {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 98;
+  display: none;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.content-iframe.visible {
+  display: block;
+  opacity: 1;
+}
+
+.content-iframe.loading {
+  opacity: 0;
+}
+
+.content-iframe.visible {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 767px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 8px;
+    padding: 0 8px;
   }
 
-  .content-iframe.loading {
-    opacity: 0;
+  .gallery figure {
+    padding: 8px;
   }
-  
-  .content-iframe.visible {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+
+  .gallery img {
+    border-radius: 4px;
   }
-  
-  @media screen and (max-width: 767px) {
-    .gallery {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      grid-gap: 8px;
-      padding: 0 8px;
-    }
-  
-    .gallery figure {
-      padding: 8px;
-    }
-  
-    .gallery img {
-      border-radius: 4px;
-    }
-  }
+}
 
 @media screen and (max-width: 767px) {
   .gallery {
@@ -171,7 +171,7 @@ main {
     width: 100%;
     overflow: hidden;
   }
-  
+
   .slide {
     position: absolute;
     width: 100%;
@@ -180,12 +180,8 @@ main {
     opacity: 0;
     transition: opacity 1s;
   }
-  
+
   .slide.active {
     opacity: 1;
   }
-  
 }
-
-  
-  
