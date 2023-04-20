@@ -1,8 +1,13 @@
+@font-face {
+    font-family: 'Josefin_Medium';
+    src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
+    }
+
 html, body {
     height: 100%;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgba(0, 0, 0, 0.6);
+    font-family: 'Josefin_Medium', Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.4);
   }
   
   body {
@@ -18,6 +23,8 @@ html, body {
   .haiku {
     font-size: 24px;
     color: #ffffff;
+    padding-right: 20px;
+    padding-left: 20px;
     line-height: 1.5;
     text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
   }
