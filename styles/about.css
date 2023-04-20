@@ -156,10 +156,12 @@ main {
 }
 
 .slide {
+  position: absolute;
   width: 100%;
+  top: 0;
+  left: 0;
   opacity: 0;
-  display: none;
-  transition: opacity 1s, transform 0.5s; /* Change the transition */
+  transition: opacity 400ms ease-in-out; /* Update the transition duration and easing */
 }
 
 .slide.active {
