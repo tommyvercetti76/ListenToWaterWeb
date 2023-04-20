@@ -157,19 +157,6 @@ main {
     }
   }
 
-  /* Add this to your CSS file */
-.carousel {
-  display: none;
-}
-
-.slide {
-  display: none;
-}
-
-.slide.active {
-  display: block;
-}
-
 @media screen and (max-width: 767px) {
   .gallery {
     display: none;
@@ -178,6 +165,26 @@ main {
   .carousel {
     display: block;
   }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .slide {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+  
+  .slide.active {
+    opacity: 1;
+  }
+  
 }
 
   

@@ -1,36 +1,49 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const carousel = document.querySelector(".carousel");
-  const slides = carousel.querySelectorAll(".slide");
-  let startX = 0;
-  let currentIndex = 0;
+let touchStartX = null;
+let touchEndX = null;
 
-  function handleTouchStart(e) {
-    startX = e.touches[0].clientX;
-  }
+const slides = document.querySelectorAll('.slide');
 
-  function handleTouchEnd(e) {
-    const endX = e.changedTouches[0].clientX;
-    const threshold = carousel.clientWidth / 4;
+function handleTouchStart(event) {
+  touchStartX = event.touches[0].clientX;
+}
 
-    if (startX - endX > threshold) {
+function handleTouchEnd(event) {
+  touchEndX = event.changedTouches[0].clientX;
+  if (touchStartX && touchEndX) {
+    if (touchEndX - touchStartX > 100) {
+      previousSlide();
+    } else if (touchStartX - touchEndX > 100) {
       nextSlide();
-    } else if (endX - startX > threshold) {
-      prevSlide();
     }
   }
+}
 
-  function nextSlide() {
-    slides[currentIndex].classList.remove("active");
-    currentIndex = (currentIndex + 1) % slides.length;
-    slides[currentIndex].classList.add("active");
-  }
+function setActiveSlide(index) {
+  slides.forEach((slide, i) => {
+    if (i === index) {
+      slide.classList.add('active');
+    } else {
+      slide.classList.remove('active');
+    }
+  });
+}
 
-  function prevSlide() {
-    slides[currentIndex].classList.remove("active");
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    slides[currentIndex].classList.add("active");
-  }
+function nextSlide() {
+  const activeSlide = document.querySelector('.slide.active');
+  const activeIndex = Array.from(slides).indexOf(activeSlide);
+  const nextIndex = (activeIndex + 1) % slides.length;
+  setActiveSlide(nextIndex);
+}
 
-  carousel.addEventListener("touchstart", handleTouchStart);
-  carousel.addEventListener("touchend", handleTouchEnd);
+function previousSlide() {
+  const activeSlide = document.querySelector('.slide.active');
+  const activeIndex = Array.from(slides).indexOf(activeSlide);
+  const prevIndex = (activeIndex - 1 + slides.length) % slides.length;
+  setActiveSlide(prevIndex);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.querySelector('.carousel');
+  carousel.addEventListener('touchstart', handleTouchStart, false);
+  carousel.addEventListener('touchend', handleTouchEnd, false);
 });
