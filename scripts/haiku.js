@@ -55,6 +55,12 @@ function generateHaiku() {
     return `${timeOfDay}\n${sound}\n${benefit}`;
 }
 
+function updateHaiku() {
+    const newHaiku = generateHaiku();
+    const haikuElement = document.querySelector('.haiku');
+    haikuElement.innerHTML = newHaiku;
+}
+
 function getTodayHaiku() {
     const today = new Date().toDateString();
     const storedDate = localStorage.getItem('haikuDate');
@@ -97,17 +103,17 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 refreshButton.addEventListener('click', () => {
-  clickCounter++;
-  if (clickCounter <= 3) {
-    updateHaiku();
-  } else {
-    refreshButton.style.display = 'none';
-    greedyText.removeAttribute('hidden');
-    setTimeout(() => {
-      greedyText.setAttribute('hidden', true);
-      refreshButton.style.display = 'block';
-      clickCounter = 0;
-    }, 86400000); // 86400000ms = 1 day
-  }
+    clickCounter++;
+    if (clickCounter <= 3) {
+        updateHaiku();
+    } else {
+        refreshButton.style.display = 'none';
+        greedyText.removeAttribute('hidden');
+        setTimeout(() => {
+            greedyText.setAttribute('hidden', true);
+            refreshButton.style.display = 'block';
+            clickCounter = 0;
+        }, 86400000); // 86400000ms = 1 day
+    }
 });
 
