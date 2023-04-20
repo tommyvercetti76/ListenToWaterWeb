@@ -69,28 +69,28 @@ main {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 4px;
   margin-bottom: 8px;
-  padding: 0 4px; /* Add padding to maintain a 20px distance from screen edges */
+  padding: 0 4px;
 }
 
 .gallery figure {
-padding: 16px; /* Increased padding */
-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
-border-radius: 4px; /* Brought back the curved border */
-display: flex;
-flex-direction: column;
+  padding: 16px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
 }
 
 .gallery img {
-max-width: 100%;
-object-fit: cover;
-height: auto;
-margin-bottom: 4px;
-transition: transform 0.3s ease-in-out;
-border-radius: 4px; /* Brought back the curved border */
+  max-width: 100%;
+  object-fit: cover;
+  height: auto;
+  margin-bottom: 4px;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 4px;
 }
 
 .gallery figure:hover img {
-transform: scale(0.5);
+  transform: scale(1.05);
 }
 
 .gallery figcaption {
@@ -140,4 +140,19 @@ transform: scale(0.5);
     transition: opacity 0.5s ease-in-out;
   }
   
+  @media screen and (max-width: 767px) {
+    .gallery {
+      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+      grid-gap: 8px;
+      padding: 0 8px;
+    }
+  
+    .gallery figure {
+      padding: 8px;
+    }
+  
+    .gallery img {
+      border-radius: 4px;
+    }
+  }
   
