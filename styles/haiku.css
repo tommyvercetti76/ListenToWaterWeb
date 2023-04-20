@@ -55,10 +55,9 @@ body {
   font-size: 30px;
 }
 
-
 .refresh-button:active {
   transform: scale(0.9);
-  background-color: #3f8f40;
+  background-color: #293d7c;
 }
 
 .greedy-text {

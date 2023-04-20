@@ -56,10 +56,19 @@ function generateHaiku() {
 }
 
 function updateHaiku() {
-    const newHaiku = generateHaiku();
+    const haiku = generateHaiku();
     const haikuElement = document.querySelector('.haiku');
-    haikuElement.innerHTML = newHaiku.map(line => `<p class="haiku-line">${line}</p>`).join('');
-}
+    const haikuLines = haikuElement.querySelectorAll('.haiku-line');
+    
+    haikuLines.forEach((line, index) => {
+      line.style.opacity = 0;
+      setTimeout(() => {
+        line.textContent = haiku.split('\n')[index];
+        line.style.opacity = 1;
+      }, 500 * index);
+    });
+  }
+  
 
 function getTodayHaiku() {
     const today = new Date().toDateString();
