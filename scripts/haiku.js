@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
 refreshButton.addEventListener('click', () => {
     clickCounter++;
     if (clickCounter <= 3) {
