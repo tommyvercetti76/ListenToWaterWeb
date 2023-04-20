@@ -30,10 +30,14 @@ p {
   font-family: 'Josefin_Light', Arial, sans-serif;
 }
 
+main {
+  padding: 16px 32px;
+  }
+
 body {
   font-family: 'Josefin_Light', Arial, sans-serif;
-  margin: 20px;
-  padding: 40px;
+  margin: 16px;
+  padding: 32px;
   background-color: #f0f0f0;
 }
 
