@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'Josefin_Italic';
-    src: url('/fonts/JosefinSans-Italic.ttf') format('truetype');
-  }
-  
   @font-face {
     font-family: 'Josefin_Bold';
     src: url('/fonts/JosefinSans-Bold.ttf') format('truetype');
@@ -77,21 +72,26 @@ main {
 }
 
 .gallery figure {
-    background-color: white;
-    padding: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .gallery img {
-    max-width: 100%;
-    border-radius: 8px;
-    object-fit: cover;
-    height: auto;
-    margin-bottom: 8px;
+  max-width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  height: auto;
+  margin-bottom: 8px;
+  transition: transform 0.3s ease-in-out;
 }
+
+.gallery figure:hover img {
+  transform: scale(1.05);
+}
+
 
 .gallery figcaption {
     font-family: 'Josefin_Medium', Arial, sans-serif;
