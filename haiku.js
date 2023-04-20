@@ -51,8 +51,26 @@ const timeOfDayPhrases = [
     return `${timeOfDay}\n${sound}\n${benefit}`;
   }
   
-  document.addEventListener("DOMContentLoaded", () => {
-    const haikuElement = document.querySelector(".haiku");
-    haikuElement.textContent = generateHaiku();
-  });
+  document.addEventListener('DOMContentLoaded', function() {
+    const haiku = generateHaiku();
+    const haikuElement = document.querySelector('.haiku');
+    haikuElement.innerHTML = haiku;
+
+    // Change glow effect based on time of the day
+    const currentTime = new Date().getHours();
+    let glowColor;
+
+    if (currentTime >= 5 && currentTime < 8) { // Sunrise
+        glowColor = '#FFA500';
+    } else if (currentTime >= 8 && currentTime < 18) { // Clear noon
+        glowColor = '#00BFFF';
+    } else if (currentTime >= 18 && currentTime < 20) { // Sunset
+        glowColor = '#FF6347';
+    } else { // Starry night
+        glowColor = '#ADFF2F';
+    }
+
+    haikuElement.style.textShadow = `0 0 10px ${glowColor}, 0 0 20px ${glowColor}, 0 0 30px ${glowColor}, 0 0 40px ${glowColor}, 0 0 70px ${glowColor}, 0 0 80px ${glowColor}, 0 0 100px ${glowColor}, 0 0 150px ${glowColor}`;
+});
+
   
