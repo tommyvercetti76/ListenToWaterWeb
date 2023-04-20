@@ -1,66 +1,77 @@
 @font-face {
-    font-family: 'Josefin_Medium';
-    src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
-    }
+  font-family: 'Josefin_Medium';
+  src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
+}
 
-    html, body {
-        height: 100%;
-        margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-        /* Add back the previous styles for the haiku */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Add back the previous styles for the haiku */
 body {
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  .haiku {
-    font-family: 'Josefin_Medium',Arial, Helvetica, sans-serif;
-    font-size: 24px;
-    color: white;
-    text-align: center;
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
-  }
-  
-  /* Update the styles for the refresh button */
-  .refresh-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 50%;
-    color: white;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    font-size: 24px;
-    line-height: 50px;
-    transition: transform 0.3s, background-color 0.3s;
-  }
-  
-  .refresh-button:active {
-    transform: scale(0.9);
-    background-color: #3f8f40;
-  }
-  
-  .refresh-button:before {
-    content: '⟳';
-    display: inline-block;
-    vertical-align: middle;
-  }
-  
-  .greedy-text {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    color: white;
-    font-size: 16px;
-    text-align: center;
-  }
-  
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/*...existing styles...*/
+
+.haiku-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.refresh-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 50px;
+  transition: transform 0.3s, background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.refresh-button:before {
+  content: '⟳';
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 24px;
+}
+
+.haiku {
+  font-family: 'Josefin_Medium', Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
+
+.refresh-button:active {
+  transform: scale(0.9);
+  background-color: #3f8f40;
+}
+
+.greedy-text {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
