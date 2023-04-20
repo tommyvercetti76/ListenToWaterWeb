@@ -67,15 +67,15 @@ main {
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 16px;
-  margin-bottom: 16px;
-  padding: 0 20px; /* Add padding to maintain a 20px distance from screen edges */
+  grid-gap: 4px;
+  margin-bottom: 8px;
+  padding: 0 4px; /* Add padding to maintain a 20px distance from screen edges */
 }
 
 .gallery figure {
 padding: 16px; /* Increased padding */
 box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
-border-radius: 8px; /* Brought back the curved border */
+border-radius: 4px; /* Brought back the curved border */
 display: flex;
 flex-direction: column;
 }
@@ -84,13 +84,13 @@ flex-direction: column;
 max-width: 100%;
 object-fit: cover;
 height: auto;
-margin-bottom: 8px;
+margin-bottom: 4px;
 transition: transform 0.3s ease-in-out;
-border-radius: 8px; /* Brought back the curved border */
+border-radius: 4px; /* Brought back the curved border */
 }
 
 .gallery figure:hover img {
-transform: scale(1.05);
+transform: scale(1.11);
 }
 
 .gallery figcaption {
