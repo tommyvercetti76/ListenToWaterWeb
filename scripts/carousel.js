@@ -19,13 +19,13 @@ function handleTouchEnd(event) {
 }
 
 function setActiveSlide(index) {
-  slides.forEach((slide, i) => {
+  for (let i = 0; i < slides.length; i++) {
     if (i === index) {
-      slide.classList.add('active');
+      slides[i].classList.add('active');
     } else {
-      slide.classList.remove('active');
+      slides[i].classList.remove('active');
     }
-  });
+  }
 }
 
 function nextSlide() {
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (slides.length > 0) {
     setActiveSlide(0);
+    showSlides();
   }
 });
 
@@ -60,5 +61,3 @@ function showSlides() {
   setActiveSlide(slideIndex - 1);
   setTimeout(showSlides, 4000);
 }
-
-showSlides();

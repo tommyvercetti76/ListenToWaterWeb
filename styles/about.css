@@ -141,23 +141,24 @@ opacity: 1;
 transition: opacity 0.5s ease-in-out;
 }
 
+/* Add the following CSS rule */
 .carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  width: 100%;
+  position: relative;
   max-width: 800px;
+  height: auto;
   margin: 0 auto;
+  padding-bottom: 56.25%; /* Keep aspect ratio 16:9 */
+  overflow: hidden;
 }
 
 .carousel-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 800px;
-  height: auto;
+  height: 100%;
   object-fit: cover;
 }
-
 
 .slide {
 position: absolute;
