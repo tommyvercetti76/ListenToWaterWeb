@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-family: 'Arial', sans-serif;
+}
+
+.haiku-container {
+    text-align: center;
+}
+
+.haiku {
+    font-size: 24px;
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff;
+    line-height: 1.5;
+}
