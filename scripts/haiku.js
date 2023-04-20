@@ -1,15 +1,15 @@
 const timeOfDayPhrases = [
-    "morning dewdrops",
-    "noon's gentle stream",
-    "evening's quiet rain",
-    "night's calm river",
-    "dawn's misty veil",
-    "twilight's soft murmur",
-    "sunrise's shimmer",
-    "sunset's reflection",
-    "daybreak's golden light",
-    "dusk's fading glow",
-    "midday's warm embrace"
+    "Morning dewdrops",
+    "Noon's gentle stream",
+    "Evening's quiet rain",
+    "Night's calm river",
+    "Dawn's misty veil",
+    "Twilight's soft murmur",
+    "Sunrise's shimmer",
+    "Sunset's reflection",
+    "Daybreak's golden light",
+    "Dusk's fading glow",
+    "Midday's warm embrace"
 ];
 
 const soundPhrases = [
