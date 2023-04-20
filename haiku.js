@@ -10,9 +10,9 @@ const timeOfDayPhrases = [
     "daybreak's golden light",
     "dusk's fading glow",
     "midday's warm embrace"
-  ];
-  
-  const soundPhrases = [
+];
+
+const soundPhrases = [
     "whisper to the rocks",
     "ripple through the reeds",
     "splash against the shore",
@@ -24,9 +24,9 @@ const timeOfDayPhrases = [
     "chatter in the breeze",
     "trickle over stones",
     "drum on the earth"
-  ];
-  
-  const benefitPhrases = [
+];
+
+const benefitPhrases = [
     "soothe the restless mind",
     "quench the thirst of life",
     "nurture the seeds of hope",
@@ -38,13 +38,20 @@ const timeOfDayPhrases = [
     "heal the wounded",
     "uplift the burdened",
     "rekindle the flame"
-  ];
-  
-  function getRandomElement(arr) {
+];
+
+function getRandomElement(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
-  }
-  
-  function getTodayHaiku() {
+}
+
+function generateHaiku() {
+    const timeOfDay = getRandomElement(timeOfDayPhrases);
+    const sound = getRandomElement(soundPhrases);
+    const benefit = getRandomElement(benefitPhrases);
+    return `${timeOfDay}\n${sound}\n${benefit}`;
+}
+
+function getTodayHaiku() {
     const today = new Date().toDateString();
     const storedDate = localStorage.getItem('haikuDate');
     let haiku;
@@ -85,5 +92,3 @@ document.addEventListener('DOMContentLoaded', function () {
     haikuElement.style.textShadow = `0 0 10px ${glowColor}, 0 0 20px ${glowColor}, 0 0 30px ${glowColor}, 0 0 40px ${glowColor}, 0 0 70px ${glowColor}, 0 0 80px ${glowColor}, 0 0 100px ${glowColor}, 0 0 150px ${glowColor}`;
 });
 
-
-  
