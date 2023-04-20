@@ -22,10 +22,40 @@
         padding-left: 40px;
         margin: 0;
     }
-    
   
   .haiku-container {
     text-align: center;
   }
+
+  .refresh-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 50%;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .refresh-button:active {
+    transform: scale(0.9);
+    background-color: #3f8f40;
+  }
+  
+  .greedy-text {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+  }
+  
 
   
