@@ -1,174 +1,197 @@
 @font-face {
-  font-family: 'Josefin_Bold';
-  src: url('/fonts/JosefinSans-Bold.ttf') format('truetype');
+font-family: 'Josefin_Bold';
+src: url('/fonts/JosefinSans-Bold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Josefin_Light';
-  src: url('/fonts/JosefinSans-Light.ttf') format('truetype');
+font-family: 'Josefin_Light';
+src: url('/fonts/JosefinSans-Light.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Josefin_Semi_Bold';
-  src: url('/fonts/JosefinSans-SemiBold.ttf') format('truetype');
+font-family: 'Josefin_Semi_Bold';
+src: url('/fonts/JosefinSans-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Josefin_Medium';
-  src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
+font-family: 'Josefin_Medium';
+src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Josefin_Bold', Arial, sans-serif;
+font-family: 'Josefin_Bold', Arial, sans-serif;
 }
 
 .subheader {
-  font-family: 'Josefin_Semi_Bold', Arial, sans-serif;
+font-family: 'Josefin_Semi_Bold', Arial, sans-serif;
 }
 
 p {
-  font-family: 'Josefin_Light', Arial, sans-serif;
+font-family: 'Josefin_Light', Arial, sans-serif;
 }
 
 body {
-  font-family: 'Josefin_Light', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f0f0f0;
+font-family: 'Josefin_Light', Arial, sans-serif;
+margin: 0;
+padding: 0;
+background-color: #f0f0f0;
 }
 
 .hamburger-menu {
-  display: none;
+display: none;
 }
 
 .menu-items {
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+display: flex;
+flex-direction: row;
+list-style-type: none;
+margin: 0;
+padding: 0;
 }
 
 .menu-items li a {
-  font-family: 'Josefin_Italic', 'Josefin_Bold', Arial, sans-serif;
-  color: white;
-  text-decoration: none;
-  padding: 8px 16px;
+font-family: 'Josefin_Italic', 'Josefin_Bold', Arial, sans-serif;
+color: white;
+text-decoration: none;
+padding: 8px 16px;
 }
 
 .menu-items li a:hover {
-  background-color: #111;
+background-color: #111;
 }
 
 main {
-  padding: 16px 32px;
+padding: 16px 32px;
 }
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 4px;
-  margin-bottom: 8px;
-  padding: 0 4px;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+grid-gap: 4px;
+margin-bottom: 8px;
+padding: 0 4px;
 }
 
 .gallery figure {
-  padding: 16px;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
+padding: 16px;
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+border-radius: 4px;
+display: flex;
+flex-direction: column;
 }
 
 .gallery img {
-  max-width: 100%;
-  object-fit: cover;
-  height: auto;
-  margin-bottom: 8px;
-  transition: transform 0.3s ease-in-out;
-  border-radius: 4px;
+max-width: 100%;
+object-fit: cover;
+height: auto;
+margin-bottom: 8px;
+transition: transform 0.3s ease-in-out;
+border-radius: 4px;
 }
 
 .gallery figcaption {
-  font-family: 'Josefin_Medium', Arial, sans-serif;
-  font-size: 14px;
-  color: white;
-  padding-top: 8px;
+font-family: 'Josefin_Medium', Arial, sans-serif;
+font-size: 14px;
+color: white;
+padding-top: 8px;
 }
 
 .gallery figure:hover img {
-  transform: scale(1.05);
+transform: scale(1.05);
 }
 
 .gallery figcaption a {
-  color: #1a73e8;
-  text-decoration: none;
+color: #1a73e8;
+text-decoration: none;
 }
 
 .gallery figcaption a:hover {
-  text-decoration: underline;
+text-decoration: underline;
 }
 
 .loading {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+opacity: 0;
+transition: opacity 0.5s ease-in-out;
 }
 
 .content-iframe {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 98;
-  display: none;
-  border: none;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+z-index: 98;
+display: none;
+border: none;
+opacity: 0;
+transition: opacity 0.3s ease-in-out;
 }
 
 .content-iframe.visible {
-  display: block;
-  opacity: 1;
+display: block;
+opacity: 1;
 }
 
 .content-iframe.loading {
-  opacity: 0;
+opacity: 0;
 }
 
 .content-iframe.visible {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+opacity: 1;
+transition: opacity 0.5s ease-in-out;
 }
 
 .carousel {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  height: 50vh; /* Adjust the height as needed */
-  border-radius: 15px; /* Add curved borders */
+position: relative;
+width: 100%;
+overflow: hidden;
+height: 50vh; /* Adjust the height as needed */
+border-radius: 15px; /* Add curved borders */
 }
 
 .carousel-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Scale down and maintain aspect ratio */
+width: 100%;
+height: 100%;
+object-fit: cover; /* Scale down and maintain aspect ratio */
 }
 
 .slide {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 400ms ease-in-out; /* Update the transition duration and easing */
+position: absolute;
+width: 100%;
+top: 0;
+left: 0;
+opacity: 0;
+transition: opacity 400ms ease-in-out; /* Update the transition duration and easing */
 }
 
 .slide.active {
-  display: block; /* Add this line */
-  opacity: 1;
+display: block; /* Add this line */
+opacity: 1;
 }
 
 .slide-transition {
-  transform: translateY(-100%);
+transform: translateY(-100%);
+}
+
+.carousel-caption {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 4px;
+}
+
+.carousel-caption figcaption {
+font-family: 'Josefin_Medium', Arial, sans-serif;
+font-size: 14px;
+color: white;
+padding-top: 8px;
+}
+
+.carousel-caption a {
+color: #1a73e8;
+text-decoration: none;
+}
+
+.carousel-caption a:hover {
+text-decoration: underline;
 }
