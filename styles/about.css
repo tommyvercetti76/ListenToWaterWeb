@@ -37,83 +37,6 @@ padding: 0;
 background-color: #f0f0f0;
 }
 
-.hamburger-menu {
-display: none;
-}
-
-.menu-items {
-display: flex;
-flex-direction: row;
-list-style-type: none;
-margin: 0;
-padding: 0;
-}
-
-.menu-items li a {
-font-family: 'Josefin_Italic', 'Josefin_Bold', Arial, sans-serif;
-color: white;
-text-decoration: none;
-padding: 8px 16px;
-}
-
-.menu-items li a:hover {
-background-color: #111;
-}
-
-main {
-padding: 16px 32px;
-}
-
-.gallery {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-grid-gap: 4px;
-margin-bottom: 8px;
-padding: 0 4px;
-}
-
-.gallery figure {
-padding: 16px;
-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
-border-radius: 4px;
-display: flex;
-flex-direction: column;
-}
-
-.gallery img {
-max-width: 100%;
-object-fit: cover;
-height: auto;
-margin-bottom: 8px;
-transition: transform 0.3s ease-in-out;
-border-radius: 4px;
-}
-
-.gallery figcaption {
-font-family: 'Josefin_Medium', Arial, sans-serif;
-font-size: 14px;
-color: white;
-padding-top: 8px;
-}
-
-.gallery figure:hover img {
-transform: scale(1.05);
-}
-
-.gallery figcaption a {
-color: #1a73e8;
-text-decoration: none;
-}
-
-.gallery figcaption a:hover {
-text-decoration: underline;
-}
-
-.loading {
-opacity: 0;
-transition: opacity 0.5s ease-in-out;
-}
-
 .content-iframe {
 position: fixed;
 bottom: 0;
@@ -148,16 +71,16 @@ transition: opacity 0.5s ease-in-out;
   overflow: hidden;
   width: 100%;
   max-width: 800px;
+  height: 400px; /* added height */
   margin: 0 auto;
-  position: relative;
+  border-radius: 10px; /* added curved borders */
 }
 
 .carousel-img {
   width: 100%;
-  max-width: 800px;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .slide {
@@ -179,15 +102,9 @@ transition: opacity 0.5s ease-in-out;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 8px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  margin-bottom: 16px; /* added margin-bottom */
 }
+
 
 .carousel-caption figcaption {
   font-family: 'Josefin_Medium', Arial, sans-serif;
