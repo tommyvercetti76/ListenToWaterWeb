@@ -141,28 +141,12 @@ main {
   transition: opacity 0.5s ease-in-out;
 }
 
-@media screen and (max-width: 767px) {
-  .gallery {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 8px;
-    padding: 0 8px;
-  }
-
-  .gallery figure {
-    padding: 8px;
-  }
-
-  .gallery img {
-    border-radius: 4px;
-  }
-}
-
 .carousel {
   position: relative;
   width: 100%;
   overflow: hidden;
+  display: block; /* Add this line */
 }
-
 
 .slide {
   position: absolute;
