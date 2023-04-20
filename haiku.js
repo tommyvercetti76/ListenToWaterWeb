@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
         glowColor = '#ADFF2F';
     }
 
-    const opacity = 0.7;
+    const opacity = 0.4;
     document.body.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
     haikuElement.style.textShadow = `0 0 10px ${glowColor}, 0 0 20px ${glowColor}, 0 0 30px ${glowColor}, 0 0 40px ${glowColor}, 0 0 70px ${glowColor}, 0 0 80px ${glowColor}, 0 0 100px ${glowColor}, 0 0 150px ${glowColor}`;
 });
