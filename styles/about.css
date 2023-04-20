@@ -141,60 +141,73 @@ opacity: 1;
 transition: opacity 0.5s ease-in-out;
 }
 
-/* Add the following CSS rule */
 .carousel {
-  position: relative;
-  max-width: 800px;
-  height: auto;
-  margin: 0 auto;
-  padding-bottom: 56.25%; /* Keep aspect ratio 16:9 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .carousel-img {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  max-width: 800px;
+  height: auto;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .slide {
-position: absolute;
-width: 100%;
-top: 0;
-left: 0;
-opacity: 0;
-transition: opacity 800ms ease-in-out; /* Update the transition duration and easing */
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 800ms ease-in-out;
 }
 
 .slide.active {
-display: block; /* Add this line */
-opacity: 1;
-}
-
-.slide-transition {
-transform: translateY(-100%);
+  display: block;
+  opacity: 1;
 }
 
 .carousel-caption {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .carousel-caption figcaption {
-font-family: 'Josefin_Medium', Arial, sans-serif;
-font-size: 14px;
-color: white;
-padding-top: 8px;
+  font-family: 'Josefin_Medium', Arial, sans-serif;
+  font-size: 14px;
+  color: white;
+  padding-top: 8px;
 }
 
 .carousel-caption a {
-color: #1a73e8;
-text-decoration: none;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.carousel-caption a:hover {
+  text-decoration: underline;
+}
+
+
+.slide-transition {
+transform: translateY(-100%);
 }
 
 .carousel-caption a:hover {
