@@ -22,8 +22,18 @@ function setActiveSlide(index) {
   slides.forEach((slide, i) => {
     if (i === index) {
       slide.classList.add('active');
+      slide.classList.remove('slide-transition');
+      slide.style.opacity = 1;
+      slide.style.display = 'block';
     } else {
+      slide.style.opacity = 0;
+      if (slide.classList.contains('active')) {
+        slide.classList.add('slide-transition');
+      }
       slide.classList.remove('active');
+      setTimeout(() => {
+        slide.style.display = 'none';
+      }, 500);
     }
   });
 }

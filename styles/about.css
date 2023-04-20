@@ -145,16 +145,22 @@ main {
   position: relative;
   width: 100%;
   overflow: hidden;
+  height: 50vh; /* Adjust the height as needed */
+  border-radius: 15px; /* Add curved borders */
 }
 
 .slide {
   width: 100%;
   opacity: 0;
-  transition: opacity 1s;
-  display: none; /* Add this line */
+  display: none;
+  transition: opacity 1s, transform 0.5s; /* Change the transition */
 }
 
 .slide.active {
   display: block; /* Add this line */
   opacity: 1;
+}
+
+.slide-transition {
+  transform: translateY(-100%);
 }
