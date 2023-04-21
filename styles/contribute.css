@@ -48,6 +48,7 @@ main {
 
 .charity-tile {
     display: flex;
+    flex-direction: column;
     align-items: center;
     border-radius: 10px;
     overflow: hidden;
@@ -55,6 +56,8 @@ main {
     margin-bottom: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .charity-tile:hover {
@@ -62,9 +65,8 @@ main {
 }
 
 .charity-image-container {
-    flex-shrink: 0;
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: auto;
     overflow: hidden;
     position: relative;
 }
@@ -84,17 +86,7 @@ main {
     flex-direction: column;
     justify-content: center;
     padding: 20px;
-}
-
-.charity-tile {
-    display: flex;
-    background-color: #ffffff;
-    color: #000000;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    max-width: 800px;
+    text-align: center;
 }
 
 .charity-description {
@@ -109,29 +101,4 @@ main {
 
 .open-link:hover {
     text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-    .charity-tile {
-        flex-direction: column;
-    }
-
-    .charity-image-container {
-        width: 100%;
-        height: auto;
-    }
-
-    .charity-image {
-        position: static;
-        transform: none;
-    }
-
-    .charity-info {
-        padding: 10px 0;
-        text-align: center;
-    }
-
-    .charity-title {
-        margin-top: 0;
-    }
 }
