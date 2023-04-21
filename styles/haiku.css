@@ -10,7 +10,7 @@ html, body {
 }
 
 body {
-  background-color: rgba(0, 0, 139, 0.8); /* Dark blue + black background */
+  background-color: rgba(1, 1, 29, 0.8); /* Dark blue + black background */
   display: flex;
   align-items: center;
   justify-content: center;
