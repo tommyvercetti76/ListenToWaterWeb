@@ -54,6 +54,11 @@ main {
     background-color: #222;
     margin-bottom: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.charity-tile:hover {
+    transform: scale(0.98);
 }
 
 .charity-image-container {
@@ -89,9 +94,7 @@ main {
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
-    /* Add this line to center the tile on desktop screens */
     max-width: 800px;
-    /* Add this line to limit the tile width on larger screens */
 }
 
 .charity-description {
@@ -125,7 +128,6 @@ main {
 
     .charity-info {
         padding: 10px 0;
-        /* Adjust this value to control the title's position on mobile screens */
         text-align: center;
     }
 
