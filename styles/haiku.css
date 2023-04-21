@@ -10,7 +10,7 @@ html, body {
 }
 
 body {
-  background-color: #000;
+  background-color: rgba(0, 0, 139, 0.8); /* Dark blue + black background */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,14 +23,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.haiku {
-  font-family: 'Josefin_Medium', Arial, Helvetica, sans-serif;
-  font-size: 24px;
-  color: white;
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
 }
 
 .refresh-button {
@@ -43,21 +35,33 @@ body {
   color: white;
   width: 60px;
   height: 60px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 60px;
+  transition: transform 0.3s, background-color 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.3s, background-color 0.3s;
 }
 
 .refresh-button:before {
   content: '⟳';
   display: inline-block;
+  vertical-align: middle;
   font-size: 30px;
+}
+
+.haiku {
+  font-family: 'Josefin_Medium', Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff; /* Simple white glow */
 }
 
 .refresh-button:active {
   transform: scale(0.9);
-  background-color: #293d7c;
+  background-color: #3f8f40;
 }
 
 .greedy-text {
@@ -67,25 +71,4 @@ body {
   color: white;
   font-size: 16px;
   text-align: center;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.haiku-line {
-  transition: opacity 0.5s ease-in-out;
-}
-
-.haiku-line:nth-child(2) {
-  animation-delay: 0.5s;
-}
-
-.haiku-line:nth-child(3) {
-  animation-delay: 1s;
 }
