@@ -100,4 +100,26 @@ main {
   .open-link:hover {
     text-decoration: underline;
   }
+
+  @media (max-width: 768px) {
+    .charity-tile {
+      flex-direction: column;
+    }
+  
+    .charity-image-container {
+      width: 100%;
+      height: auto;
+    }
+  
+    .charity-image {
+      position: static;
+      transform: none;
+    }
+  
+    .charity-info {
+      padding: 20px 0;
+      text-align: center;
+    }
+  }
+  
   
