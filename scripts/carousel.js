@@ -19,13 +19,16 @@ function handleTouchEnd(event) {
 }
 
 function setActiveSlide(index) {
-  for (let i = 0; i < slides.length; i++) {
-    if (i === index) {
-      slides[i].classList.add('active');
-    } else {
-      slides[i].classList.remove('active');
-    }
+  const activeSlide = document.querySelector('.slide.active');
+  if (activeSlide) {
+    activeSlide.style.opacity = 0;
+    setTimeout(() => {
+      activeSlide.classList.remove('active');
+    }, 1000); // Match the transition duration in the CSS
   }
+
+  slides[index].style.opacity = 1;
+  slides[index].classList.add('active');
 }
 
 function nextSlide() {
