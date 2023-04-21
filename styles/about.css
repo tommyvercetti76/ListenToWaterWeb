@@ -32,7 +32,8 @@ p {
 
 main {
   padding: 16px;
-  }
+  background-color: #000000;
+}
 
 body {
   font-family: 'Josefin_Light', Arial, sans-serif;
@@ -46,7 +47,8 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  width: 80%; /* Adjusted width */
+  width: 80%;
+  /* Adjusted width */
   max-width: 600px;
   height: 300px;
   margin: 0 auto;
