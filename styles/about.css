@@ -32,13 +32,14 @@ p {
 
 main {
   padding: 24px;
-  background-color: #000000;
+  /* background-color: #000000; */
 }
 
 body {
   font-family: 'Josefin_Light', Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #000000;
   color: white; /* Added white color for all text */
 }
 
