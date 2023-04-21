@@ -114,6 +114,63 @@ main {
   transform: translateY(-100%);
 }
 
+/* Add this code to your about.css file */
+
+/* Add or update the following styles in your about.css file */
+
+.image-grid {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+.image-item {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(248, 242, 242, 0.7);
+  padding: 8px;
+  text-align: center;
+  font-family: 'Josefin_Medium', Arial, sans-serif;
+  font-size: 14px;
+  color: white;
+}
+
+@media (min-width: 992px) {
+  .carousel {
+    display: none;
+  }
+
+  .image-grid {
+    display: grid;
+  }
+}
+
+@media (min-width: 992px) {
+  .carousel {
+    display: none;
+  }
+
+  .image-grid {
+    display: grid;
+  }
+}
+
 @media (max-width: 768px) {
   .carousel-caption {
     font-size: 14px;
@@ -137,30 +194,3 @@ main {
     display: none;
   }
 }
-
-/* Add this code to your about.css file */
-
-.image-grid {
-  display: none;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 1rem;
-  padding: 1rem;
-}
-
-.image-grid img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
-
-@media (min-width: 992px) {
-  .carousel {
-    display: none;
-  }
-
-  .image-grid {
-    display: grid;
-  }
-}
-
