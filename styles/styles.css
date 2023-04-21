@@ -14,22 +14,9 @@ body {
   height: 100vh;
 }
 
-
-/* OLD:- .video-player {
-  width: calc(100% - 80px);
-  padding-top: 56.25%;
-  position: relative;
-  background-color: #000;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  margin-left: 40px;
-  margin-right: 40px;
-} */
-
 .video-player {
   width: calc(100% - 80px);
-  padding-top: calc((9 / 16) * 100%); /* Adjust padding-top for 16:9 aspect ratio */
+  padding-top: calc((9 / 16) * 100%);
   position: relative;
   background-color: #000;
   border-radius: 10px;
@@ -37,13 +24,12 @@ body {
   margin-bottom: 20px;
   margin-left: 40px;
   margin-right: 40px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow around the curved border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .video-title {
   font-size: 1.2rem;
-  margin-top: 0;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 .buttons-container {
@@ -113,16 +99,13 @@ body {
   .video-title {
     margin-top: 10px;
     margin-bottom: 0;
-  }  
-}
-
-/* Add this media query at the end of your styles.css file */
-@media (min-width: 992px) {
-  .video-player {
-    max-width: 60%; /* Adjust this value to control the video frame size on desktop screens */
-    max-height: 60%;
-    margin: 0 auto; /* Center the video frame */
   }
 }
 
-
+@media (min-width: 992px) {
+  .video-player {
+    max-width: 60%;
+    max-height: 60%;
+    margin: 0 auto;
+  }
+}
