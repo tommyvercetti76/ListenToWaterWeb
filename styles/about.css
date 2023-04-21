@@ -43,7 +43,7 @@ main {
 }
 
 .carousel {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -52,7 +52,6 @@ main {
   margin: 0 auto;
   position: relative;
   border-radius: 10px;
-  display: none;
 }
 
 .carousel-caption {
@@ -74,7 +73,7 @@ main {
 .carousel-img {
   width: 100%;
   height: 100%;
-  object-fit: contain; 
+  object-fit: contain;
   border-radius: 8px;
   margin-top: 24px;
   margin-bottom: 8px;
@@ -110,59 +109,43 @@ main {
   text-decoration: underline;
 }
 
-.slide-transition {
-  transform: translateY(-100%);
-}
-
-/* Add this code to your about.css file */
-
-/* Add or update the following styles in your about.css file */
-
-.image-grid {
-  display: none;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 1rem;
-  padding: 1rem;
-}
-
-.image-item {
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-}
-
 .image-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 1rem;
   padding: 1rem;
   margin-bottom: 2rem;
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 
-.image-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 8px;
-  text-align: center;
-  font-family: 'Josefin_Medium', Arial, sans-serif;
-  font-size: 14px;
-  color: white;
+.image-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-@media (min-width: 992px) {
-  .carousel {
-    display: none;
-  }
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 1rem;
+  padding: 1rem;
+  max-height: 600px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
 
-  .image-grid {
-    display: grid;
-  }
+.image-grid::-webkit-scrollbar {
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.image-grid::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
 }
 
 @media (min-width: 992px) {
@@ -188,7 +171,6 @@ main {
 }
 
 @media (max-width: 768px) {
-  
   .carousel {
     display: flex;
   }
@@ -198,26 +180,3 @@ main {
   }
 }
 
-/* Add this media query at the end of your about.css file */
-@media (max-width: 992px) {
-  .image-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    max-height: 600px; /* Adjust this value to control the maximum height of the image grid on smaller screens */
-    overflow-y: scroll;
-  }
-
-  /* Add custom scrollbar styles for better appearance */
-  .image-grid::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  .image-grid::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-  }
-
-  .image-grid::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-  }
-}
