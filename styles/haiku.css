@@ -44,6 +44,9 @@ body {
   cursor: pointer;
   outline: none;
   transition: box-shadow 0.3s;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 
 #refreshButton:hover {
