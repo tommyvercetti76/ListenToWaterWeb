@@ -139,11 +139,10 @@ main {
 }
 
 /* Media query for desktop screens */
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .carousel {
     display: none;
   }
-
   .image-grid {
     display: grid;
   }
@@ -153,12 +152,13 @@ main {
 .image-grid {
   display: none;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
+  grid-gap: 16px;
+  justify-items: center;
 }
 
 .image-grid img {
   width: 100%;
+  max-width: 100%;
   height: auto;
-  border-radius: 10px;
-  object-fit: cover;
 }
+
