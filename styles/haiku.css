@@ -34,6 +34,28 @@ body {
   text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff; /* Simple white glow */
 }
 
+.haiku-line {
+  font-size: 24px;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .haiku-line {
+      font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .haiku-line {
+      font-size: 16px;
+  }
+}
+
 #refreshButton {
   font-size: 24px;
   padding: 10px 15px;
