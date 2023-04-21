@@ -116,7 +116,7 @@ function getRandomElement(arr) {
 
 function displayHaiku(haiku) {
     const haikuElement = document.querySelector('.haiku');
-    const haikuLines = haikuElement.querySelectorAll('.haiku');
+    const haikuLines = haikuElement.querySelectorAll('.haiku-line');
   
     haikuLines.forEach((line, index) => {
       // Fade out the line
@@ -154,7 +154,7 @@ function displayHaiku(haiku) {
 
 document.addEventListener('DOMContentLoaded', function () {
     const haiku = getTodayHaiku().split('\n');
-    const haikuLines = document.querySelectorAll('.haiku');
+    const haikuLines = document.querySelectorAll('.haiku-line');
     haikuLines.forEach((lineElement, index) => {
         lineElement.textContent = haiku[index];
     });
