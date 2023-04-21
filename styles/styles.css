@@ -14,7 +14,8 @@ body {
   height: 100vh;
 }
 
-.video-player {
+
+/* OLD:- .video-player {
   width: calc(100% - 80px);
   padding-top: 56.25%;
   position: relative;
@@ -24,6 +25,20 @@ body {
   margin-bottom: 20px;
   margin-left: 40px;
   margin-right: 40px;
+} */
+
+
+.video-player {
+  width: calc(100% - 80px);
+  padding-top: calc((9 / 16) * 100%); /* Adjust padding-top for 16:9 aspect ratio */
+  position: relative;
+  background-color: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-left: 40px;
+  margin-right: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow around the curved border */
 }
 
 .video-title {
@@ -109,4 +124,5 @@ body {
     margin: 0 auto; /* Center the video frame */
   }
 }
+
 
