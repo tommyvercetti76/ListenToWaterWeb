@@ -37,8 +37,8 @@ main {
 
 body {
   font-family: 'Josefin_Light', Arial, sans-serif;
-  margin: 50px;
-  padding: 50px;
+  margin: 8px;
+  padding: 8px;
   background-color: #f0f0f0;
   color: white; /* Added white color for all text */
 }
