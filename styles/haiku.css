@@ -50,12 +50,14 @@ body {
 @media (max-width: 768px) {
   .haiku {
       font-size: 20px;
+      line-height: 1.0;
   }
 }
 
 @media (max-width: 480px) {
   .haiku {
-      font-size: 18px;
+      font-size: 20px;
+      line-height: 1.0;
   }
 }
 
