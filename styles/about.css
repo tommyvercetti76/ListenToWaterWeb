@@ -20,19 +20,17 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Josefin_Bold', Arial, sans-serif;
+  color: white;
 }
 
 .subheader {
   font-family: 'Josefin_Semi_Bold', Arial, sans-serif;
+  color: white;
 }
 
 p {
   font-family: 'Josefin_Light', Arial, sans-serif;
-}
-
-main {
-  padding: 16px;
-  background-color: #000000;
+  color: white;
 }
 
 body {
@@ -40,7 +38,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f0f0f0;
-  color: white; /* Added white color for all text */
 }
 
 .carousel {
@@ -48,39 +45,12 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  width: 100%; /* Changed to 100% for responsiveness */
+  width: 80%;
+  max-width: 800px;
   height: 300px;
   margin: 0 auto;
   position: relative;
   border-radius: 10px;
-}
-
-.carousel-caption {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%); /* Added for horizontal centering */
-  background: rgba(248, 242, 242, 0.7);
-  padding: 8px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-  .carousel-caption {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .carousel-caption {
-    font-size: 12px;
-  }
 }
 
 .carousel-img {
@@ -96,12 +66,26 @@ body {
   top: 0;
   left: 0;
   opacity: 0;
-  transition: opacity 1s ease-in-out; /* Change the transition duration to 1s */
+  transition: opacity 1s ease-in-out;
 }
 
 .slide.active {
   opacity: 1;
-  z-index: 1;
+}
+
+.carousel-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(248, 242, 242);
+  padding: 8px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .carousel-caption figcaption {
@@ -120,10 +104,3 @@ body {
   text-decoration: underline;
 }
 
-.slide-transition {
-  transform: translateY(-100%);
-}
-
-.carousel-caption a:hover {
-  text-decoration: underline;
-}
