@@ -46,13 +46,13 @@ body {
 
 @media (max-width: 768px) {
   .haiku-line {
-      font-size: 18px;
+      font-size: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .haiku-line {
-      font-size: 16px;
+      font-size: 18px;
   }
 }
 
