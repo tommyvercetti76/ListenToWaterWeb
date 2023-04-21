@@ -138,27 +138,29 @@ main {
   }
 }
 
-/* Media query for desktop screens */
-@media (min-width: 768px) {
-  .carousel {
-    display: none;
-  }
-  .image-grid {
-    display: grid;
-  }
-}
+/* Add this code to your about.css file */
 
-/* Image Grid Added For Desktop */
 .image-grid {
   display: none;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 16px;
-  justify-items: center;
+  grid-gap: 1rem;
+  padding: 1rem;
 }
 
 .image-grid img {
   width: 100%;
-  max-width: 100%;
   height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media (min-width: 992px) {
+  .carousel {
+    display: none;
+  }
+
+  .image-grid {
+    display: grid;
+  }
 }
 
