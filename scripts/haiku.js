@@ -114,50 +114,47 @@ function getRandomElement(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function generateHaiku() {
-    const timeOfDay = getRandomElement(timeOfDayPhrases);
-    const sound = getRandomElement(soundPhrases);
-    const benefit = getRandomElement(benefitPhrases);
-    return `${timeOfDay}\n${sound}\n${benefit}`;
-}
-
-function updateHaiku() {
-    const haiku = generateHaiku();
+function displayHaiku(haiku) {
     const haikuElement = document.querySelector('.haiku');
-    const haikuLines = haikuElement.querySelectorAll('.haiku-line');
-
+    const haikuLines = haikuElement.querySelectorAll('.haiku');
+  
     haikuLines.forEach((line, index) => {
-        // Fade out the line
-        line.style.opacity = 0;
-
-        // Update the line content and fade it in after it has faded out
-        setTimeout(() => {
-            line.textContent = haiku.split('\n')[index];
-            line.style.opacity = 1;
-        }, 500 * (index + 1));
+      // Fade out the line
+      line.style.opacity = 0;
+  
+      // Update the line content and fade it in after it has faded out
+      setTimeout(() => {
+        line.textContent = haiku.split('\n')[index];
+        line.style.opacity = 1;
+      }, 500 * (index + 1));
     });
-}
-
-function getTodayHaiku() {
+  }
+  
+  function updateHaiku() {
+    const haiku = generateHaiku();
+    displayHaiku(haiku);
+  }
+  
+  function getTodayHaiku() {
     const today = new Date().toDateString();
     const storedDate = localStorage.getItem('haikuDate');
     let haiku;
-
+  
     if (storedDate === today) {
-        haiku = localStorage.getItem('haiku');
+      haiku = localStorage.getItem('haiku');
     } else {
-        haiku = generateHaiku();
-        haiku = haiku.charAt(0).toUpperCase() + haiku.slice(1);
-        localStorage.setItem('haiku', haiku);
-        localStorage.setItem('haikuDate', today);
+      haiku = generateHaiku();
+      haiku = haiku.charAt(0).toUpperCase() + haiku.slice(1);
+      localStorage.setItem('haiku', haiku);
+      localStorage.setItem('haikuDate', today);
     }
-
-    return haiku;
-}
+  
+    displayHaiku(haiku);
+  }  
 
 document.addEventListener('DOMContentLoaded', function () {
     const haiku = getTodayHaiku().split('\n');
-    const haikuLines = document.querySelectorAll('.haiku-line');
+    const haikuLines = document.querySelectorAll('.haiku');
     haikuLines.forEach((lineElement, index) => {
         lineElement.textContent = haiku[index];
     });
