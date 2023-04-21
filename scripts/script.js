@@ -39,16 +39,19 @@ async function loadRandomVideo() {
     const randomIndex = Math.floor(Math.random() * videoIds.length);
     const videoData = await fetchVideoData(videoIds[randomIndex]);
     if (videoData) {
-        playRandomVideo(videoIds[randomIndex], videoData.title);
+        playRandomVideo(videoIds[randomIndex], videoData.title, videoData.description);
     }
 }
 
-function playRandomVideo(videoId, videoTitle) {
+function playRandomVideo(videoId, videoTitle, videoDescription) {
     const videoIframe = document.getElementById('video-iframe');
     videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
 
     const videoTitleElement = document.querySelector('.video-title');
     videoTitleElement.textContent = videoTitle;
+
+    const videoDescriptionElement = document.querySelector('.video-description');
+    videoDescriptionElement.textContent = videoDescription;
 }
 
 document.getElementById('next-btn').addEventListener('click', async () => {
