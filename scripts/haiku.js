@@ -108,7 +108,7 @@ const benefitPhrases = [
 
 const refreshButton = document.getElementById('refreshButton');
 const greedyText = document.getElementById('greedyText');
-let clickCounter = 0;
+let clickCounter = 3;
 
 function getRandomElement(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
@@ -161,19 +161,31 @@ document.addEventListener('DOMContentLoaded', function () {
     haikuLines.forEach((lineElement, index) => {
         lineElement.textContent = haiku[index];
     });
+
+    refreshButton.textContent = clickCounter;
+});
+
+refreshButton.addEventListener('mousedown', () => {
+    refreshButton.style.boxShadow = 'none';
+});
+
+refreshButton.addEventListener('mouseup', () => {
+    refreshButton.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.15)';
 });
 
 refreshButton.addEventListener('click', () => {
-    clickCounter++;
-    if (clickCounter <= 3) {
+    if (clickCounter > 0) {
         updateHaiku();
+        clickCounter--;
+        refreshButton.textContent = clickCounter;
     } else {
         refreshButton.style.display = 'none';
         greedyText.removeAttribute('hidden');
         setTimeout(() => {
             greedyText.setAttribute('hidden', true);
             refreshButton.style.display = 'block';
-            clickCounter = 0;
+            clickCounter = 3;
+            refreshButton.textContent = clickCounter;
         }, 86400000); // 86400000ms = 1 day
     }
 });
