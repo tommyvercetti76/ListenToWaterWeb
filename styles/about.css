@@ -131,11 +131,15 @@ main {
   position: relative;
 }
 
-.image-grid img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .image-caption {
@@ -143,7 +147,7 @@ main {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(248, 242, 242, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   padding: 8px;
   text-align: center;
   font-family: 'Josefin_Medium', Arial, sans-serif;
@@ -191,5 +195,29 @@ main {
 
   .image-grid {
     display: none;
+  }
+}
+
+/* Add this media query at the end of your about.css file */
+@media (max-width: 992px) {
+  .image-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    max-height: 600px; /* Adjust this value to control the maximum height of the image grid on smaller screens */
+    overflow-y: scroll;
+  }
+
+  /* Add custom scrollbar styles for better appearance */
+  .image-grid::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .image-grid::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  .image-grid::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
   }
 }
