@@ -40,6 +40,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f0f0f0;
+  color: white; /* Added white color for all text */
 }
 
 .carousel {
@@ -48,7 +49,6 @@ body {
   align-items: center;
   overflow: hidden;
   width: 80%;
-  /* Adjusted width */
   max-width: 800px;
   height: 300px;
   margin: 0 auto;
