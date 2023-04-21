@@ -76,6 +76,7 @@ main {
   object-fit: contain; 
   border-radius: 8px;
   margin-top: 24px;
+  margin-bottom: 8px;
 }
 
 .slide {
