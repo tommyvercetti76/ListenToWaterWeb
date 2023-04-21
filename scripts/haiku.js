@@ -108,49 +108,52 @@ const benefitPhrases = [
 
 const refreshButton = document.getElementById('refreshButton');
 const greedyText = document.getElementById('greedyText');
-let clickCounter = 3;
+let clickCounter = 0;
 
 function getRandomElement(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function displayHaiku(haiku) {
+function generateHaiku() {
+    const timeOfDay = getRandomElement(timeOfDayPhrases);
+    const sound = getRandomElement(soundPhrases);
+    const benefit = getRandomElement(benefitPhrases);
+    return `${timeOfDay}\n${sound}\n${benefit}`;
+}
+
+function updateHaiku() {
+    const haiku = generateHaiku();
     const haikuElement = document.querySelector('.haiku');
     const haikuLines = haikuElement.querySelectorAll('.haiku-line');
-  
+
     haikuLines.forEach((line, index) => {
-      // Fade out the line
-      line.style.opacity = 0;
-  
-      // Update the line content and fade it in after it has faded out
-      setTimeout(() => {
-        line.textContent = haiku.split('\n')[index];
-        line.style.opacity = 1;
-      }, 500 * (index + 1));
+        // Fade out the line
+        line.style.opacity = 0;
+
+        // Update the line content and fade it in after it has faded out
+        setTimeout(() => {
+            line.textContent = haiku.split('\n')[index];
+            line.style.opacity = 1;
+        }, 500 * (index + 1));
     });
-  }
-  
-  function updateHaiku() {
-    const haiku = generateHaiku();
-    displayHaiku(haiku);
-  }
-  
-  function getTodayHaiku() {
+}
+
+function getTodayHaiku() {
     const today = new Date().toDateString();
     const storedDate = localStorage.getItem('haikuDate');
     let haiku;
-  
+
     if (storedDate === today) {
-      haiku = localStorage.getItem('haiku');
+        haiku = localStorage.getItem('haiku');
     } else {
-      haiku = generateHaiku();
-      haiku = haiku.charAt(0).toUpperCase() + haiku.slice(1);
-      localStorage.setItem('haiku', haiku);
-      localStorage.setItem('haikuDate', today);
+        haiku = generateHaiku();
+        haiku = haiku.charAt(0).toUpperCase() + haiku.slice(1);
+        localStorage.setItem('haiku', haiku);
+        localStorage.setItem('haikuDate', today);
     }
-  
-    displayHaiku(haiku);
-  }  
+
+    return haiku;
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     const haiku = getTodayHaiku().split('\n');
@@ -158,31 +161,19 @@ document.addEventListener('DOMContentLoaded', function () {
     haikuLines.forEach((lineElement, index) => {
         lineElement.textContent = haiku[index];
     });
-
-    refreshButton.textContent = clickCounter;
-});
-
-refreshButton.addEventListener('mousedown', () => {
-    refreshButton.style.boxShadow = 'none';
-});
-
-refreshButton.addEventListener('mouseup', () => {
-    refreshButton.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.15)';
 });
 
 refreshButton.addEventListener('click', () => {
-    if (clickCounter > 0) {
+    clickCounter++;
+    if (clickCounter <= 3) {
         updateHaiku();
-        clickCounter--;
-        refreshButton.textContent = clickCounter;
     } else {
         refreshButton.style.display = 'none';
         greedyText.removeAttribute('hidden');
         setTimeout(() => {
             greedyText.setAttribute('hidden', true);
             refreshButton.style.display = 'block';
-            clickCounter = 3;
-            refreshButton.textContent = clickCounter;
+            clickCounter = 0;
         }, 86400000); // 86400000ms = 1 day
     }
 });
