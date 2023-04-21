@@ -184,7 +184,6 @@ main {
 }
 
 @media (max-width: 768px) {
-  /* ... (previous responsive styles) ... */
   
   .carousel {
     display: flex;
