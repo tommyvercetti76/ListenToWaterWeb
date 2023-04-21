@@ -101,3 +101,12 @@ body {
     margin-bottom: 0;
   }  
 }
+
+/* Add this media query at the end of your styles.css file */
+@media (min-width: 992px) {
+  .video-player {
+    max-width: 60%; /* Adjust this value to control the video frame size on desktop screens */
+    margin: 0 auto; /* Center the video frame */
+  }
+}
+
