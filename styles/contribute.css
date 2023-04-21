@@ -35,3 +35,59 @@ main {
 .charity-link a:hover {
   text-decoration: underline;
 }
+
+.charity-tile {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #222;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .charity-image-container {
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .charity-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .charity-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .charity-title {
+    font-family: 'Josefin_Bold', Arial, sans-serif;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .charity-description {
+    font-family: 'Josefin_Medium', Arial, sans-serif;
+    margin-bottom: 20px;
+  }
+  
+  .open-link {
+    color: #1a73e8;
+    text-decoration: none;
+  }
+  
+  .open-link:hover {
+    text-decoration: underline;
+  }
+  
