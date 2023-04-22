@@ -16,19 +16,23 @@ body {
     color: #fff;
 }
 
+html, body {
+    height: 100%;
+}
+
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    padding: 16px;
+    min-height: 100%;
+    padding: 0 16px;
 }
 
 .title {
     font-family: 'Josefin_Bold', Arial, sans-serif;
     margin-top: 0;
-    margin-top: 24px;
+    margin-bottom: 24px;
 }
 
 .message {
