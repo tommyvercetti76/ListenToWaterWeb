@@ -30,19 +30,30 @@ p {
   font-family: 'Josefin_Light', Arial, sans-serif;
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 body {
   font-family: 'Josefin_Light', Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #000000;
   color: white;
+  animation: fade-in 1s ease;
 }
 
 main {
   padding: 24px;
 }
 
-.carousel {
+.carousel, .image-grid {
   display: none;
   justify-content: center;
   align-items: center;
@@ -52,6 +63,7 @@ main {
   margin: 0 auto;
   position: relative;
   border-radius: 10px;
+  transition: all 0.5s ease-in-out;
 }
 
 .carousel-caption {
@@ -114,7 +126,7 @@ main {
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 10px; /* Added curved border to images */
+  border-radius: 10px;
 }
 
 .image-grid {
@@ -125,8 +137,8 @@ main {
   max-height: 600px;
   overflow-x: auto;
   white-space: nowrap;
-  border-radius: 10px; /* Added curved border to content */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Add box-shadow for better appearance */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .image-grid::-webkit-scrollbar {
