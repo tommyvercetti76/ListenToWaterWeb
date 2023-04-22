@@ -35,8 +35,7 @@ main {
 
 .title {
     font-family: 'Josefin_Bold', Arial, sans-serif;
-    margin-top: 0;
-    margin-bottom: 40px;
+    margin-top: 20px;
 }
 
 .message {
