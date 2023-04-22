@@ -8,6 +8,11 @@
     src: url('/fonts/JosefinSans-Thin.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Josefin_Semi_Bold';
+    src: url('/fonts/JosefinSans-SemiBold.ttf') format('truetype');
+  }
+
 body {
     font-family: 'Josefin_Bold', Arial, sans-serif;
     margin: 0;
@@ -98,7 +103,7 @@ main {
 .open-link {
     color: #edf0f3;
     text-decoration: none;
-    font-family: 'Josefin_Medium', Arial, sans-serif;
+    font-family: 'Josefin_Semi_Bold', Arial, sans-serif;
     background-color: #1a73e8;
     padding: 8px 16px;
     border-radius: 5px;
