@@ -29,14 +29,14 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100%;
     padding: 0 16px;
 }
 
 .title {
     font-family: 'Josefin_Bold', Arial, sans-serif;
-    margin-top: -20px;
+    margin-top: 0;
     margin-bottom: 16px;
 }
 
