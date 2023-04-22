@@ -50,6 +50,8 @@ main {
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
 
 .image-grid img {
@@ -76,7 +78,12 @@ main {
   font-family: 'Josefin_Medium', Arial, sans-serif;
   font-size: 14px;
   text-align: center;
+  opacity: 0;
   transition: opacity 0.3s ease-in-out;
+}
+
+.image-item:hover .image-caption {
+  opacity: 1;
 }
 
 .view-link {
@@ -91,42 +98,21 @@ main {
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.75rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-  }
-
+/* For screens with a minimum width of 768px (iPad and larger) */
+@media (min-width: 768px) {
   .image-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
 }
 
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  h2 {
-    font-size: 1.25rem;
-  }
-
-  h3 {
-    font-size: 1rem;
-  }
-
-  main {
-    padding: 16px;
-  }
-
+/* For screens with a maximum width of 767px (smaller than iPad) */
+@media (max-width: 767px) {
   .image-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    display: flex;
+    grid-template-columns: none;
+  }
+
+  .image-item {
+    flex: 0 0 100%;
   }
 }
