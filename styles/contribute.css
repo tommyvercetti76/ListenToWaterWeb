@@ -91,9 +91,9 @@ main {
 
 .charity-description {
     font-family: 'Josefin_Medium', Arial, sans-serif;
-    margin-bottom: 4px;
+    /* margin-bottom: 4px;
     padding-left: 16px;
-    padding-right: 16px;
+    padding-right: 16px; */
 }
 
 .open-link {
