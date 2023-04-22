@@ -62,7 +62,7 @@ main {
     background-color: #222;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
-    max-width: 500px;
+    max-width: 420px;
     margin: 0 auto;
 }
 
