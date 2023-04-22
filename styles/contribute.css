@@ -29,9 +29,8 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     min-height: 100%;
-    padding: 0 16px;
 }
 
 .title {
