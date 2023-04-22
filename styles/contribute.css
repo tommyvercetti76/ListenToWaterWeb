@@ -4,8 +4,8 @@
 }
 
 @font-face {
-    font-family: 'Josefin_Medium';
-    src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
+    font-family: 'Josefin_Thin';
+    src: url('/fonts/JosefinSans-Thin.ttf') format('truetype');
 }
 
 body {
@@ -36,7 +36,7 @@ main {
 }
 
 .message {
-    font-family: 'Josefin_Medium', Arial, sans-serif;
+    font-family: 'Josefin_Thin', Arial, sans-serif;
     margin-bottom: 24px;
     text-align: center;
 }
@@ -89,7 +89,7 @@ main {
 }
 
 .charity-description {
-    font-family: 'Josefin_Medium', Arial, sans-serif;
+    font-family: 'Josefin_Thin', Arial, sans-serif;
     margin-bottom: 36px;
     padding-left: 36px;
     padding-right: 36px;
