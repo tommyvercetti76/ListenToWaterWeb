@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Josefin_Medium';
+  src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
+}
+
 .hamburger-menu {
     position: fixed;
     top: 10px;
@@ -68,6 +73,7 @@
   }
   
   .menu-items li a {
+    font-family: 'Josefin_Medium' ,Arial, Helvetica, sans-serif;
     font-size: 1.5rem;
     text-decoration: none;
     color: #fff;
