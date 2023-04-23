@@ -67,28 +67,41 @@
         }
     });    
 
-    document.getElementById("share-btn").addEventListener("click", function () {
-        const videoIframe = document.getElementById("video-iframe");
-        const videoUrl = videoIframe.src;
-
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(videoUrl)
-                .then(() => alert("Video URL copied to clipboard"))
-                .catch(err => console.error("Could not copy text:", err));
+    document.getElementById("share-btn").addEventListener("click", async () => {
+        const currentPageUrl = window.location.href;
+    
+        if (navigator.share) {
+            // Use Web Share API if available (on supported mobile devices)
+            try {
+                await navigator.share({
+                    title: document.title,
+                    url: currentPageUrl,
+                });
+            } catch (err) {
+                console.error("Error sharing the URL:", err);
+            }
         } else {
-            // Fallback for older browsers
-            const textArea = document.createElement("textarea");
-            textArea.value = videoUrl;
-            textArea.style.position = "fixed"; // Avoid scrolling to bottom
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textArea);
-            alert("Video URL copied to clipboard");
+            // Fallback to copying the URL to clipboard
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(currentPageUrl)
+                    .then(() => alert("Webpage URL copied to clipboard"))
+                    .catch(err => console.error("Could not copy text:", err));
+            } else {
+                // Fallback for older browsers
+                const textArea = document.createElement("textarea");
+                textArea.value = currentPageUrl;
+                textArea.style.position = "fixed"; // Avoid scrolling to bottom
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textArea);
+                alert("Webpage URL copied to clipboard");
+            }
         }
     });
-
+    
+    
     loadRandomVideo();
 
     window.toggleMenu = function () {
