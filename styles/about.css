@@ -43,9 +43,9 @@ main {
 }
 
 .image-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 1rem;
   padding: 1rem;
   border-radius: 10px;
@@ -65,6 +65,8 @@ main {
 .image-item {
   position: relative;
   overflow: hidden;
+  flex: 0 0 100%;
+  max-width: 250px;
 }
 
 .image-caption {
@@ -98,21 +100,21 @@ main {
   text-decoration: underline;
 }
 
-/* For screens with a minimum width of 768px (iPad and larger) */
 @media (min-width: 768px) {
   .image-grid {
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  }
-}
-
-/* For screens with a maximum width of 767px (smaller than iPad) */
-@media (max-width: 767px) {
-  .image-grid {
-    display: flex;
-    grid-template-columns: none;
+    overflow-x: unset;
   }
 
   .image-item {
-    flex: 0 0 100%;
+    flex: unset;
+    max-width: unset;
+  }
+}
+
+@media (max-width: 767px) {
+  .image-item:hover .image-caption {
+    opacity: 1;
   }
 }
