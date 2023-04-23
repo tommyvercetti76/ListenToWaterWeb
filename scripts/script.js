@@ -63,9 +63,9 @@
         const randomIndex = Math.floor(Math.random() * videoIds.length);
         const videoData = await fetchVideoData(videoIds[randomIndex]);
         if (videoData) {
-            playRandomVideo(videoIds[randomIndex], videoData.title);
+            playRandomVideo(videoIds[randomIndex], videoData.title, videoData.description); // Add videoData.description as the third argument
         }
-    });
+    });    
 
     document.getElementById("share-btn").addEventListener("click", function () {
         const videoIframe = document.getElementById("video-iframe");
