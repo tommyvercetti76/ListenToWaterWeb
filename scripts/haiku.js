@@ -106,6 +106,12 @@ const benefitPhrases = [
     "transforms the ordinary"
 ];
 
+const phrases = {
+    timeOfDay: timeOfDayPhrases,
+    sound: soundPhrases,
+    benefit: benefitPhrases,
+};
+
 const refreshButton = document.getElementById('refreshButton');
 
 function getRandomElement(arr) {
