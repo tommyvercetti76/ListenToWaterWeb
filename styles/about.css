@@ -80,11 +80,11 @@ main {
   font-family: 'Josefin_Medium', Arial, sans-serif;
   font-size: 14px;
   text-align: center;
-  opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
 
-.image-item:hover .image-caption {
+.image-item:hover .image-caption,
+.image-item:focus-within .image-caption {
   opacity: 1;
 }
 
@@ -114,7 +114,7 @@ main {
 }
 
 @media (max-width: 767px) {
-  .image-item:hover .image-caption {
+  .image-item:focus-within .image-caption {
     opacity: 1;
   }
 }
