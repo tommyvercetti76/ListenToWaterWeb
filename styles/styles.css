@@ -3,6 +3,11 @@
   src: url('/fonts/JosefinSans-Light.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Josefin_Semi_Bold';
+  src: url('/fonts/JosefinSans-SemiBold.ttf') format('truetype');
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -29,12 +34,6 @@ body {
   overflow: hidden;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.video-title {
-  font-size: 1.2rem;
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .buttons-container {
@@ -96,8 +95,15 @@ body {
   font-weight: bold;
 }
 
+.video-title {
+  font-family: 'Josefin_Semi_Bold', Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .video-description {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: 'Josefin_Light', Arial, Helvetica, sans-serif;
   margin-bottom: 20px;
   max-width: 90%;
@@ -105,6 +111,33 @@ body {
   margin-right: auto;
   text-align: left;
 }
+
+@media (max-width: 768px) {
+  .video-title {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .video-description {
+    font-size: 1rem;
+  }
+
+  .close-btn {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .video-title {
+    font-size: 1.8rem;
+  }
+
+  .video-description {
+    font-size: 1.5rem;
+  }
+}
+
 
 @media (max-width: 768px) {
   .video-player {
