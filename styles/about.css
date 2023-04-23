@@ -52,6 +52,7 @@ main {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow-x: auto;
   scrollbar-width: thin;
+  margin: 0 -1rem;
 }
 
 .image-grid img {
@@ -105,6 +106,7 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     overflow-x: unset;
+    margin: 0;
   }
 
   .image-item {
