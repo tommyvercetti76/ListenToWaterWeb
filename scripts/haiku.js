@@ -118,14 +118,6 @@ function generateHaiku() {
         .join('\n');
 }
 
-function fadeOutAndIn(line, content, delay) {
-    line.style.opacity = 0;
-    setTimeout(() => {
-        line.textContent = content;
-        line.style.opacity = 1;
-    }, delay);
-}
-
 function updateHaiku() {
     const haiku = generateHaiku();
     const haikuElement = document.querySelector('.haiku');
@@ -133,19 +125,21 @@ function updateHaiku() {
     refreshButton.setAttribute('disabled', true);
 
     haikuLines.forEach((line, index) => {
-        fadeOutAndIn(line, haiku.split('\n')[index], 500 * (index + 1));
-        if (index === haikuLines.length - 1) {
-            setTimeout(() => {
-                refreshButton.removeAttribute('disabled');
-            }, 500 * (index + 2));
-        }
-    });
-}
+        // Fade out the line
+        line.style.opacity = 0;
 
-function displayHaiku(haiku) {
-    const haikuLines = document.querySelectorAll('.haiku-line');
-    haikuLines.forEach((line, index) => {
-        line.textContent = haiku.split('\n')[index];
+        // Update the line content and fade it in after it has faded out
+        setTimeout(() => {
+            line.textContent = haiku.split('\n')[index];
+            line.style.opacity = 1;
+
+            // Re-enable the button after the last line has faded in
+            if (index === haikuLines.length - 1) {
+                setTimeout(() => {
+                    refreshButton.removeAttribute('disabled');
+                }, 500);
+            }
+        }, 500 * (index + 1));
     });
 }
 
@@ -167,8 +161,11 @@ function getTodayHaiku() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const haiku = getTodayHaiku();
-    displayHaiku(haiku);
+    const haiku = getTodayHaiku().split('\n');
+    const haikuLines = document.querySelectorAll('.haiku-line');
+    haikuLines.forEach((lineElement, index) => {
+        lineElement.textContent = haiku[index];
+    });
 });
 
 refreshButton.addEventListener('click', updateHaiku);
