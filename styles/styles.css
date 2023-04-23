@@ -25,7 +25,7 @@ body {
   padding: 20px;
 }
 
-.video-player {
+/* .video-player {
   width: 100%;
   padding-top: calc((9 / 16) * 100%);
   position: relative;
@@ -34,7 +34,7 @@ body {
   overflow: hidden;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .buttons-container {
   display: flex;
@@ -52,21 +52,37 @@ body {
   border-radius: 10px;
 }
 
+.video-player {
+  width: 100%;
+  padding-top: calc((9 / 16) * 100%);
+  position: relative;
+  background-color: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Add this line to center the video player */
+}
+
 .button {
   background-color: #1c7cf2;
   color: #fff;
   border: none;
   padding: 10px 20px;
   font-size: 1rem;
-  border-radius: 5px;
+  font-family: 'Josefin_Light', Arial, Helvetica, sans-serif; /* Change the font */
+  border-radius: 20px; /* Increase the border-radius */
   cursor: pointer;
   margin-right: 10px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add box-shadow */
 }
 
 .button:hover {
   background-color: #0f5bda;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Add box-shadow on hover */
 }
+
 
 .close-page {
   display: none;
