@@ -169,8 +169,18 @@ function getTodayHaiku() {
 document.addEventListener('DOMContentLoaded', function () {
     const haiku = getTodayHaiku().split('\n');
     const haikuLines = document.querySelectorAll('.haiku-line');
+    
     haikuLines.forEach((lineElement, index) => {
+        // Initialize the line with opacity 0
+        lineElement.style.opacity = 0;
+
+        // Set the line content
         lineElement.textContent = haiku[index];
+
+        // Fade in the line after a delay
+        setTimeout(() => {
+            lineElement.style.opacity = 1;
+        }, 500 * (index + 1));
     });
 });
 
