@@ -105,17 +105,6 @@ const benefitPhrases = [
     "reawakens wonder",
     "transforms the ordinary"
 ];
-const phrases = {
-    timeOfDay: [
-        // timeOfDayPhrases content
-    ],
-    sound: [
-        // soundPhrases content
-    ],
-    benefit: [
-        // benefitPhrases content
-    ],
-};
 
 const refreshButton = document.getElementById('refreshButton');
 
