@@ -45,7 +45,7 @@ main {
 .image-grid {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
+  justify-content: flex-start;
   grid-gap: 1rem;
   padding: 1rem;
   border-radius: 10px;
