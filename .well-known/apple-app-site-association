@@ -3,8 +3,8 @@
     "appIDs": ["com.wander.listen.to.water.Clip"],
     "components": [
       {
-        "/": "/path/*",
-        "comment": "Match any URL path that starts with /path/"
+        "/": "/about.html",
+        "comment": "Only About URL works, others don't"
       }
     ]
   }
