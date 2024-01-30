@@ -8,7 +8,7 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
     data.forEach(card => {
         // Create card HTML
         const cardHTML = `
-            <div class="card">
+            <div class="card" onclick="openModal('${card.id}')">
                 <img class="card-image" src="${card.imageURL}" alt="${card.title}" loading="lazy">
                 <div class="card-content">
                     <h2 class="card-title">${card.title}</h2>
@@ -26,3 +26,35 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
     const container = document.getElementById('cardsContainer');
     container.innerHTML = '<p>Error loading content. Please try again later.</p>';
 });
+
+// Function to open modal
+function openModal(cardId) {
+    const selectedCard = data.find(card => card.id === cardId);
+    const modal = document.getElementById('myModal');
+    const modalContent = document.getElementById('modal-content');
+    modalContent.innerHTML = ''; // Clear existing modal content
+
+    // Create image elements for the gallery
+    selectedCard.additionalImageURLs.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = selectedCard.title;
+        modalContent.appendChild(img);
+    });
+
+    modal.style.display = "block"; // Show the modal
+}
+
+// Function to close the modal
+function closeModal() {
+    const modal = document.getElementById('myModal');
+    modal.style.display = "none"; // Hide the modal
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    const modal = document.getElementById('myModal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
