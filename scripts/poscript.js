@@ -5,7 +5,7 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
 .then(data => {
     globalCardData = data;
     const container = document.getElementById('cardsContainer');
-    container.innerHTML = ''; 
+    container.innerHTML = '';
     data.forEach(card => {
         const cardHTML = `
             <div class="card" onclick="openModal('${card.id}')">
