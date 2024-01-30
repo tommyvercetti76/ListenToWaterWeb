@@ -1,4 +1,3 @@
-// poscript.js
 // Fetch the data from Firebase and render cards
 let globalCardData = [];
 fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/resources%2Fpaddling_v1%2Fpo_cards.json?alt=media&token=2d27400a-934c-48d4-8f02-e06ba986dde9')
@@ -6,9 +5,8 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
 .then(data => {
     globalCardData = data;
     const container = document.getElementById('cardsContainer');
-    container.innerHTML = ''; // Clear existing content
+    container.innerHTML = ''; 
     data.forEach(card => {
-        // Create card HTML
         const cardHTML = `
             <div class="card" onclick="openModal('${card.id}')">
                 <img class="card-image" src="${card.imageURL}" alt="${card.title}" loading="lazy">
@@ -20,7 +18,7 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
                 </div>
             </div>
         `;
-        container.insertAdjacentHTML('beforeend', cardHTML); // Insert new card
+        container.insertAdjacentHTML('beforeend', cardHTML);
     });
 })
 .catch(error => {
@@ -31,12 +29,11 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
 
 // Function to open modal
 function openModal(cardId) {
-    const selectedCard = globalCardData.find(card => card.id === cardId); // Use global data
-    const modal = document.getElementById('modal');
+    const selectedCard = globalCardData.find(card => card.id === cardId);
+    const modal = document.getElementById('myModal');
     const modalContent = document.getElementById('modal-content');
     modalContent.innerHTML = '';
 
-    // Create image elements for the gallery
     selectedCard.additionalImageURLs.forEach(url => {
         const img = document.createElement('img');
         img.src = url;
@@ -44,13 +41,13 @@ function openModal(cardId) {
         modalContent.appendChild(img);
     });
 
-    modal.style.display = "block"; // Show the modal
+    modal.style.display = "block";
 }
 
 // Function to close the modal
 function closeModal() {
     const modal = document.getElementById('myModal');
-    modal.style.display = "none"; // Hide the modal
+    modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
