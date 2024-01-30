@@ -100,20 +100,20 @@
 }
 
 .card-title {
-    font-family: 'Josefin_Medium', Arial, sans-serif;
+    font-family: 'Josefin_Bold', Arial, sans-serif;
     font-size: 1.2rem;
     margin: 0;
 }
 
 .card-subtitle {
-    font-family: 'Josefin_Light', Arial, sans-serif;
+    font-family: 'Josefin_Medium', Arial, sans-serif;
     font-size: 1rem;
     color: #666;
     margin: 5px 0;
 }
 
 .card-description {
-    font-family: 'Josefin_Light', Arial, sans-serif;
+    font-family: 'Josefin_Medium', Arial, sans-serif;
     font-size: 0.9rem;
     color: #333;
     margin-bottom: 10px;
