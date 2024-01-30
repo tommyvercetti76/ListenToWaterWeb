@@ -12,7 +12,7 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
                 <img class="card-image" src="${card.imageURL}" alt="${card.title}" loading="lazy">
                 <div class="card-content">
                     <h2 class="card-title">${card.title}</h2>
-                    <p class="card-location">${card.subTitle}</p>
+                    <p class="card-location">${card.subtitle}</p>
                     <p class="card-description">${card.text}</p>
                     <a href="${card.youtubeURL}" target="_blank" class="youtube-link">Watch on YouTube</a>
                 </div>
