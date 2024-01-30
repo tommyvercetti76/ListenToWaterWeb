@@ -4,28 +4,52 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
 .then(response => response.json())
 .then(data => {
     globalCardData = data;
-    const container = document.getElementById('cardsContainer');
-    container.innerHTML = '';
-    data.forEach(card => {
-        const cardHTML = `
-            <div class="card" onclick="openModal('${card.id}')">
-                <img class="card-image" src="${card.imageURL}" alt="${card.title}" loading="lazy">
-                <div class="card-content">
-                    <h2 class="card-title">${card.title}</h2>
-                    <p class="card-subtitle">${card.subtitle}</p>
-                    <p class="card-text">${card.text}</p>
-                    <a href="${card.youtubeURL}" target="_blank" class="youtube-link">Watch on YouTube</a>
-                </div>
-            </div>
-        `;
-        container.insertAdjacentHTML('beforeend', cardHTML);
-    });
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardId = urlParams.get('cardID');
+
+    if (cardId) {
+        displaySingleCard(cardId);
+    } else {
+        displayAllCards(data);
+    }
 })
 .catch(error => {
     console.error("Error fetching data: ", error);
     const container = document.getElementById('cardsContainer');
     container.innerHTML = '<p>Error loading content. Please try again later.</p>';
 });
+
+function displaySingleCard(cardId) {
+    const selectedCard = globalCardData.find(card => card.id === cardId);
+    if (selectedCard) {
+        const container = document.getElementById('cardsContainer');
+        container.innerHTML = createCardHTML(selectedCard);
+    } else {
+        container.innerHTML = '<p>Card not found.</p>';
+    }
+}
+
+function displayAllCards(data) {
+    const container = document.getElementById('cardsContainer');
+    container.innerHTML = '';
+    data.forEach(card => {
+        container.insertAdjacentHTML('beforeend', createCardHTML(card));
+    });
+}
+
+function createCardHTML(card) {
+    return `
+        <div class="card" onclick="openModal('${card.id}')">
+            <img class="card-image" src="${card.imageURL}" alt="${card.title}" loading="lazy">
+            <div class="card-content">
+                <h2 class="card-title">${card.title}</h2>
+                <p class="card-subtitle">${card.subtitle}</p>
+                <p class="card-text">${card.text}</p>
+                <a href="${card.youtubeURL}" target="_blank" class="youtube-link">Watch on YouTube</a>
+            </div>
+        </div>
+    `;
+}
 
 // Function to open modal
 function openModal(cardId) {
