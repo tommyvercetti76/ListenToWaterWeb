@@ -9,11 +9,11 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
         // Create card HTML
         const cardHTML = `
             <div class="card">
-                <img class="card-image" src="${card.headerImgURL}" alt="${card.title}" loading="lazy">
+                <img class="card-image" src="${card.imageURL}" alt="${card.title}" loading="lazy">
                 <div class="card-content">
                     <h2 class="card-title">${card.title}</h2>
-                    <p class="card-location">${card.location}</p>
-                    <p class="card-description">${card.description}</p>
+                    <p class="card-location">${card.subTitle}</p>
+                    <p class="card-description">${card.text}</p>
                     <a href="${card.youtubeURL}" target="_blank" class="youtube-link">Watch on YouTube</a>
                 </div>
             </div>
