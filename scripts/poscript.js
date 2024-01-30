@@ -8,25 +8,24 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
     const cardId = urlParams.get('cardID');
 
     if (cardId) {
-        displaySingleCard(cardId);
+        const selectedCard = globalCardData.find(card => card.id === cardId);
+        if (selectedCard) {
+            displaySingleCard(selectedCard);
+        } else {
+            displayError('Card not found.');
+        }
     } else {
         displayAllCards(data);
     }
 })
 .catch(error => {
     console.error("Error fetching data: ", error);
-    const container = document.getElementById('cardsContainer');
-    container.innerHTML = '<p>Error loading content. Please try again later.</p>';
+    displayError('Error loading content. Please try again later.');
 });
 
-function displaySingleCard(cardId) {
-    const selectedCard = globalCardData.find(card => card.id === cardId);
-    if (selectedCard) {
-        const container = document.getElementById('cardsContainer');
-        container.innerHTML = createCardHTML(selectedCard);
-    } else {
-        container.innerHTML = '<p>Card not found.</p>';
-    }
+function displaySingleCard(card) {
+    const container = document.getElementById('cardsContainer');
+    container.innerHTML = createCardHTML(card);
 }
 
 function displayAllCards(data) {
