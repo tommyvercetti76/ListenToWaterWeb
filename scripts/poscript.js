@@ -1,8 +1,10 @@
 // poscript.js
 // Fetch the data from Firebase and render cards
+let globalCardData = [];
 fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/resources%2Fpaddling_v1%2Fpo_cards.json?alt=media&token=2d27400a-934c-48d4-8f02-e06ba986dde9')
 .then(response => response.json())
 .then(data => {
+    globalCardData = data;
     const container = document.getElementById('cardsContainer');
     container.innerHTML = ''; // Clear existing content
     data.forEach(card => {
@@ -29,10 +31,10 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
 
 // Function to open modal
 function openModal(cardId) {
-    const selectedCard = data.find(card => card.id === cardId);
-    const modal = document.getElementById('myModal');
+    const selectedCard = globalCardData.find(card => card.id === cardId); // Use global data
+    const modal = document.getElementById('modal');
     const modalContent = document.getElementById('modal-content');
-    modalContent.innerHTML = ''; // Clear existing modal content
+    modalContent.innerHTML = '';
 
     // Create image elements for the gallery
     selectedCard.additionalImageURLs.forEach(url => {
