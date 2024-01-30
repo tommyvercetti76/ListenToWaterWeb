@@ -75,7 +75,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px; /* Adjust gap as needed */
+    gap: 20px;
     padding: 20px;
 }
 
@@ -84,7 +84,7 @@
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    width: calc(25% - 20px); /* Four cards per row, minus gap */
+    width: calc(25% - 20px);
     margin-bottom: 20px;
 }
 
@@ -92,7 +92,7 @@
     width: 100%;
     display: block;
     object-fit: cover;
-    height: 200px; /* Fixed height, or use object-fit to adjust */
+    height: 200px;
 }
 
 .card-content {
@@ -119,31 +119,56 @@
     margin-bottom: 10px;
 }
 
-.card-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Single Card Specific Styles */
+.single-card {
+    width: 100%;
+    margin: 20px auto;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
 }
 
-.weather-info, .wind-info {
-    display: flex;
-    flex-direction: column;
+.single-card:hover {
+    transform: scale(1.03);
 }
 
-.temperature, .feels-like, .wind-speed {
-    font-size: 0.9rem;
+.single-card .card-image {
+    height: 300px;
+}
+
+.single-card .card-content {
+    padding: 25px;
+    text-align: left;
+}
+
+.single-card .detailed-description {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 15px;
+}
+
+.back-button {
+    display: block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    width: max-content;
+    align-self: center;
 }
 
 /* Responsive styles */
 @media (max-width: 1200px) {
     .card {
-        width: calc(33.3333% - 20px); /* Three cards per row */
+        width: calc(33.3333% - 20px);
     }
 }
 
 @media (max-width: 768px) {
     .card {
-        width: calc(50% - 20px); /* Two cards per row */
+        width: calc(50% - 20px);
     }
 }
 
@@ -153,10 +178,10 @@
     }
 
     .card {
-        width: 100%; /* Full width on small screens */
+        width: 100%;
     }
 
     .card-image {
-        height: auto; /* Adjust height for smaller screens */
+        height: auto;
     }
 }
