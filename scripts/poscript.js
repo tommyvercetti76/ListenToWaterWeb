@@ -4,22 +4,21 @@ fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/
 .then(response => response.json())
 .then(data => {
     const container = document.getElementById('cardsContainer');
-    // Clear the container before adding new content
-    container.innerHTML = '';
+    container.innerHTML = ''; // Clear existing content
     data.forEach(card => {
-        const cardElement = document.createElement('div');
-        cardElement.className = 'card';
-        cardElement.innerHTML = `
-            <img class="card-image" src="${card.headerImgURL}" alt="${card.title}">
-            <div class="card-content">
-                <h2 class="card-title">${card.title}</h2>
-                <p class="card-subtitle">${card.location}</p>
-                <p class="card-description">${card.description}</p>
-                <a href="${card.youtubeURL}" target="_blank">Watch on YouTube</a>
-                <!-- Add additional info such as galleryImages, etc. -->
+        // Create card HTML
+        const cardHTML = `
+            <div class="card">
+                <img class="card-image" src="${card.headerImgURL}" alt="${card.title}">
+                <div class="card-content">
+                    <h2 class="card-title">${card.title}</h2>
+                    <p class="card-subtitle">${card.location}</p>
+                    <p class="card-description">${card.description}</p>
+                    <a href="${card.youtubeURL}" target="_blank">Watch on YouTube</a>
+                </div>
             </div>
         `;
-        container.appendChild(cardElement);
+        container.insertAdjacentHTML('beforeend', cardHTML); // Insert new card
     });
 })
 .catch(error => {
