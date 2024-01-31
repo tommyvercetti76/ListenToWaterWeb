@@ -43,7 +43,7 @@ function createCardHTML(card) {
             <div class="card-content">
                 <h2 class="card-title">${card.title}</h2>
                 <p class="card-subtitle">${card.subtitle}</p>
-                <p class="card-text">${card.text}</p>
+                <p class="card-description">${card.text}</p>
                 <a href="${card.youtubeURL}" target="_blank" class="youtube-link">Watch on YouTube</a>
             </div>
         </div>
