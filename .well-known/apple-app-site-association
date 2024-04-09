@@ -2,7 +2,7 @@
   "applinks": {
     "details": [
       {
-        "appIDs": "com.wander.listen.to.water",
+        "appIDs": "3C2C5UW48Y.com.wander.listen.to.water",
         "defaults": {
           "caseSensitive": false
         },
@@ -16,6 +16,6 @@
     ]
   },
   "appclips": {
-    "apps": "com.wander.listen.to.water.Clip"
+    "apps": "3C2C5UW48Y.com.wander.listen.to.water.Clip"
   }
 }
