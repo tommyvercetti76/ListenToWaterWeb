@@ -1,11 +1,21 @@
 {
   "applinks": {
-    "appIDs": ["com.wander.listen.to.water.Clip"],
-    "components": [
+    "details": [
       {
-        "/": "/about.html",
-        "comment": "Only About URL works, others don't"
+        "appIDs": "com.wander.listen.to.water",
+        "defaults": {
+          "caseSensitive": false
+        },
+        "components": [
+          {
+            "/": "/paddlingout.html?*",
+            "comment": "Only Paddling allowed, no trespassing!"
+          }
+        ]
       }
     ]
+  },
+  "appclips": {
+    "apps": "com.wander.listen.to.water.Clip"
   }
 }
