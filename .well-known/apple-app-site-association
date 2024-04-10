@@ -5,7 +5,7 @@
         "appID": ["3C2C5UW48Y.com.wander.listen.to.water"],
         "components": [
           {
-            "path": "/paddlingout.html?*"
+            "path": "/paddlingout.html*"
           }
         ]
       }
