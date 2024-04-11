@@ -2,17 +2,17 @@
   "applinks": {
     "details": [
       {
-        "appID": "3C2C5UW48Y.com.wander.listen.to.water",
+        "appID": "3C2C5UW48Y.com.wander.paddlingout",
         "components": [
           {
-            "path": "/paddlingout.html?*",
-            "exclude": false
+            "path": "/paddlingout.html",
+            "query": {"cardID": "?*"}
           }
         ]
       }
     ]
   },
   "appclips": {
-    "apps": ["3C2C5UW48Y.com.wander.listen.to.water.Clip"]
+    "apps": ["3C2C5UW48Y.com.wander.paddlingout.Clip"]
   }
 }
