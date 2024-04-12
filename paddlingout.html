@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paddling Out</title>
     <link rel="stylesheet" href="/styles/paddlingout.css">
+    <!-- Smart App Banner for iOS App -->
+    <meta name="apple-itunes-app" content="app-id=com.wander.listen.to.water, app-argument=https://listentowater.org/paddlingout.html">
+    <!-- Smart App Banner for iOS App Clip -->
+    <meta name="apple-itunes-app" content="app-clip-bundle-id=com.wander.listen.to.water.clip">
 </head>
 <body>
     <div class="container" id="cardsContainer">
@@ -29,8 +33,15 @@
 
     <script src="/scripts/poscript.js"></script>
     <script>
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            document.getElementById('app-banner').style.display = 'flex'; // Show the banner on mobile devices
+        // Function to detect Safari browser
+        function isSafari() {
+            return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        }
+
+        // Show the custom app banner only in browsers other than Safari
+        if (!isSafari()) {
+            document.getElementById('app-banner').style.display = 'flex';
+
             document.getElementById('dismiss-banner').addEventListener('click', function() {
                 document.getElementById('app-banner').style.display = 'none'; // Hide the banner when "Nah" is clicked
             });
