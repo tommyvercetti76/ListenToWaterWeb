@@ -5,8 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paddling Out</title>
     <link rel="stylesheet" href="/styles/paddlingout.css">
-    <!-- Smart App Banner for iOS App and App Clip -->
-    <meta name="apple-itunes-app" content="app-id=com.wander.listen.to.water, app-argument=https://listentowater.org/paddlingout.html, app-clip-bundle-id=com.wander.listen.to.water.Clip, app-clip-display=card">
+
+    <!-- Conditionally Add Smart App Banner -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var path = window.location.pathname;
+            if (path === "/paddlingout.html") {
+                var meta = document.createElement('meta');
+                meta.name = "apple-itunes-app";
+                meta.content = "app-id=com.wander.listen.to.water, app-argument=https://listentowater.org/paddlingout.html, app-clip-bundle-id=com.wander.listen.to.water.Clip, app-clip-display=card";
+                document.getElementsByTagName('head')[0].appendChild(meta);
+            }
+        });
+    </script>
 </head>
 <body>
     <div class="container" id="cardsContainer">
