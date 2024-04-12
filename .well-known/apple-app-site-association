@@ -1,11 +1,18 @@
 {
   "applinks": {
-    "appIDs": ["com.wander.listen.to.water.Clip"],
-    "components": [
+    "details": [
       {
-        "/": "/about.html",
-        "comment": "Only About URL works, others don't"
+        "appID": "3C2C5UW48Y.com.wander.listen.to.water",
+        "components": [
+          {
+            "path": "/paddlingout.html",
+            "query": {"cardID": "?*"}
+          }
+        ]
       }
     ]
+  },
+  "appclips": {
+    "apps": ["3C2C5UW48Y.com.wander.listen.to.water.Clip"]
   }
 }
