@@ -164,46 +164,6 @@
     align-self: center;
 }
 
-/* App Banner styles */
-#app-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f4f4f4;
-    text-align: left;
-    padding: 10px;
-    box-shadow: 0px -2px 5px rgba(0,0,0,0.2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#app-banner p {
-    margin: 0;
-    padding: 0 15px;
-}
-
-#app-banner button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-left: 15px;
-    cursor: pointer;
-}
-
-#app-banner button:hover {
-    background-color: #0056b3;
-}
-
-#app-banner .button-stack {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Align buttons to the start of the flex container */
-}
-
 /* Responsive styles */
 @media (max-width: 1200px) {
     .card {
@@ -215,10 +175,6 @@
     .card {
         width: calc(50% - 20px);
     }
-}
-
-#app-banner .button-stack {
-    flex-direction: row; /* Stack buttons horizontally on smaller screens */
 }
 
 @media (max-width: 480px) {
