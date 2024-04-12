@@ -18,6 +18,22 @@
         </div>
     </div>
 
+    <!-- App Banner -->
+    <div id="app-banner">
+        <p>Enjoy a better experience with our app.</p>
+        <button id="open-app">Open App</button>
+    </div>
+
     <script src="/scripts/poscript.js"></script>
+    <script>
+        function openApp() {
+            window.location = 'https://listentowater.org/paddlingout.html';
+        }
+
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.getElementById('app-banner').style.display = 'flex'; // Show the banner on mobile devices
+            document.getElementById('open-app').addEventListener('click', openApp);
+        }
+    </script>
 </body>
 </html>
