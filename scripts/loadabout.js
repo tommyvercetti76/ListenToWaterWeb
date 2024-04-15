@@ -1,7 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fdata%2Fimages.json?alt=media')
-        .then(response => response.json())
+    console.log('Document loaded. Fetching images...');
+    fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/resources%2Fabout.json?alt=media&token=802b85f8-5457-49d5-a584-2ed1eb9d12ea')
+        .then(response => {
+            console.log('Received response:', response);
+            return response.json();
+        })
         .then(data => {
+            console.log('JSON data:', data);
             const imageGrid = document.querySelector('.image-grid');
             data.images.forEach(image => {
                 const imageItem = document.createElement('div');
