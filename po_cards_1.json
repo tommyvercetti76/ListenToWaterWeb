@@ -1,0 +1,194 @@
+[
+    {
+        "id": "1",
+        "title": "Lewisville Lake",
+        "subtitle": "Lewisville, Texas",
+        "text": "Everything's BIG in Texas. This lake is no exception. Please stay hydrated.",
+        "imageURL": "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Flewisville%2Flewisville1.png?alt=media&token=4bd836a7-a197-4b94-9109-a209223e1fad",
+        "additionalImageURLs": [
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Flewisville%2Flewisville1.png?alt=media&token=4bd836a7-a197-4b94-9109-a209223e1fad",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Flewisville%2Flewisville2.png?alt=media&token=0957bd11-40be-4945-b3b9-66a889e8baa1",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Flewisville%2Flewisville3.png?alt=media&token=af452e92-bc4d-4df8-a919-e7294d2e1beb",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Flewisville%2Flewisville4.png?alt=media&token=ce84253e-340f-4bbc-8175-071ead3913a2",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Flewisville%2Flewisville5.png?alt=media&token=b3f1be30-884e-4149-84c2-47e4201b0b28"
+            ],
+        "youtubeURL": "https://www.youtube.com/watch?v=29fd231570cbed3a7af384df0d81b691",
+        "location": {
+            "latitude": 33.156487,
+            "longitude": -96.949953
+        }
+    },
+    {
+        "id": "2",
+        "title": "Antero Reservoir",
+        "subtitle": "Fairplay, Colorado",
+        "text": "Stay prepared for wind. Gaze at the mountains, cows and pelicans. ",
+        "imageURL": "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fantero%2Fantero4.png?alt=media&token=30d15324-c2f3-4a91-ab63-e024fe611697",
+        "additionalImageURLs": [
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fantero%2Fantero1.png?alt=media&token=18832136-ef72-460f-bc39-20d6e6fcafdf",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fantero%2Fantero2.png?alt=media&token=64f9f91e-924d-449a-ac31-4c8e56d3bc5b",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fantero%2Fantero3.png?alt=media&token=5e8f143c-9668-4b53-9666-0bf938b6b3a9",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fantero%2Fantero4.png?alt=media&token=30d15324-c2f3-4a91-ab63-e024fe611697",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fantero%2Fantero5.png?alt=media&token=df05349f-562d-4dbe-8621-32d290f214ec"
+            ],
+        "youtubeURL": "https://www.youtube.com/watch?v=0c5d0f12c71d348b10e82a7da1b986d9",
+        "location": {
+            "latitude": 38.982687,
+            "longitude": -105.896563
+        }
+    },
+    {
+        "id": "3",
+        "title": "Kens Lake",
+        "subtitle": "Spanish Valley, Utah",
+        "text": "Smaller lake, grand views! Heat is hot, water cool.",
+        "imageURL": "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fkens%2Fkens2.png?alt=media&token=af9315e2-9b91-4b11-853a-1ed632cb5591",
+        "additionalImageURLs": [
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fkens%2Fkens1.png?alt=media&token=3936abfe-3053-4411-b261-51e18a776b0c",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fkens%2Fkens2.png?alt=media&token=af9315e2-9b91-4b11-853a-1ed632cb5591",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fkens%2Fkens3.png?alt=media&token=c500cba6-5161-4e69-a6a2-8631225561d7"
+            ],
+        "youtubeURL": "https://www.youtube.com/watch?v=8C6CtlQLX9c",
+        "location": {
+            "latitude": 38.479188,
+            "longitude": -109.428062
+        }
+    },
+    {
+        "id": "4",
+        "title": "Lake Union",
+        "subtitle": "Seattle, Washington",
+        "text": "LIVELY! Watch out for sea planes and ships. Downtown looks pretty too.",
+        "imageURL": "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Funion%2Funion3.png?alt=media&token=0bdf0d43-1f46-4e0a-90c9-0eab241fb949",
+        "additionalImageURLs": [
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Funion%2Funion3.png?alt=media&token=0bdf0d43-1f46-4e0a-90c9-0eab241fb949",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Funion%2Funion2.png?alt=media&token=4b31e3ba-c310-443b-893a-4bd62b316842",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Funion%2Funion1.png?alt=media&token=eb625a81-3cbb-41cd-a76f-29cc5432eec1",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Funion%2Funion5.png?alt=media&token=50533886-5426-4525-b9ab-b9a53f310710",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Funion%2Funion6.png?alt=media&token=eb43be9c-e543-4939-905a-e16a9f50e67d",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Funion%2Funion4.png?alt=media&token=76801889-14f1-4db2-b9ed-24152e0dcf99"
+            ],
+        "youtubeURL": "https://www.youtube.com/watch?v=kE1i_6yc6Wg",
+        "location": {
+            "latitude": 47.627413,
+            "longitude": -122.338984
+        }
+    },
+    {
+        "id": "5",
+        "title": "Lake Crescent",
+        "subtitle": "Olympic National Park, Washington",
+        "text": "Water is crystal clear here. Stay hydrated and prepared to remain offline.",
+        "imageURL": "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fcrescent%2Fcrescent4.png?alt=media&token=97b6497a-5235-4d2f-82d4-72657deeebce",
+        "additionalImageURLs": [
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fcrescent%2Fcrescent4.png?alt=media&token=97b6497a-5235-4d2f-82d4-72657deeebce",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fcrescent%2Fcrescent1.png?alt=media&token=4a42615c-a28f-4c69-ba71-216f7b0aabd9",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fcrescent%2Fcrescent3.png?alt=media&token=bc8d1a9b-32e0-4570-823a-587c738a580b"
+            ],
+        "youtubeURL": "https://www.youtube.com/watch?v=TRgt6qB_Ly4",
+        "location": {
+            "latitude": 48.052813,
+            "longitude": -123.870438
+        }
+    },
+    {
+        "id": "6",
+        "title": "Diablo Lake",
+        "subtitle": "North Cascades National Park, Washington",
+        "text": "I had never seen water like this. So cold! Stay warm and dry.",
+        "imageURL": "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fdiablo%2Fdiablo1.png?alt=media&token=739f3458-6d83-4f34-a6a2-87cf037876ba",
+        "additionalImageURLs": [
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fdiablo%2Fdiablo1.png?alt=media&token=739f3458-6d83-4f34-a6a2-87cf037876ba",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fdiablo%2Fdiablo2.png?alt=media&token=804b056f-174f-46c9-8c3d-51e30ba7652c",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fdiablo%2Fdiablo3.png?alt=media&token=760bc06d-78f4-4bdd-bf25-efff0b0228bd",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fdiablo%2Fdiablo4.png?alt=media&token=9c2b0ff5-4d9b-4081-946c-6409e618c027",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fdiablo%2Fdiablo6.png?alt=media&token=03283aad-231c-4d28-8d7c-9692fc5a5481"
+            ],
+        "youtubeURL": "https://www.youtube.com/watch?v=993e8732efd432d489e51bf17560012d",
+        "location": {
+            "latitude": 48.690938,
+            "longitude": -121.097188
+        }
+    },
+    {
+        "id": "7",
+        "title": "Jenny Lake",
+        "subtitle": "Grand Teton National Park, Wyoming",
+        "text": "I was with a red fox, a few otters and my friend at Sunrise. On our way out, people were queuing for a mile to get in here. Get the hint.",
+        "imageURL": "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjenny%2Fjenny1.png?alt=media&token=6b087378-7053-43b8-8f3c-68c56f0b59f1",
+        "additionalImageURLs": [
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjenny%2Fjenny1.png?alt=media&token=6b087378-7053-43b8-8f3c-68c56f0b59f1",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjenny%2Fjenny2.png?alt=media&token=2f4225e4-49e7-4eef-99c4-17362e7aa0e1",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjenny%2Fjenny3.png?alt=media&token=d25f4f40-d01a-4ccf-aa36-9fa1ebb4c580",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjenny%2Fjenny4.png?alt=media&token=7751127e-8df4-4cca-92f4-6bdf47ef4400",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjenny%2Fjenny5.png?alt=media&token=dcd3d79d-539e-43a4-ba93-fa6262afb313"
+            ],
+        "youtubeURL": "https://www.youtube.com/watch?v=YcnXiHK0sGY",
+        "location": {
+            "latitude": 43.749638,
+            "longitude": -110.729578
+        }
+    },
+    {
+        "id": "8",
+        "title": "Jackson Lake",
+        "subtitle": "Grand Teton National Park, Wyoming",
+        "text": "Park your hide at the Chapel of the Sacred Heart and relax all day in the company of this lake. Picnic tables and bathrooms available too.",
+        "imageURL": "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjackson%2Fjackson1.png?alt=media&token=5b883002-3217-4bda-bb2b-29856846182d",
+        "additionalImageURLs": [
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjackson%2Fjackson1.png?alt=media&token=5b883002-3217-4bda-bb2b-29856846182d",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjackson%2Fjackson2.png?alt=media&token=ddc01151-9a5f-42b3-875b-09fe7255932c",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjackson%2Fjackson3.png?alt=media&token=7111b603-9614-4ad4-894d-d19c56098233",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjackson%2Fjackson4.png?alt=media&token=8603851e-8b97-41c6-bd37-065c75c8b142",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fjackson%2Fjackson5.png?alt=media&token=e0c73025-93d1-48ed-92b2-a7d55fa68cfb"
+            ],
+        "youtubeURL": "https://www.youtube.com/watch?v=f7e2f100d8ba1764ac8d505002176290",
+        "location": {
+            "latitude":  43.845863,
+            "longitude": -110.600359
+        }
+    },
+    {
+        "id": "9",
+        "title": "White Rock Lake",
+        "subtitle": "Dallas, Texas",
+        "text": "You can run, walk with pets, cycle, paddle, fish or just be. It gets VERY crowded by 10 am. Catch sunrise or sunsets here.",
+        "imageURL": "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fwhiterock%2Fwhiterock1.png?alt=media&token=f2c0aa98-aaab-4f3f-9285-04b160778fd3",
+        "additionalImageURLs": [
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fwhiterock%2Fwhiterock1.png?alt=media&token=f2c0aa98-aaab-4f3f-9285-04b160778fd3",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fwhiterock%2Fwhiterock2.png?alt=media&token=c04682b4-3071-4fff-8df5-07e597667df2",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fwhiterock%2Fwhiterock3.png?alt=media&token=b3e48a28-01dd-4197-9cd5-5479d47fd93c",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fwhiterock%2Fwhiterock4.png?alt=media&token=ac03bc3b-99f4-4c7f-8342-1992e1b4eafb",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fwhiterock%2Fwhiterock5.png?alt=media&token=1ff8f70b-b27d-4a8b-903b-5bd042c243c3",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fwhiterock%2Fwhiterock6.png?alt=media&token=7fedc8cd-98c2-4d00-9aa9-89ff3a1973f5",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fwhiterock%2Fwhiterock7.png?alt=media&token=a2acb9fb-8589-44ff-8045-9ab6e5142c6d",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fwhiterock%2Fwhiterock8.png?alt=media&token=76b4afc4-d7a7-45b0-8e1f-1c2c84deae2f"
+            ],
+        "youtubeURL": "https://www.youtube.com/watch?v=b19ae58bb5b408cee622170f3d189b82",
+        "location": {
+            "latitude": 32.833188,
+            "longitude": -96.729687
+        }
+    },
+    {
+        "id": "10",
+        "title": "Ambazari Lake",
+        "subtitle": "Nagpur, Maharashtra",
+        "text": "Amazing views of the Sunrise, the sheer variety of birds and friendly swimmers make this lake a must to paddle in. When in town, go eat some oranges and watch wild Tigers.",
+        "imageURL": "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fambazari%2Fambazari1.png?alt=media&token=c8261170-35d8-4726-ac18-14e473bc476d",
+        "additionalImageURLs": [
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fambazari%2Fambazari1.png?alt=media&token=c8261170-35d8-4726-ac18-14e473bc476d",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fambazari%2Fambazari2.png?alt=media&token=07511efe-d7f5-4a01-9899-590624020664",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fambazari%2Fambazari3.png?alt=media&token=9aae9bab-b7a4-4e99-90fe-4bfb399cf40a",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fambazari%2Fambazari4.png?alt=media&token=45792c0a-f4eb-4e2a-a3a5-904b3a346ed8",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fambazari%2Fambazari5.png?alt=media&token=93d2290d-4193-434d-af5c-2b6b09e80795",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fambazari%2Fambazari7.png?alt=media&token=26a7eef9-9716-42d9-b7e1-b3aa286653ad",
+                "https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2Fambazari%2Fambazari8.png?alt=media&token=1172a13e-a24f-41a1-a1f3-0b991ab64652"
+            ],
+        "youtubeURL": "https://www.youtube.com/watch?v=zNV3aLL0jDk&list=PLxxuC2dcJeMfnD2ySuhdJTKr1xU1izrZc",
+        "location": {
+            "latitude": 21.129713,
+            "longitude": 79.045547
+        }
+    }
+]
