@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Document loaded. Fetching T-shirt data...');
     fetchTShirtData();
+    setupFilterHandlers();
 });
 
 function fetchTShirtData() {
@@ -12,13 +13,15 @@ function fetchTShirtData() {
         })
         .then(data => {
             console.log('JSON data:', data);
-            populateCarousel(data.carouselItems);
+            window.carouselItems = data.carouselItems; // Store data globally
+            populateCarousel(window.carouselItems);
         })
         .catch(error => console.error('Error loading T-shirt data:', error));
 }
 
 function populateCarousel(items) {
     const carousel = document.getElementById('carousel');
+    carousel.innerHTML = ''; // Clear existing items
     items.forEach(item => {
         const carouselItem = document.createElement('div');
         carouselItem.className = 'carousel-item';
@@ -31,6 +34,32 @@ function populateCarousel(items) {
         carouselItem.addEventListener('click', () => openModal(item));
         carousel.appendChild(carouselItem);
     });
+}
+
+function setupFilterHandlers() {
+    document.getElementById('category-filter').addEventListener('change', filterItems);
+    document.getElementById('size-filter').addEventListener('change', filterItems);
+    document.getElementById('color-filter').addEventListener('change', filterItems);
+}
+
+function filterItems() {
+    const category = document.getElementById('category-filter').value;
+    const size = document.getElementById('size-filter').value;
+    const color = document.getElementById('color-filter').value;
+
+    let filteredItems = window.carouselItems;
+
+    if (category !== "All") {
+        filteredItems = filteredItems.filter(item => item.category === category);
+    }
+    if (size !== "All") {
+        filteredItems = filteredItems.filter(item => item.size.includes(size));
+    }
+    if (color !== "All") {
+        filteredItems = filteredItems.filter(item => item.colors.includes(color));
+    }
+
+    populateCarousel(filteredItems);
 }
 
 function openModal(item) {
@@ -58,7 +87,6 @@ function setupModalCloseHandlers() {
 }
 
 function formatPrice(price) {
-    // Ensure price is a number before formatting
     const numericPrice = Number(price);
     return `$${numericPrice.toFixed(2)}`;
 }
