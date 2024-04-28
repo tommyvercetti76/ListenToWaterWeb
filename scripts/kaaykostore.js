@@ -58,7 +58,9 @@ function setupModalCloseHandlers() {
 }
 
 function formatPrice(price) {
-    return `$${price.toFixed(2)}`;
+    // Ensure price is a number before formatting
+    const numericPrice = Number(price);
+    return `$${numericPrice.toFixed(2)}`;
 }
 
 setupModalCloseHandlers();
