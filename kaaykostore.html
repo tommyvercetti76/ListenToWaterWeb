@@ -7,11 +7,32 @@
 <link rel="stylesheet" href="/styles/storestyle.css">
 </head>
 <body>
+<div class="filter-controls" style="text-align: center; margin-top: 20px;">
+    <select id="category-filter">
+        <option value="All">All Categories</option>
+        <option value="Witty">Witty</option>
+        <option value="Dim Witty">Dim Witty</option>
+        <option value="Places">Places</option>
+    </select>
+    <select id="size-filter">
+        <option value="All">All Sizes</option>
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+        <option value="infant">Infant</option>
+    </select>
+    <select id="color-filter">
+        <option value="All">All Colors</option>
+        <option value="white">White</option>
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+    </select>
+</div>
 <div id="carousel" class="carousel"></div>
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <img id="modal-image" src="" alt="T-shirt image">
+        <img id="modal-image" src="" alt="T-shirt image" style="width:100%; max-height: 300px; object-fit: contain;">
         <h2 id="modal-title"></h2>
         <p id="modal-description"></p>
         <p id="modal-price"></p>
