@@ -1,3 +1,6 @@
+RewriteEngine On
+RewriteRule ^testrule$ /comingsoon.html [R=302,L]
+
 # Set MIME type for specific Apple app site association files
 <Files "apple-app-site-association">
     ForceType 'application/json'
