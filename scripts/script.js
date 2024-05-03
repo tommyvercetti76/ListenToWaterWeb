@@ -101,7 +101,6 @@
         }
     });
 
-
     loadRandomVideo();
 
     function toggleMenu() {
@@ -109,7 +108,7 @@
         const menuButton = document.querySelector('.hamburger-menu');
         menu.classList.toggle('active');
         menuButton.classList.toggle('active');
-    }    
+    }
 
 })();
 
