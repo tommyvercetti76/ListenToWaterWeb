@@ -32,26 +32,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function loadHaikuData() {
-        let phrases = localStorage.getItem('haikuData');
-        if (!phrases) {
+        let storedPhrases = localStorage.getItem('haikuData');
+        if (!storedPhrases) {
             fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/resources%2Fhaiku.json?alt=media&token=9d30e558-1e82-49a5-8237-cf475feb6464')
                 .then(response => response.json())
                 .then(data => {
+                    console.log('Fetched data:', data);  // Log to verify structure
                     localStorage.setItem('haikuData', JSON.stringify(data));
+                    phrases = data;  // Update global variable
                     const haiku = loadTodayHaiku(data);
                     displayHaiku(haiku);
                 })
                 .catch(error => {
                     console.error('Error loading the haiku data:', error);
-                    phrases = { timeOfDay: [], sound: [], benefit: [] }; // Minimal empty structure
-                    updateHaiku(phrases); // Generate haiku with possible empty content or fallback content
                 });
         } else {
-            phrases = JSON.parse(phrases);
+            phrases = JSON.parse(storedPhrases);  // Update global variable
+            console.log('Loaded data from local storage:', phrases);  // Log to verify structure
             const haiku = loadTodayHaiku(phrases);
             displayHaiku(haiku);
         }
-    }
+    }    
 
     function loadTodayHaiku(phrases) {
         const storedDate = localStorage.getItem('haikuDate');
