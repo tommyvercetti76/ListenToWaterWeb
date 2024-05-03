@@ -1,12 +1,28 @@
+let phrases = {}; // Global variable to hold the phrases data
+
+function getRandomElement(arr) {
+    if (!arr || !arr.length) {
+        console.error('Empty or undefined array');
+        return ""; // Handle the case gracefully
+    }
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
 function generateHaiku() {
-    if (!phrases.timeOfDay || !phrases.sound || !phrases.benefit) {
+    if (!phrases.timeOfDay || !phrases.element || !phrases.mood) {
         console.error('One or more required haiku categories are undefined.');
         return "Unable to load haiku."; // Provide a default message or handle this scenario appropriately
     }
     const timeOfDayPhrase = getRandomElement(phrases.timeOfDay);
-    const soundPhrase = getRandomElement(phrases.sound);
-    const benefitPhrase = getRandomElement(phrases.benefit);
+    const soundPhrase = getRandomElement(phrases.element);
+    const benefitPhrase = getRandomElement(phrases.mood);
     return `${timeOfDayPhrase}\n${soundPhrase}\n${benefitPhrase}`;
+}
+
+function updateHaiku() {
+    const haiku = generateHaiku();
+    console.log(haiku); // Or update your webpage's content with the haiku
+    // Example: document.getElementById('haikuDisplay').textContent = haiku;
 }
 
 function loadHaikuData() {
@@ -16,7 +32,7 @@ function loadHaikuData() {
             .then(response => response.json())
             .then(data => {
                 console.log('Fetched data:', data);
-                if (data && data.timeOfDay && data.sound && data.benefit) { // Check for expected structure
+                if (data && data.timeOfDay && data.element && data.mood) {
                     localStorage.setItem('haikuData', JSON.stringify(data));
                     phrases = data;
                     updateHaiku();
@@ -26,7 +42,7 @@ function loadHaikuData() {
             })
             .catch(error => {
                 console.error('Error loading the haiku data:', error);
-                phrases = { timeOfDay: [], sound: [], benefit: [] }; // Set empty defaults
+                phrases = { timeOfDay: [], element: [], mood: [] }; // Set empty defaults
                 updateHaiku(); // Attempt to update haiku, likely will use the default empty message
             });
     } else {
@@ -34,3 +50,5 @@ function loadHaikuData() {
         updateHaiku();
     }
 }
+
+document.addEventListener('DOMContentLoaded', loadHaikuData); // Ensures the data is loaded when the document is ready
