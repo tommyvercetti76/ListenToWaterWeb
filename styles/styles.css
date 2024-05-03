@@ -14,6 +14,8 @@ body {
   padding: 0;
   background-color: #000;
   color: #fff;
+  overflow-x: hidden;
+  /* Prevents horizontal scroll */
 }
 
 .content {
@@ -25,22 +27,25 @@ body {
   padding: 20px;
 }
 
-/* .video-player {
-  width: 100%;
-  padding-top: calc((9 / 16) * 100%);
-  position: relative;
-  background-color: #000;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-} */
-
 .buttons-container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 20px;
+}
+
+.video-player {
+  width: 80%;
+  /* Adjusted for a more appropriate size on desktop */
+  padding-top: 45%;
+  /* Adjusted padding-top for proper aspect ratio */
+  position: relative;
+  background-color: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  margin: 20px auto;
+  /* Centering the video player */
 }
 
 #video-iframe {
@@ -49,54 +54,27 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  border: none;
   border-radius: 10px;
-}
-
-.video-player {
-  width: 100%;
-  padding-top: calc((9 / 16) * 100%);
-  position: relative;
-  background-color: #000;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 0 auto; /* Add this line to center the video player */
 }
 
 .button {
   background-color: #1c7cf2;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-family: 'Josefin_Light', Arial, Helvetica, sans-serif; /* Change the font */
-  border-radius: 20px; /* Increase the border-radius */
+  padding: 12px 24px;
+  font-size: 16px;
+  font-family: 'Josefin_Light', Arial, Helvetica, sans-serif;
+  border-radius: 20px;
   cursor: pointer;
-  margin-right: 10px;
+  margin: 10px;
   transition: background-color 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add box-shadow */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .button:hover {
   background-color: #0f5bda;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Add box-shadow on hover */
-}
-
-
-.close-page {
-  display: none;
-}
-
-.content-iframe {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 98;
-  display: none;
-  border: none;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
 
 .close-btn {
@@ -113,7 +91,7 @@ body {
 
 .video-title {
   font-family: 'Josefin_Semi_Bold', Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -122,60 +100,47 @@ body {
   font-size: 1.2rem;
   font-family: 'Josefin_Light', Arial, Helvetica, sans-serif;
   margin-bottom: 20px;
-  max-width: 90%;
+  max-width: 80%;
   margin-left: auto;
   margin-right: auto;
   text-align: left;
 }
 
 @media (max-width: 768px) {
-  .video-title {
-    font-size: 1.1rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-
-  .video-description {
-    font-size: 1rem;
-  }
-
-  .close-btn {
-    font-size: 1.5rem;
-  }
-}
-
-@media (min-width: 992px) {
-  .video-title {
-    font-size: 1.8rem;
-  }
-
-  .video-description {
-    font-size: 1.5rem;
-  }
-}
-
-
-@media (max-width: 768px) {
   .video-player {
-    padding-top: calc((9 / 16) * 100%);
-    margin-bottom: 20px;
+    width: 100%;
+    padding-top: 56.25%;
+    /* 16:9 Aspect Ratio */
   }
 
   .video-title {
     font-size: 1.1rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 
   .button {
     font-size: 0.9rem;
     padding: 8px 16px;
   }
+
+  .video-description {
+    font-size: 1rem;
+    max-width: 90%;
+  }
 }
 
 @media (min-width: 992px) {
   .video-player {
     max-width: 60%;
-    margin: 0 auto;
+    /* Limiting maximum width to maintain aesthetics */
+    padding-top: calc((9 / 16) * 60%);
+    /* Keeping aspect ratio consistent */
+  }
+
+  .video-title {
+    font-size: 1.8rem;
+  }
+
+  .video-description {
+    font-size: 1.5rem;
   }
 }
