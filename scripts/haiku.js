@@ -20,9 +20,15 @@ function generateHaiku() {
 }
 
 function updateHaiku() {
-    const haiku = generateHaiku();
-    console.log(haiku); // Or update your webpage's content with the haiku
-    // Example: document.getElementById('haikuDisplay').textContent = haiku;
+    const haiku = generateHaiku().split('\n');
+    const haikuLines = document.querySelectorAll('.haiku-line');
+    if (haikuLines.length === 3) {
+        haikuLines[0].textContent = haiku[0];
+        haikuLines[1].textContent = haiku[1];
+        haikuLines[2].textContent = haiku[2];
+    } else {
+        console.error('Haiku lines elements not found or incorrect number of lines.');
+    }
 }
 
 function loadHaikuData() {
@@ -52,3 +58,4 @@ function loadHaikuData() {
 }
 
 document.addEventListener('DOMContentLoaded', loadHaikuData); // Ensures the data is loaded when the document is ready
+document.getElementById('refreshButton').addEventListener('click', updateHaiku);
