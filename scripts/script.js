@@ -103,7 +103,7 @@
 
     loadRandomVideo();
 
-    function toggleMenu() {
+    window.toggleMenu = function () {
         const menu = document.getElementById('menu-items');
         const menuButton = document.querySelector('.hamburger-menu');
         menu.classList.toggle('active');
