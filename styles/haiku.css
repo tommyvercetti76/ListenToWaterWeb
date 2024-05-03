@@ -37,17 +37,28 @@ body {
   text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff; /* Simple white glow */
 }
 
+.haiku-line {
+  opacity: 0; /* Start with the lines invisible */
+  transform: translateX(-10px); /* Start slightly to the left */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition for opacity and movement */
+}
+
+.haiku-line.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateX(0); /* Move to original position */
+}
+
 @media (max-width: 768px) {
   .haiku {
-      font-size: 20px;
-      line-height: 1.0;
+    font-size: 20px;
+    line-height: 1.0;
   }
 }
 
 @media (max-width: 480px) {
   .haiku {
-      font-size: 20px;
-      line-height: 1.0;
+    font-size: 20px;
+    line-height: 1.0;
   }
 }
 

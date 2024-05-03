@@ -22,14 +22,20 @@ function generateHaiku() {
 function updateHaiku() {
     const haiku = generateHaiku().split('\n');
     const haikuLines = document.querySelectorAll('.haiku-line');
+    haikuLines.forEach(line => line.classList.remove('visible')); // Reset animation
+
     if (haikuLines.length === 3) {
-        haikuLines[0].textContent = haiku[0];
-        haikuLines[1].textContent = haiku[1];
-        haikuLines[2].textContent = haiku[2];
+        haikuLines.forEach((line, index) => {
+            setTimeout(() => {
+                line.textContent = haiku[index];
+                line.classList.add('visible'); // Add class to trigger animation
+            }, index * 500 + 300); // Delay addition slightly to allow for class removal
+        });
     } else {
         console.error('Haiku lines elements not found or incorrect number of lines.');
     }
 }
+
 
 function loadHaikuData() {
     const storedPhrases = localStorage.getItem('haikuData');
