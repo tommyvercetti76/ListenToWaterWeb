@@ -65,11 +65,11 @@
         if (videoData) {
             playRandomVideo(videoIds[randomIndex], videoData.title, videoData.description); // Add videoData.description as the third argument
         }
-    });
+    });    
 
     document.getElementById("share-btn").addEventListener("click", async () => {
         const currentPageUrl = window.location.href;
-
+    
         if (navigator.share) {
             // Use Web Share API if available (on supported mobile devices)
             try {
@@ -100,15 +100,16 @@
             }
         }
     });
-
+    
+    
     loadRandomVideo();
 
     window.toggleMenu = function () {
-        const menu = document.getElementById('menu-items');
-        const menuButton = document.querySelector('.hamburger-menu');
-        menu.classList.toggle('active');
-        menuButton.classList.toggle('active');
-    }        
+        const menuItems = document.getElementById('menu-items');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        menuItems.classList.toggle('open');
+        hamburgerMenu.classList.toggle('open');
+    }
 
 })();
 
