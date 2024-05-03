@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     const refreshButton = document.getElementById('refreshButton');
+    let phrases = {};
 
     function getRandomElement(arr) {
         return arr[Math.floor(Math.random() * arr.length)];
     }
 
-    function generateHaiku(phrases) {
+    function generateHaiku() {
         const timeOfDayPhrase = getRandomElement(phrases.timeOfDay);
         const soundPhrase = getRandomElement(phrases.sound);
         const benefitPhrase = getRandomElement(phrases.benefit);
@@ -24,48 +25,37 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function updateHaiku(phrases) {
-        const haiku = generateHaiku(phrases);
+    function updateHaiku() {
+        refreshButton.disabled = true;
+        const haiku = generateHaiku();
         displayHaiku(haiku);
         localStorage.setItem('haiku', haiku);
         localStorage.setItem('haikuDate', new Date().toDateString());
+        setTimeout(() => {
+            refreshButton.disabled = false;
+        }, 500);
     }
 
     function loadHaikuData() {
-        let storedPhrases = localStorage.getItem('haikuData');
+        const storedPhrases = localStorage.getItem('haikuData');
         if (!storedPhrases) {
             fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/resources%2Fhaiku.json?alt=media&token=9d30e558-1e82-49a5-8237-cf475feb6464')
                 .then(response => response.json())
                 .then(data => {
-                    console.log('Fetched data:', data);  // Log to verify structure
+                    console.log('Fetched data:', data);
                     localStorage.setItem('haikuData', JSON.stringify(data));
-                    phrases = data;  // Update global variable
-                    const haiku = loadTodayHaiku(data);
-                    displayHaiku(haiku);
+                    phrases = data;
+                    updateHaiku(); // Generate and display a new haiku right after data load
                 })
                 .catch(error => {
                     console.error('Error loading the haiku data:', error);
                 });
         } else {
-            phrases = JSON.parse(storedPhrases);  // Update global variable
-            console.log('Loaded data from local storage:', phrases);  // Log to verify structure
-            const haiku = loadTodayHaiku(phrases);
-            displayHaiku(haiku);
+            phrases = JSON.parse(storedPhrases);
+            updateHaiku(); // Generate and display haiku from cached phrases
         }
-    }    
-
-    function loadTodayHaiku(phrases) {
-        const storedDate = localStorage.getItem('haikuDate');
-        const today = new Date().toDateString();
-        if (storedDate === today) {
-            return localStorage.getItem('haiku');
-        }
-        return generateHaiku(phrases);
     }
 
     loadHaikuData();
-
-    refreshButton.addEventListener('click', () => {
-        updateHaiku(phrases);
-    });
+    refreshButton.addEventListener('click', updateHaiku);
 });
