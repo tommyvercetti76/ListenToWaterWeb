@@ -48,6 +48,7 @@ span {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -64,6 +65,7 @@ span {
     span {
         font-size: 1.5em;
     }
+
     .countdown-item {
         margin: 0 5px;
     }

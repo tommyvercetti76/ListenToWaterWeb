@@ -65,11 +65,11 @@
         if (videoData) {
             playRandomVideo(videoIds[randomIndex], videoData.title, videoData.description); // Add videoData.description as the third argument
         }
-    });    
+    });
 
     document.getElementById("share-btn").addEventListener("click", async () => {
         const currentPageUrl = window.location.href;
-    
+
         if (navigator.share) {
             // Use Web Share API if available (on supported mobile devices)
             try {
@@ -100,8 +100,8 @@
             }
         }
     });
-    
-    
+
+
     loadRandomVideo();
 
     window.toggleMenu = function () {
