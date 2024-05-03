@@ -1,5 +1,10 @@
+# Set MIME type for specific Apple app site association files
 <Files "apple-app-site-association">
     ForceType 'application/json'
 </Files>
+
+# Permanent redirect for the store page
 Redirect 301 /kaaykostore.html /comingsoon.html
 
+# Additionally, ensure that common error scenarios like missing files are also handled
+ErrorDocument 404 /comingsoon.html
