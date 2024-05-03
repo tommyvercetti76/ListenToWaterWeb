@@ -1,3 +1,5 @@
 <Files "apple-app-site-association">
     ForceType 'application/json'
 </Files>
+Redirect 301 /kaaykostore.html /comingsoon.html
+
