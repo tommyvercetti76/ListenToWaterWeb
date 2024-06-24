@@ -32,7 +32,7 @@
             }
 
             // Display the footer only if the browser is not Safari, the device is handheld, and it's an Apple device
-            if (!isSafari() && isHandheldDevice() && isAppleDevice()) {
+            if (!isSafari() && isAppleDevice()) {
                 var footer = document.createElement('div');
                 footer.className = 'footer';
                 footer.innerHTML = `
