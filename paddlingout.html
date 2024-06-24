@@ -9,7 +9,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Check if the current page URL matches the desired page
-            if (window.location.pathname === "/paddlingout.html") {
+            if (window.location.href.includes("https://listentowater.org/paddlingout.html")) {
                 var meta = document.createElement('meta');
                 meta.name = "apple-itunes-app";
                 meta.content = "app-id=com.wander.listen.to.water, app-argument=https://listentowater.org/paddlingout.html, app-clip-bundle-id=com.wander.listen.to.water.Clip, app-clip-display=card";
@@ -21,13 +21,29 @@
                 return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
             }
 
-            // Display the footer only if the browser is not Safari
-            if (!isSafari()) {
+            // Function to detect if the device is handheld
+            function isHandheldDevice() {
+                return /Mobi|Android/i.test(navigator.userAgent);
+            }
+
+            // Display the footer only if the browser is not Safari and the device is handheld
+            if (!isSafari() && isHandheldDevice()) {
                 var footer = document.createElement('div');
                 footer.className = 'footer';
                 footer.innerHTML = `
-                    <button class="open-app" onclick="openApp()">Open the App</button>
-                    <button class="cancel" onclick="cancelAction()">Cancel</button>
+                    <div class="footer-content">
+                        <div class="footer-title">See Reddit in...</div>
+                        <div class="footer-actions">
+                            <div class="footer-action">
+                                <img src="path/to/reddit-icon.png" alt="Reddit App" class="footer-icon">
+                                <button class="open-app" onclick="openApp()">Open</button>
+                            </div>
+                            <div class="footer-action">
+                                <img src="path/to/chrome-icon.png" alt="Chrome" class="footer-icon">
+                                <button class="cancel" onclick="cancelAction()">Continue</button>
+                            </div>
+                        </div>
+                    </div>
                 `;
                 document.body.appendChild(footer);
             }
