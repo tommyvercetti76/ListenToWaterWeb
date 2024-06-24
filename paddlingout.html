@@ -9,7 +9,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Check if the current page URL matches the desired page
-            if (window.location.href.includes("https://listentowater.org/paddlingout.html")) {
+            if (window.location.pathname === "/paddlingout.html") {
                 var meta = document.createElement('meta');
                 meta.name = "apple-itunes-app";
                 meta.content = "app-id=com.wander.listen.to.water, app-argument=https://listentowater.org/paddlingout.html, app-clip-bundle-id=com.wander.listen.to.water.Clip, app-clip-display=card";
