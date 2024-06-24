@@ -32,14 +32,12 @@
                 footer.className = 'footer';
                 footer.innerHTML = `
                     <div class="footer-content">
-                        <div class="footer-title">See Reddit in...</div>
+                        <div class="footer-title">See Paddling Out in...</div>
                         <div class="footer-actions">
                             <div class="footer-action">
-                                <img src="path/to/reddit-icon.png" alt="Reddit App" class="footer-icon">
                                 <button class="open-app" onclick="openApp()">Open</button>
                             </div>
                             <div class="footer-action">
-                                <img src="path/to/chrome-icon.png" alt="Chrome" class="footer-icon">
                                 <button class="cancel" onclick="cancelAction()">Continue</button>
                             </div>
                         </div>
@@ -50,9 +48,16 @@
         });
 
         function openApp() {
-            // Add your logic to open the app
-            alert('Opening the app...');
-            // Example: window.location.href = 'your-app-url';
+            var appUrl = "myapp://open";  // Replace with your app's custom URL scheme
+            var appStoreUrl = "https://apps.apple.com/us/app/paddling-out/idYOUR_APP_ID";  // Replace with your app's App Store URL
+
+            // Try to open the app
+            window.location = appUrl;
+
+            // If the app is not installed, open the App Store after a delay
+            setTimeout(function() {
+                window.location = appStoreUrl;
+            }, 25);
         }
 
         function cancelAction() {
