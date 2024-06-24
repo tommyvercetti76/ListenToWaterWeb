@@ -14,6 +14,35 @@
     src: url('/fonts/JosefinSans-Light.ttf') format('truetype');
 }
 
+/* Footer styles */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.footer button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.open-app {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cancel {
+    background-color: #f44336;
+    color: white;
+}
+
 /* Modal styles */
 .modal {
     display: none;

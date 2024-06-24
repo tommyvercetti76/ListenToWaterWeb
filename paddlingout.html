@@ -15,7 +15,34 @@
                 meta.content = "app-id=com.wander.listen.to.water, app-argument=https://listentowater.org/paddlingout.html, app-clip-bundle-id=com.wander.listen.to.water.Clip, app-clip-display=card";
                 document.getElementsByTagName('head')[0].appendChild(meta);
             }
+
+            // Function to detect if the browser is Safari
+            function isSafari() {
+                return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            }
+
+            // Display the footer only if the browser is not Safari
+            if (!isSafari()) {
+                var footer = document.createElement('div');
+                footer.className = 'footer';
+                footer.innerHTML = `
+                    <button class="open-app" onclick="openApp()">Open the App</button>
+                    <button class="cancel" onclick="cancelAction()">Cancel</button>
+                `;
+                document.body.appendChild(footer);
+            }
         });
+
+        function openApp() {
+            // Add your logic to open the app
+            alert('Opening the app...');
+            // Example: window.location.href = 'your-app-url';
+        }
+
+        function cancelAction() {
+            // Add your logic for cancel action
+            alert('Action canceled.');
+        }
     </script>
 </head>
 

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="/styles/menu.css">
-    <script defer src="/scripts/script.js"></script>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <script defer src="scripts/script.js"></script>
 </head>
-
 <body>
     <nav>
         <div class="hamburger-menu" onclick="toggleMenu()">
@@ -21,7 +19,6 @@
         <ul id="menu-items" class="menu-items">
             <li><a href="about.html">About</a></li>
             <li><a href="dailyhaiku.html">Daily Haiku</a></li>
-            <!-- <li><a href="contribute.html">Contribute</a></li> -->
             <li><a href="paddlingout.html">Paddling Out</a></li>
             <li><a href="kaaykostore.html">Kaayko Store</a></li>
         </ul>
@@ -33,7 +30,7 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
         </div>
-        <p id="video-description" class="video-description"></p> <!-- Added description element -->
+        <p id="video-description" class="video-description"></p>
         <div class="buttons-container">
             <button id="next-btn" class="button">Next</button>
             <button id="share-btn" class="button">Share</button>
@@ -41,5 +38,4 @@
     </div>
     <div id="close-btn" class="close-btn" onclick="closePage();">X</div>
 </body>
-
 </html>
