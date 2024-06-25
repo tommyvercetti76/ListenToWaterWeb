@@ -28,11 +28,17 @@
 
             // Function to detect if the device is handheld
             function isHandheldDevice() {
-                return window.innerWidth <= 768; // Using screen width for handheld detection
+                return /Mobi|Android/i.test(navigator.userAgent) || (window.innerWidth <= 768 && window.innerHeight <= 1024);
             }
+
+            // Debugging information
+            console.log('isSafari:', isSafari());
+            console.log('isAppleDevice:', isAppleDevice());
+            console.log('isHandheldDevice:', isHandheldDevice());
 
             // Display the footer only if the browser is not Safari, the device is handheld, and it's an Apple device
             if (!isSafari() && isAppleDevice() && isHandheldDevice()) {
+                console.log('Conditions met, displaying footer.');
                 var footer = document.createElement('div');
                 footer.className = 'footer';
                 footer.innerHTML = `
@@ -49,6 +55,8 @@
                     </div>
                 `;
                 document.body.appendChild(footer);
+            } else {
+                console.log('Conditions not met, footer not displayed.');
             }
         });
 
