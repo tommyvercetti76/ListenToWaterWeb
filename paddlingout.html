@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/paddlingout.css">
+    <title>Paddling Out</title>
     <!-- Dynamic Smart App Banner -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            console.log('DOM fully loaded and parsed');
             // Check if the current page URL matches the desired page
             if (window.location.href.includes("https://listentowater.org/paddlingout.html")) {
+                console.log('URL matches');
                 var meta = document.createElement('meta');
                 meta.name = "apple-itunes-app";
                 meta.content = "app-id=com.wander.listen.to.water, app-argument=https://listentowater.org/paddlingout.html, app-clip-bundle-id=com.wander.listen.to.water.Clip, app-clip-display=card";
                 document.getElementsByTagName('head')[0].appendChild(meta);
+                console.log('Meta tag added:', meta);
             }
 
             // Function to detect if the browser is Safari
             function isSafari() {
-                return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+                const ua = navigator.userAgent.toLowerCase();
+                return ua.includes('safari') && !ua.includes('chrome');
             }
 
             // Function to detect if the device is an Apple device
@@ -28,7 +33,7 @@
 
             // Function to detect if the device is handheld
             function isHandheldDevice() {
-                return /Mobi|Android/i.test(navigator.userAgent) || (window.innerWidth <= 768 && window.innerHeight <= 1024);
+                return window.innerWidth <= 768;
             }
 
             // Debugging information
