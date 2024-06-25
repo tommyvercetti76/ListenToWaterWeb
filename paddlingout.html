@@ -33,7 +33,7 @@
 
             // Function to detect if the device is handheld
             function isHandheldDevice() {
-                return /Mobi|Android/i.test(navigator.userAgent) || (window.innerWidth <= 768);
+                return (window.innerWidth <= 768);
             }
 
             // Debugging information
