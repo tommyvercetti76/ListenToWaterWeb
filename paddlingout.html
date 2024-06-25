@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/paddlingout.css">
     <title>Paddling Out</title>
-    <!-- Dynamic Smart App Banner -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             console.log('DOM fully loaded and parsed');
+            
             // Check if the current page URL matches the desired page
             if (window.location.href.includes("https://listentowater.org/paddlingout.html")) {
                 console.log('URL matches');
@@ -33,7 +33,7 @@
 
             // Function to detect if the device is handheld
             function isHandheldDevice() {
-                return window.innerWidth <= 768;
+                return /Mobi|Android/i.test(navigator.userAgent) || (window.innerWidth <= 768);
             }
 
             // Debugging information
@@ -60,6 +60,7 @@
                     </div>
                 `;
                 document.body.appendChild(footer);
+                console.log('Footer appended to the body.');
             } else {
                 console.log('Conditions not met, footer not displayed.');
             }
