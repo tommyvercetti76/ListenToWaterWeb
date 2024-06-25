@@ -21,18 +21,18 @@
                 return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
             }
 
-            // Function to detect if the device is handheld
-            function isHandheldDevice() {
-                return /Mobi|Android/i.test(navigator.userAgent);
-            }
-
             // Function to detect if the device is an Apple device
             function isAppleDevice() {
                 return /iPhone|iPad|iPod/i.test(navigator.userAgent);
             }
 
+            // Function to detect if the device is handheld
+            function isHandheldDevice() {
+                return window.innerWidth <= 768; // Using screen width for handheld detection
+            }
+
             // Display the footer only if the browser is not Safari, the device is handheld, and it's an Apple device
-            if (!isSafari() && isAppleDevice()) {
+            if (!isSafari() && isAppleDevice() && isHandheldDevice()) {
                 var footer = document.createElement('div');
                 footer.className = 'footer';
                 footer.innerHTML = `
