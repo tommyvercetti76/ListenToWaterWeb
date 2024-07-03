@@ -63,6 +63,8 @@ function openModal(cardId) {
     const modalHeader = document.querySelector('.modal-header');
 
     modalContent.innerHTML = ''; // Clear existing content
+    modalHeader.innerHTML = ''; // Clear header content
+
     const closeButton = document.createElement('span');
     closeButton.classList.add('close');
     closeButton.innerHTML = '&times;';
