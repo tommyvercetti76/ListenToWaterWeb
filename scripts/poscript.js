@@ -70,7 +70,7 @@ function openModal(cardId) {
     const carousel = document.createElement('div');
     carousel.classList.add('carousel');
 
-    selectedCard.imageURLs.forEach(url => {
+    selectedCard.additionalImageURLs.forEach(url => {
         const img = document.createElement('img');
         img.src = url;
         img.alt = selectedCard.title;
