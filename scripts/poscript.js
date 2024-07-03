@@ -53,30 +53,55 @@ function createCardHTML(card) {
 // Function to open modal
 function openModal(cardId) {
     const selectedCard = globalCardData.find(card => card.id === cardId);
+    if (!selectedCard) {
+        console.error('Card not found:', cardId);
+        return;
+    }
+
     const modal = document.getElementById('myModal');
-    const modalContent = document.getElementById('modal-content');
-    modalContent.innerHTML = '';
+    const modalContent = document.querySelector('.modal-content');
 
-    selectedCard.additionalImageURLs.forEach(url => {
-        const img = document.createElement('img');
-        img.src = url;
-        img.alt = selectedCard.title;
-        modalContent.appendChild(img);
-    });
+    modalContent.innerHTML = ''; // Clear existing content
+    modalContent.innerHTML = `
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img src="${selectedCard.imageURL}" alt="${selectedCard.title}">
+        <div class="card-content">
+            <h2 class="card-title">${selectedCard.title}</h2>
+            <p class="card-subtitle">${selectedCard.subtitle}</p>
+            <p class="card-description">${selectedCard.text}</p>
+            <a href="${selectedCard.youtubeURL}" target="_blank" class="youtube-link">Watch on YouTube</a>
+        </div>
+    `;
 
-    modal.style.display = "block";
+    modal.style.display = 'block';
+    setTimeout(() => {
+        modal.classList.add('open');
+    }, 10);
 }
 
-// Function to close the modal
+// Function to close modal
 function closeModal() {
     const modal = document.getElementById('myModal');
-    modal.style.display = "none";
+    modal.classList.remove('open');
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300); // Match this duration with the CSS transition duration
 }
 
-// When the user clicks anywhere outside of the modal, close it
+// Close modal when clicking outside of it
 window.onclick = function (event) {
     const modal = document.getElementById('myModal');
     if (event.target == modal) {
-        modal.style.display = "none";
+        closeModal();
     }
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+    const closeBtn = document.querySelector('.close');
+    closeBtn.addEventListener('click', closeModal);
+});
+
+function displayError(message) {
+    const container = document.getElementById('cardsContainer');
+    container.innerHTML = `<div class="error">${message}</div>`;
 }
