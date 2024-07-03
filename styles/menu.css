@@ -35,7 +35,7 @@ body, html {
   position: absolute;
   height: 4px;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #000000;
   border-radius: 2px;
   transition: all 0.3s ease-in-out;
 }
@@ -103,7 +103,7 @@ body, html {
 
 .menu-items li a:hover,
 .menu-items li a:focus {
-  color: #ffffff;
+  color: #000000;
   outline: none;
 }
 
