@@ -60,6 +60,7 @@ function openModal(cardId) {
 
     const modal = document.getElementById('myModal');
     const modalContent = document.querySelector('.modal-content');
+    const modalHeader = document.querySelector('.modal-header');
 
     modalContent.innerHTML = ''; // Clear existing content
     const closeButton = document.createElement('span');
@@ -77,7 +78,7 @@ function openModal(cardId) {
         carousel.appendChild(img);
     });
 
-    modalContent.appendChild(closeButton);
+    modalHeader.appendChild(closeButton);
     modalContent.appendChild(carousel);
 
     modal.style.display = 'block';
@@ -95,6 +96,36 @@ function closeModal() {
     }, 300); // Match this duration with the CSS transition duration
 }
 
+// Make the modal draggable from the bottom
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('myModal');
+    const modalHeader = document.querySelector('.modal-header');
+
+    let startY, initialBottom;
+
+    modalHeader.addEventListener('mousedown', (event) => {
+        startY = event.clientY;
+        initialBottom = parseInt(window.getComputedStyle(modal).bottom, 10);
+
+        document.addEventListener('mousemove', onDrag);
+        document.addEventListener('mouseup', onStopDrag);
+    });
+
+    function onDrag(event) {
+        const deltaY = startY - event.clientY;
+        modal.style.bottom = `${initialBottom - deltaY}px`;
+    }
+
+    function onStopDrag() {
+        document.removeEventListener('mousemove', onDrag);
+        document.removeEventListener('mouseup', onStopDrag);
+
+        if (parseInt(modal.style.bottom, 10) < -100) {
+            closeModal();
+        }
+    }
+});
+
 // Close modal when clicking outside of it
 window.onclick = function (event) {
     const modal = document.getElementById('myModal');
@@ -102,13 +133,6 @@ window.onclick = function (event) {
         closeModal();
     }
 };
-
-document.addEventListener("DOMContentLoaded", function () {
-    const closeBtn = document.querySelector('.close');
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeModal);
-    }
-});
 
 function displayError(message) {
     const container = document.getElementById('cardsContainer');
