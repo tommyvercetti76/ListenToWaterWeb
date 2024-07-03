@@ -105,7 +105,9 @@ window.onclick = function (event) {
 
 document.addEventListener("DOMContentLoaded", function () {
     const closeBtn = document.querySelector('.close');
-    closeBtn.addEventListener('click', closeModal);
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
 });
 
 function displayError(message) {

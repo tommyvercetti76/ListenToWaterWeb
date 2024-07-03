@@ -116,17 +116,18 @@
 
 .carousel {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    flex-direction: column;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
     padding: 20px 0;
-    gap: 10px;
+    gap: 20px;
 }
 
 .carousel img {
     scroll-snap-align: center;
     width: auto;
-    height: 80vh;
+    max-width: 90%;
+    max-height: 70vh;
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
@@ -158,7 +159,7 @@
     }
 
     .carousel img {
-        height: 60vh;
+        max-height: 60vh;
     }
 }
 
@@ -183,10 +184,10 @@
 
     .carousel {
         padding: 10px 0;
-        gap: 5px;
+        gap: 10px;
     }
 
     .carousel img {
-        height: 50vh;
+        max-height: 50vh;
     }
 }
