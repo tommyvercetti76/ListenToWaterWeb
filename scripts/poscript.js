@@ -53,30 +53,64 @@ function createCardHTML(card) {
 // Function to open modal
 function openModal(cardId) {
     const selectedCard = globalCardData.find(card => card.id === cardId);
-    const modal = document.getElementById('myModal');
-    const modalContent = document.getElementById('modal-content');
-    modalContent.innerHTML = '';
+    if (!selectedCard) {
+        console.error('Card not found:', cardId);
+        return;
+    }
 
-    selectedCard.additionalImageURLs.forEach(url => {
-        const img = document.createElement('img');
-        img.src = url;
-        img.alt = selectedCard.title;
-        modalContent.appendChild(img);
+    const modal = document.getElementById('myModal');
+    const modalContent = document.querySelector('.modal-content');
+
+    modalContent.innerHTML = ''; // Clear existing content
+    const fullscreenGrid = document.createElement('div');
+    fullscreenGrid.classList.add('fullscreen-grid');
+
+    globalCardData.forEach(card => {
+        const clonedCard = document.createElement('div');
+        clonedCard.classList.add('card');
+        clonedCard.innerHTML = `
+            <img class="card-image" src="${card.imageURL}" alt="${card.title}" loading="lazy">
+            <div class="card-content">
+                <h2 class="card-title">${card.title}</h2>
+                <p class="card-subtitle">${card.subtitle}</p>
+                <p class="card-description">${card.text}</p>
+                <a href="${card.youtubeURL}" target="_blank" class="youtube-link">Watch on YouTube</a>
+            </div>
+        `;
+        fullscreenGrid.appendChild(clonedCard);
     });
 
-    modal.style.display = "block";
+    modalContent.appendChild(fullscreenGrid);
+
+    modal.style.display = 'block';
+    setTimeout(() => {
+        modal.classList.add('open');
+    }, 10);
 }
 
-// Function to close the modal
+// Function to close modal
 function closeModal() {
     const modal = document.getElementById('myModal');
-    modal.style.display = "none";
+    modal.classList.remove('open');
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300); // Match this duration with the CSS transition duration
 }
 
-// When the user clicks anywhere outside of the modal, close it
+// Close modal when clicking outside of it
 window.onclick = function (event) {
     const modal = document.getElementById('myModal');
     if (event.target == modal) {
-        modal.style.display = "none";
+        closeModal();
     }
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+    const closeBtn = document.querySelector('.close');
+    closeBtn.addEventListener('click', closeModal);
+});
+
+function displayError(message) {
+    const container = document.getElementById('cardsContainer');
+    container.innerHTML = `<div class="error">${message}</div>`;
 }
