@@ -62,16 +62,23 @@ function openModal(cardId) {
     const modalContent = document.querySelector('.modal-content');
 
     modalContent.innerHTML = ''; // Clear existing content
-    modalContent.innerHTML = `
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img src="${selectedCard.imageURL}" alt="${selectedCard.title}">
-        <div class="card-content">
-            <h2 class="card-title">${selectedCard.title}</h2>
-            <p class="card-subtitle">${selectedCard.subtitle}</p>
-            <p class="card-description">${selectedCard.text}</p>
-            <a href="${selectedCard.youtubeURL}" target="_blank" class="youtube-link">Watch on YouTube</a>
-        </div>
-    `;
+    const closeButton = document.createElement('span');
+    closeButton.classList.add('close');
+    closeButton.innerHTML = '&times;';
+    closeButton.onclick = closeModal;
+
+    const carousel = document.createElement('div');
+    carousel.classList.add('carousel');
+
+    selectedCard.imageURLs.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = selectedCard.title;
+        carousel.appendChild(img);
+    });
+
+    modalContent.appendChild(closeButton);
+    modalContent.appendChild(carousel);
 
     modal.style.display = 'block';
     setTimeout(() => {
