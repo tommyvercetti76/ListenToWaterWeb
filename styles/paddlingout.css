@@ -78,6 +78,37 @@
     margin-bottom: 15px;
 }
 
+.card-footer {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+    display: inline-block;
+}
+
+.parking-icon {
+    background-image: url('/icons/parking.png'); /* Add correct icon path */
+}
+
+.toilet-icon {
+    background-image: url('/icons/toilet.png'); /* Add correct icon path */
+}
+
+.youtube-icon {
+    background-image: url('/icons/youtube.png'); /* Add correct icon path */
+}
+
+.location-icon {
+    background-image: url('/icons/location.png'); /* Add correct icon path */
+}
+
 /* Modal styles */
 .modal {
     display: none;

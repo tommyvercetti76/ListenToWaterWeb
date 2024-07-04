@@ -31,7 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h2 class="card-title">${card.title}</h2>
                     <p class="card-subtitle">${card.subtitle}</p>
                     <p class="card-description">${card.text}</p>
-                    <a href="${card.youtubeURL}" target="_blank" class="youtube-link">Watch on YouTube</a>
+                    <div class="card-footer">
+                        ${card.parkingAvl === 'Y' ? '<span class="icon parking-icon"></span>' : ''}
+                        ${card.restroomsAvl === 'Y' ? '<span class="icon toilet-icon"></span>' : ''}
+                        <span class="icon youtube-icon"></span>
+                        <span class="icon location-icon"></span>
+                    </div>
                 </div>
             </div>
         `;
