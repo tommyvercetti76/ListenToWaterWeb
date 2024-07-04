@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createCardHTML(card) {
         return `
-            <div class="card" onclick="openModal('${card.id}')">
+            <div class="card" data-id="${card.id}">
                 <img class="card-image" src="${card.imageURL}" alt="${card.title}" loading="lazy">
                 <div class="card-content">
                     <h2 class="card-title">${card.title}</h2>
@@ -33,10 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="card-description">${card.text}</p>
                 </div>
                 <div class="card-footer">
-                    ${card.parkingAvl === 'Y' ? '<span class="icon parking-icon"></span>' : ''}
-                    ${card.restroomsAvl === 'Y' ? '<span class="icon toilet-icon"></span>' : ''}
-                    <span class="icon youtube-icon"></span>
-                    <span class="icon location-icon"></span>
+                    <div class="footer-message"></div>
+                    ${card.parkingAvl === 'Y' ? '<span class="icon parking-icon" onclick="showMessage(this, \'Parking Available\')"></span>' : ''}
+                    ${card.restroomsAvl === 'Y' ? '<span class="icon toilet-icon" onclick="showMessage(this, \'Toilet Available\')"></span>' : ''}
+                    <span class="icon youtube-icon" onclick="openYoutube(\'${card.youtubeURL}\')"></span>
+                    <span class="icon location-icon" onclick="openLocation(${card.location.latitude}, ${card.location.longitude})"></span>
                 </div>
             </div>
         `;
@@ -87,6 +88,25 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     };
+
+    window.openYoutube = function(url) {
+        window.open(url, '_blank');
+    }
+
+    window.openLocation = function(lat, lon) {
+        const url = `https://www.google.com/maps?q=${lat},${lon}`;
+        window.open(url, '_blank');
+    }
+
+    window.showMessage = function(element, message) {
+        const footer = element.parentElement;
+        const messageDiv = footer.querySelector('.footer-message');
+        messageDiv.textContent = message;
+        messageDiv.style.color = 'green';
+        setTimeout(() => {
+            messageDiv.textContent = '';
+        }, 2000);
+    }
 });
 
 function displayError(message) {

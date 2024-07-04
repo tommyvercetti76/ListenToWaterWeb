@@ -83,10 +83,16 @@
 
 .card-footer {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
     padding: 10px 0;
     border-top: 1px solid #eee;
     background-color: #f9f9f9;
+}
+
+.footer-message {
+    margin-bottom: 5px;
+    font-size: 14px;
 }
 
 .icon {
@@ -94,32 +100,35 @@
     height: 28px;
     display: inline-block;
     background-size: cover;
-}
-
-.parking-icon {
-    background-color: red;
+    background-color: #d3d3d3;
     border-radius: 50%;
-    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    font-weight: bold;
+    margin: 5px;
+    color: ivory;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.parking-icon::before {
+    content: 'P';
+    font-size: 18px;
 }
 
 .toilet-icon::before {
     content: '\1F6BD'; /* Unicode for toilet icon */
-    font-size: 28px;
+    font-size: 18px;
 }
 
 .youtube-icon::before {
     content: '\25B6'; /* Unicode for play icon */
-    font-size: 28px;
+    font-size: 18px;
 }
 
 .location-icon::before {
     content: '\1F4CD'; /* Unicode for location pin */
-    font-size: 28px;
+    font-size: 18px;
 }
 
 /* Modal styles */
