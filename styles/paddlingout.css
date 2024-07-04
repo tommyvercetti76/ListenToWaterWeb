@@ -90,11 +90,14 @@
     background-color: rgba(0, 0, 0, 0.9);
     overflow: hidden;
     transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: scale(0.9);
 }
 
 .modal.open {
     display: block;
     opacity: 1;
+    transform: scale(1);
 }
 
 .modal-content {
@@ -109,9 +112,9 @@
 
 .close {
     position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 30px;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
     font-weight: bold;
     color: #fff;
     cursor: pointer;
