@@ -101,21 +101,22 @@
 .icon {
     width: 40px;
     height: 40px;
-    background-size: cover;
-    background-color: #d3d3d3;
+    border: 2px solid ivory;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ivory;
+    background-color: ivory;
+    color: black;
     font-size: 18px;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
 .icon:hover {
     transform: translateY(-2px);
+    background-color: #d3d3d3;
 }
 
 .parking-icon::before {

@@ -25,14 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createCardHTML(card) {
         return `
-            <div class="card" data-id="${card.id}">
+            <div class="card" data-id="${card.id}" onclick="openModal('${card.id}')">
                 <img class="card-image" src="${card.imageURL}" alt="${card.title}" loading="lazy">
                 <div class="card-content">
                     <h2 class="card-title">${card.title}</h2>
                     <p class="card-subtitle">${card.subtitle}</p>
                     <p class="card-description">${card.text}</p>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer" onclick="event.stopPropagation();">
                     <div class="footer-message"></div>
                     ${card.parkingAvl === 'Y' ? '<span class="icon parking-icon" onclick="showMessage(this, \'Parking Available\')"></span>' : ''}
                     ${card.restroomsAvl === 'Y' ? '<span class="icon toilet-icon" onclick="showMessage(this, \'Toilet Available\')"></span>' : ''}
