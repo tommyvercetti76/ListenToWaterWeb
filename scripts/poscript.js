@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('myModal');
     const modalContent = document.querySelector('.modal-content');
-    const closeModalBtn = document.querySelector('.close');
 
     let globalCardData = [];
 
@@ -71,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10);
     }
 
-    function closeModal() {
+    window.closeModal = function() {
         modal.classList.remove('open');
         setTimeout(() => {
             modal.style.display = 'none';
@@ -83,8 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     };
-
-    closeModalBtn.onclick = closeModal;
 });
 
 function displayError(message) {
