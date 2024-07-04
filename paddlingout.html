@@ -1,93 +1,104 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('myModal');
-    const modalContent = document.querySelector('.modal-content');
-    const closeModalBtn = document.querySelector('.close');
+<!DOCTYPE html>
+<html lang="en">
 
-    let globalCardData = [];
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/paddlingout.css">
+    <title>Paddling Out</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log('DOM fully loaded and parsed');
+            
+            // Check if the current page URL matches the desired page
+            if (window.location.href.includes("https://listentowater.org/paddlingout.html")) {
+                console.log('URL matches');
+                var meta = document.createElement('meta');
+                meta.name = "apple-itunes-app";
+                meta.content = "app-id=com.wander.listen.to.water, app-clip-bundle-id=com.wander.listen.to.water.Clip, app-clip-display=card";
+                document.getElementsByTagName('head')[0].appendChild(meta);
+                console.log('Meta tag added:', meta);
+            }
 
-    fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/resources%2Fpaddling_v1%2Fpo_cards.json?alt=media&token=2d27400a-934c-48d4-8f02-e06ba986dde9')
-        .then(response => response.json())
-        .then(data => {
-            globalCardData = data;
-            displayAllCards(data);
-        })
-        .catch(error => {
-            console.error("Error fetching data: ", error);
-            displayError('Error loading content. Please try again later.');
+            // Function to detect if the browser is Safari
+            function isSafari() {
+                const ua = navigator.userAgent.toLowerCase();
+                return ua.includes('safari') && !ua.includes('chrome');
+            }
+
+            // Function to detect if the device is an Apple device
+            function isAppleDevice() {
+                return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            }
+
+            // Function to detect if the device is handheld
+            function isHandheldDevice() {
+                return (window.innerWidth <= 768);
+            }
+
+            // Debugging information
+            console.log('isSafari:', isSafari());
+            console.log('isAppleDevice:', isAppleDevice());
+            console.log('isHandheldDevice:', isHandheldDevice());
+
+            // Display the footer only if the browser is not Safari, the device is handheld, and it's an Apple device
+            if (!isSafari() && isAppleDevice() && isHandheldDevice()) {
+                console.log('Conditions met, displaying footer.');
+                var footer = document.createElement('div');
+                footer.className = 'footer';
+                footer.innerHTML = `
+                    <div class="footer-content">
+                        <div class="footer-title">See Paddling Out in...</div>
+                        <div class="footer-actions">
+                            <div class="footer-action">
+                                <button class="open-app" onclick="openApp()">Open</button>
+                            </div>
+                            <div class="footer-action">
+                                <button class="cancel" onclick="cancelAction()">Continue</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(footer);
+                console.log('Footer appended to the body.');
+            } else {
+                console.log('Conditions not met, footer not displayed.');
+            }
         });
 
-    function displayAllCards(data) {
-        const container = document.getElementById('cardsContainer');
-        container.innerHTML = '';
-        data.forEach(card => {
-            container.insertAdjacentHTML('beforeend', createCardHTML(card));
-        });
-    }
+        function openApp() {
+            var appUrl = "myapp://open";  // Replace with your app's custom URL scheme
+            var appStoreUrl = "https://apps.apple.com/us/app/paddling-out/idYOUR_APP_ID";  // Replace with your app's App Store URL
 
-    function createCardHTML(card) {
-        return `
-            <div class="card" onclick="openModal('${card.id}')">
-                <img class="card-image" src="${card.imageURL}" alt="${card.title}" loading="lazy">
-                <div class="card-content">
-                    <h2 class="card-title">${card.title}</h2>
-                    <p class="card-subtitle">${card.subtitle}</p>
-                    <p class="card-description">${card.text}</p>
-                    <a href="${card.youtubeURL}" target="_blank" class="youtube-link">Watch on YouTube</a>
-                </div>
-            </div>
-        `;
-    }
+            // Try to open the app
+            window.location = appUrl;
 
-    window.openModal = function(cardId) {
-        const selectedCard = globalCardData.find(card => card.id === cardId);
-        if (!selectedCard) {
-            console.error('Card not found:', cardId);
-            return;
+            // If the app is not installed, open the App Store after a delay
+            setTimeout(function() {
+                window.location = appStoreUrl;
+            }, 25);
         }
 
-        modalContent.innerHTML = ''; // Clear existing content
-
-        const closeButton = document.createElement('span');
-        closeButton.classList.add('close');
-        closeButton.innerHTML = '&times;';
-        closeButton.onclick = closeModal;
-
-        const carousel = document.createElement('div');
-        carousel.classList.add('carousel');
-
-        selectedCard.additionalImageURLs.forEach(url => {
-            const img = document.createElement('img');
-            img.src = url;
-            img.alt = selectedCard.title;
-            carousel.appendChild(img);
-        });
-
-        modalContent.appendChild(closeButton);
-        modalContent.appendChild(carousel);
-
-        modal.style.display = 'block';
-        setTimeout(() => {
-            modal.classList.add('open');
-        }, 10);
-    }
-
-    function closeModal() {
-        modal.classList.remove('open');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300); // Match this duration with the CSS transition duration
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            closeModal();
+        function cancelAction() {
+            // Add your logic for cancel action
+            alert('Action canceled.');
         }
-    };
+    </script>
+</head>
 
-    closeModalBtn.onclick = closeModal;
-});
+<body>
+    <div class="container" id="cardsContainer">
+        <!-- Cards will be inserted here by poscript.js -->
+    </div>
 
-function displayError(message) {
-    const container = document.getElementById('cardsContainer');
-    container.innerHTML = `<div class="error">${message}</div>`;
-}
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-content" class="gallery"></div>
+        </div>
+    </div>
+
+    <script src="/scripts/poscript.js"></script>
+</body>
+
+</html>
