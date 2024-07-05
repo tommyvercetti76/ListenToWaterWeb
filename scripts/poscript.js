@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const additionalImagePaths = Array.from({ length: 5 }, (_, i) => `${baseImageURL}${encodeURIComponent(card.lakeName)}%2F${encodeURIComponent(card.lakeName)}${i + 1}.png?alt=media`);
 
         return `
-            <div class="card" data-id="${card.id}" onclick="openModal('${card.id}', '${JSON.stringify(additionalImagePaths)}')">
+            <div class="card" data-id="${card.id}" onclick='openModal("${card.id}", ${JSON.stringify(additionalImagePaths)})'>
                 <img class="card-image" src="${imagePath}" alt="${card.title}" loading="lazy">
                 <div class="card-content">
                     <h2 class="card-title">${card.title}</h2>
