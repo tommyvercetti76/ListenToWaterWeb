@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createCardHTML(card) {
         const imagePath = `${baseImageURL}${encodeURIComponent(card.lakeName)}%2F${encodeURIComponent(card.lakeName)}1.png?alt=media`;
-        const additionalImagePaths = generateImagePaths(card.lakeName);
+        const additionalImagePaths = Array.from({ length: 5 }, (_, i) => `${baseImageURL}${encodeURIComponent(card.lakeName)}%2F${encodeURIComponent(card.lakeName)}${i + 1}.png?alt=media`);
 
         return `
             <div class="card" data-id="${card.id}" onclick='openModal("${card.lakeName}", ${JSON.stringify(additionalImagePaths)})'>
@@ -64,17 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    function generateImagePaths(lakeName) {
-        // Assuming the number of images for each lake is between 1 and 10
-        const imagePaths = [];
-        for (let i = 1; i <= 10; i++) {
-            const imagePath = `${baseImageURL}${encodeURIComponent(lakeName)}%2F${encodeURIComponent(lakeName)}${i}.png?alt=media`;
-            imagePaths.push(imagePath);
-        }
-        return imagePaths;
-    }
-
-    window.openModal = function(lakeName, imagePaths) {
+    window.openModal = function(lakeName, additionalImagePaths) {
         modalContent.innerHTML = ''; // Clear existing content
 
         const closeButton = document.createElement('span');
@@ -85,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const carousel = document.createElement('div');
         carousel.classList.add('carousel');
 
-        imagePaths.forEach(url => {
+        additionalImagePaths.forEach(url => {
             const img = document.createElement('img');
             img.src = url;
             img.alt = lakeName;
