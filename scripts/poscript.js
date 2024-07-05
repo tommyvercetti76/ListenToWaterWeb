@@ -64,19 +64,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.fetchAndOpenModal = function(lakeName) {
-        const listRef = firebase.storage().ref().child(`images/paddling_out/${lakeName}`);
-        
-        listRef.listAll()
-            .then(res => {
-                const imagePromises = res.items.map(itemRef => itemRef.getDownloadURL());
-                return Promise.all(imagePromises);
-            })
-            .then(urls => {
-                openModal(lakeName, urls);
-            })
-            .catch(error => {
-                console.error("Error fetching image list: ", error);
-            });
+        const maxImages = 10; // Set a reasonable upper limit for the number of images
+        const imagePaths = [];
+
+        for (let i = 1; i <= maxImages; i++) {
+            const imagePath = `${baseImageURL}${encodeURIComponent(lakeName)}%2F${encodeURIComponent(lakeName)}${i}.png?alt=media`;
+            imagePaths.push(imagePath);
+        }
+
+        // Filter out broken or missing images by checking their availability
+        const validImagePromises = imagePaths.map(url => {
+            return fetch(url)
+                .then(response => response.ok ? url : null)
+                .catch(() => null);
+        });
+
+        Promise.all(validImagePromises)
+            .then(urls => urls.filter(url => url !== null))
+            .then(validUrls => openModal(lakeName, validUrls));
     }
 
     window.openModal = function(lakeName, imagePaths) {
