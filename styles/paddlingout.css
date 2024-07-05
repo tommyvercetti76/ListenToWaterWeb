@@ -112,6 +112,7 @@
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s, background-color 0.2s;
+    position: relative;
 }
 
 .icon:hover {
@@ -137,6 +138,29 @@
 .location-icon::before {
     content: '\1F4CD'; /* Unicode for location pin */
     font-size: 18px;
+}
+
+/* Tooltip styles */
+.icon::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 150%; /* Position above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none; /* Prevent pointer events on the tooltip */
+    font-size: 14px;
+    font-family: 'Josefin_Light', Arial, sans-serif;
+}
+
+.icon:hover::after {
+    opacity: 1;
 }
 
 /* Modal styles */

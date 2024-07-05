@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('myModal');
     const modalContent = document.querySelector('.modal-content');
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardID = urlParams.get('cardID');
 
     let globalCardData = [];
 
@@ -8,7 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             globalCardData = data;
-            displayAllCards(data);
+            if (cardID) {
+                displaySingleCard(cardID);
+            } else {
+                displayAllCards(data);
+            }
         })
         .catch(error => {
             console.error("Error fetching data: ", error);
@@ -23,6 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function displaySingleCard(cardID) {
+        const container = document.getElementById('cardsContainer');
+        container.innerHTML = '';
+        const card = globalCardData.find(card => card.id === cardID);
+        if (card) {
+            container.insertAdjacentHTML('beforeend', createCardHTML(card));
+        } else {
+            displayError('Card not found. Please check the URL and try again.');
+        }
+    }
+
     function createCardHTML(card) {
         return `
             <div class="card" data-id="${card.id}" onclick="openModal('${card.id}')">
@@ -34,10 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="card-footer" onclick="event.stopPropagation();">
                     <div class="footer-message"></div>
-                    ${card.parkingAvl === 'Y' ? '<span class="icon parking-icon" onclick="showMessage(this, \'Parking Available\')"></span>' : ''}
-                    ${card.restroomsAvl === 'Y' ? '<span class="icon toilet-icon" onclick="showMessage(this, \'Toilet Available\')"></span>' : ''}
-                    <span class="icon youtube-icon" onclick="openYoutube(\'${card.youtubeURL}\')"></span>
-                    <span class="icon location-icon" onclick="openLocation(${card.location.latitude}, ${card.location.longitude})"></span>
+                    ${card.parkingAvl === 'Y' ? '<span class="icon parking-icon" title="Parking" onclick="showMessage(this, \'Parking Available\')"></span>' : ''}
+                    ${card.restroomsAvl === 'Y' ? '<span class="icon toilet-icon" title="Toilets" onclick="showMessage(this, \'Toilet Available\')"></span>' : ''}
+                    <span class="icon youtube-icon" title="Video" onclick="openYoutube(\'${card.youtubeURL}\')"></span>
+                    <span class="icon location-icon" title="Take me there" onclick="openLocation(${card.location.latitude}, ${card.location.longitude})"></span>
                 </div>
             </div>
         `;
