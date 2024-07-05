@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const cardID = urlParams.get('cardID');
     const baseImageURL = 'https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2F';
-    const firebaseBaseURL = 'https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2F';
 
     let globalCardData = [];
 
@@ -64,12 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.fetchAndOpenModal = function(lakeName) {
-        const imageListUrl = `${firebaseBaseURL}${encodeURIComponent(lakeName)}%2F?alt=media&token=YOUR_FIREBASE_TOKEN`;
+        const imageListUrl = `${baseImageURL}${encodeURIComponent(lakeName)}%2F?alt=media&token=YOUR_FIREBASE_TOKEN`;
 
         fetch(imageListUrl)
             .then(response => response.json())
             .then(data => {
-                const imagePaths = data.items.map(item => `${firebaseBaseURL}${encodeURIComponent(lakeName)}%2F${encodeURIComponent(item.name)}?alt=media`);
+                const imagePaths = data.items.map(item => `${baseImageURL}${encodeURIComponent(lakeName)}%2F${encodeURIComponent(item.name)}?alt=media`);
                 openModal(lakeName, imagePaths);
             })
             .catch(error => {
