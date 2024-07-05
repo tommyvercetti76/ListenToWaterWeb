@@ -63,9 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.fetchAndOpenModal = function(lakeName) {
-        const imageListUrl = `${baseImageURL}${encodeURIComponent(lakeName)}%2F?alt=media&token=YOUR_FIREBASE_TOKEN`;
-
-        fetch(imageListUrl)
+        fetch(`https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2F${encodeURIComponent(lakeName)}%2F?alt=media`)
             .then(response => response.json())
             .then(data => {
                 const imagePaths = data.items.map(item => `${baseImageURL}${encodeURIComponent(lakeName)}%2F${encodeURIComponent(item.name)}?alt=media`);
