@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const additionalImagePaths = Array.from({ length: 5 }, (_, i) => `${baseImageURL}${encodeURIComponent(card.lakeName)}%2F${encodeURIComponent(card.lakeName)}${i + 1}.png?alt=media`);
 
         return `
-            <div class="card" data-id="${card.id}" onclick="openModal('${card.lakeName}', ${JSON.stringify(additionalImagePaths)})">
+            <div class="card" data-id="${card.id}" onclick="openModal('${card.id}', '${JSON.stringify(additionalImagePaths)}')">
                 <img class="card-image" src="${imagePath}" alt="${card.title}" loading="lazy">
                 <div class="card-content">
                     <h2 class="card-title">${card.title}</h2>
@@ -64,8 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    window.openModal = function(lakeName, additionalImagePaths) {
-        additionalImagePaths = JSON.parse(additionalImagePaths);
+    window.openModal = function(cardId, additionalImagePaths) {
+        const selectedCard = globalCardData.find(card => card.id === cardId);
+        if (!selectedCard) {
+            console.error('Card not found:', cardId);
+            return;
+        }
+
+        const imagePaths = JSON.parse(additionalImagePaths);
 
         modalContent.innerHTML = ''; // Clear existing content
 
@@ -77,10 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const carousel = document.createElement('div');
         carousel.classList.add('carousel');
 
-        additionalImagePaths.forEach(url => {
+        imagePaths.forEach(url => {
             const img = document.createElement('img');
             img.src = url;
-            img.alt = lakeName;
+            img.alt = selectedCard.title;
             carousel.appendChild(img);
         });
 
