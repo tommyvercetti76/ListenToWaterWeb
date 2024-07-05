@@ -3,10 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalContent = document.querySelector('.modal-content');
     const urlParams = new URLSearchParams(window.location.search);
     const cardID = urlParams.get('cardID');
+    const baseImageURL = 'https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2F';
 
     let globalCardData = [];
 
-    fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/resources%2Fpaddling_v1%2Fpo_cards.json?alt=media&token=2d27400a-934c-48d4-8f02-e06ba986dde9')
+    fetch('https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/resources%2Fpaddling_v1%2Fpo_cards_web.json?alt=media&token=1343a0c4-4531-4ce2-9cb2-140af14e603a')
         .then(response => response.json())
         .then(data => {
             globalCardData = data;
@@ -41,9 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createCardHTML(card) {
+        const imagePath = `${baseImageURL}${encodeURIComponent(card.lakeName)}%2F${encodeURIComponent(card.lakeName)}1.png?alt=media`;
+        const additionalImagePaths = Array.from({ length: 5 }, (_, i) => `${baseImageURL}${encodeURIComponent(card.lakeName)}%2F${encodeURIComponent(card.lakeName)}${i + 1}.png?alt=media`);
+
         return `
-            <div class="card" data-id="${card.id}" onclick="openModal('${card.id}')">
-                <img class="card-image" src="${card.imageURL}" alt="${card.title}" loading="lazy">
+            <div class="card" data-id="${card.id}" onclick="openModal('${card.id}', '${JSON.stringify(additionalImagePaths)}')">
+                <img class="card-image" src="${imagePath}" alt="${card.title}" loading="lazy">
                 <div class="card-content">
                     <h2 class="card-title">${card.title}</h2>
                     <p class="card-subtitle">${card.subtitle}</p>
@@ -60,12 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    window.openModal = function(cardId) {
+    window.openModal = function(cardId, additionalImagePaths) {
         const selectedCard = globalCardData.find(card => card.id === cardId);
         if (!selectedCard) {
             console.error('Card not found:', cardId);
             return;
         }
+
+        additionalImagePaths = JSON.parse(additionalImagePaths);
 
         modalContent.innerHTML = ''; // Clear existing content
 
@@ -77,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const carousel = document.createElement('div');
         carousel.classList.add('carousel');
 
-        selectedCard.additionalImageURLs.forEach(url => {
+        additionalImagePaths.forEach(url => {
             const img = document.createElement('img');
             img.src = url;
             img.alt = selectedCard.title;
