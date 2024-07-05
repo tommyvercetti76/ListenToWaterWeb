@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('myModal');
-    const modalContent = document.querySelector('.modal-content');
+    const modalContent = document.querySelector('.modal-content .gallery');
     const urlParams = new URLSearchParams(window.location.search);
     const cardID = urlParams.get('cardID');
     const baseImageURL = 'https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2F';
@@ -74,18 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
         closeButton.innerHTML = '&times;';
         closeButton.onclick = closeModal;
 
-        const carousel = document.createElement('div');
-        carousel.classList.add('carousel');
-
         additionalImagePaths.forEach(url => {
             const img = document.createElement('img');
             img.src = url;
             img.alt = lakeName;
-            carousel.appendChild(img);
+            modalContent.appendChild(img);
         });
 
         modalContent.appendChild(closeButton);
-        modalContent.appendChild(carousel);
 
         modal.style.display = 'block';
         setTimeout(() => {
