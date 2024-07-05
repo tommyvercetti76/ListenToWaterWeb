@@ -65,8 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.openModal = function(lakeName, additionalImagePaths) {
-        additionalImagePaths = JSON.parse(additionalImagePaths);
-
         modalContent.innerHTML = ''; // Clear existing content
 
         const closeButton = document.createElement('span');
@@ -74,14 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
         closeButton.innerHTML = '&times;';
         closeButton.onclick = closeModal;
 
+        const carousel = document.createElement('div');
+        carousel.classList.add('carousel');
+
         additionalImagePaths.forEach(url => {
             const img = document.createElement('img');
             img.src = url;
             img.alt = lakeName;
-            modalContent.appendChild(img);
+            carousel.appendChild(img);
         });
 
         modalContent.appendChild(closeButton);
+        modalContent.appendChild(carousel);
 
         modal.style.display = 'block';
         setTimeout(() => {
