@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const cardID = urlParams.get('cardID');
     const baseImageURL = 'https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2F';
-    const firebaseBaseURL = 'https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2F';
 
     let globalCardData = [];
 
@@ -44,10 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createCardHTML(card) {
         const imagePath = `${baseImageURL}${encodeURIComponent(card.lakeName)}%2F${encodeURIComponent(card.lakeName)}1.png?alt=media`;
-        const imageListUrl = `${firebaseBaseURL}${encodeURIComponent(card.lakeName)}%2F`;
+        const additionalImagePaths = generateImagePaths(card.lakeName);
 
         return `
-            <div class="card" data-id="${card.id}" onclick='fetchAndOpenModal("${card.lakeName}", "${imageListUrl}")'>
+            <div class="card" data-id="${card.id}" onclick='openModal("${card.lakeName}", ${JSON.stringify(additionalImagePaths)})'>
                 <img class="card-image" src="${imagePath}" alt="${card.title}" loading="lazy">
                 <div class="card-content">
                     <h2 class="card-title">${card.title}</h2>
@@ -65,16 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
-    window.fetchAndOpenModal = function(lakeName, imageListUrl) {
-        fetch(imageListUrl)
-            .then(response => response.json())
-            .then(data => {
-                const imagePaths = data.items.map(item => `${baseImageURL}${encodeURIComponent(lakeName)}%2F${encodeURIComponent(item.name)}?alt=media`);
-                openModal(lakeName, imagePaths);
-            })
-            .catch(error => {
-                console.error("Error fetching image list: ", error);
-            });
+    function generateImagePaths(lakeName) {
+        // Assuming the number of images for each lake is between 1 and 10
+        const imagePaths = [];
+        for (let i = 1; i <= 10; i++) {
+            const imagePath = `${baseImageURL}${encodeURIComponent(lakeName)}%2F${encodeURIComponent(lakeName)}${i}.png?alt=media`;
+            imagePaths.push(imagePath);
+        }
+        return imagePaths;
     }
 
     window.openModal = function(lakeName, imagePaths) {
