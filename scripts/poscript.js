@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createCardHTML(card) {
         const imagePath = `${baseImageURL}${encodeURIComponent(card.lakeName)}%2F${encodeURIComponent(card.lakeName)}1.png?alt=media`;
+
         return `
             <div class="card" data-id="${card.id}" onclick='fetchAndOpenModal("${card.lakeName}")'>
                 <img class="card-image" src="${imagePath}" alt="${card.title}" loading="lazy">
@@ -63,11 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.fetchAndOpenModal = function(lakeName) {
-        fetch(`https://firebasestorage.googleapis.com/v0/b/listentowaterios.appspot.com/o/images%2Fpaddling_out%2F${encodeURIComponent(lakeName)}%2F?alt=media`)
-            .then(response => response.json())
-            .then(data => {
-                const imagePaths = data.items.map(item => `${baseImageURL}${encodeURIComponent(lakeName)}%2F${encodeURIComponent(item.name)}?alt=media`);
-                openModal(lakeName, imagePaths);
+        const listRef = firebase.storage().ref().child(`images/paddling_out/${lakeName}`);
+        
+        listRef.listAll()
+            .then(res => {
+                const imagePromises = res.items.map(itemRef => itemRef.getDownloadURL());
+                return Promise.all(imagePromises);
+            })
+            .then(urls => {
+                openModal(lakeName, urls);
             })
             .catch(error => {
                 console.error("Error fetching image list: ", error);
