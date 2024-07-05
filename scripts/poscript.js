@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const additionalImagePaths = Array.from({ length: 5 }, (_, i) => `${baseImageURL}${encodeURIComponent(card.lakeName)}%2F${encodeURIComponent(card.lakeName)}${i + 1}.png?alt=media`);
 
         return `
-            <div class="card" data-id="${card.id}" onclick='openModal("${card.id}", ${JSON.stringify(additionalImagePaths)})'>
+            <div class="card" data-id="${card.id}" onclick="openModal('${card.lakeName}', ${JSON.stringify(additionalImagePaths)})">
                 <img class="card-image" src="${imagePath}" alt="${card.title}" loading="lazy">
                 <div class="card-content">
                     <h2 class="card-title">${card.title}</h2>
@@ -57,20 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="footer-message"></div>
                     ${card.parkingAvl === 'Y' ? '<span class="icon parking-icon" title="Parking" onclick="showMessage(this, \'Parking Available\')"></span>' : ''}
                     ${card.restroomsAvl === 'Y' ? '<span class="icon toilet-icon" title="Toilets" onclick="showMessage(this, \'Toilet Available\')"></span>' : ''}
-                    <span class="icon youtube-icon" title="Video" onclick="openYoutube(\'${card.youtubeURL}\')"></span>
+                    <span class="icon youtube-icon" title="Video" onclick="openYoutube('${card.youtubeURL}')"></span>
                     <span class="icon location-icon" title="Take me there" onclick="openLocation(${card.location.latitude}, ${card.location.longitude})"></span>
                 </div>
             </div>
         `;
     }
 
-    window.openModal = function(cardId, additionalImagePaths) {
-        const selectedCard = globalCardData.find(card => card.id === cardId);
-        if (!selectedCard) {
-            console.error('Card not found:', cardId);
-            return;
-        }
-
+    window.openModal = function(lakeName, additionalImagePaths) {
         additionalImagePaths = JSON.parse(additionalImagePaths);
 
         modalContent.innerHTML = ''; // Clear existing content
@@ -86,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         additionalImagePaths.forEach(url => {
             const img = document.createElement('img');
             img.src = url;
-            img.alt = selectedCard.title;
+            img.alt = lakeName;
             carousel.appendChild(img);
         });
 
