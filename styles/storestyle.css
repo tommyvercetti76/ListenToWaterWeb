@@ -1,3 +1,19 @@
+/* Custom Fonts */
+@font-face {
+    font-family: 'Josefin_Medium';
+    src: url('/fonts/JosefinSans-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Josefin_Bold';
+    src: url('/fonts/JosefinSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Josefin_Light';
+    src: url('/fonts/JosefinSans-Light.ttf') format('truetype');
+}
+
 /* General Reset */
 * {
     margin: 0;
@@ -23,15 +39,16 @@ body, html {
 
 .header-title {
     font-size: 28px;
-    font-weight: bold;
+    font-family: 'Josefin_Bold', sans-serif;
 }
 
 .header-subtitle {
     font-size: 16px;
+    font-family: 'Josefin_Light', sans-serif;
     color: #ccc;
 }
 
-/* Filter Button with Funnel Icon */
+/* Filter Button */
 .filter-button {
     position: absolute;
     bottom: 10px;
@@ -42,49 +59,6 @@ body, html {
     color: #fff;
     border: none;
     cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.filter-button:hover {
-    color: #ff6b6b;
-}
-
-/* Filter Chips Section */
-.filter-chips {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.filter-chips.hidden {
-    display: none;
-}
-
-.filter-chips.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Filter Chip Styling */
-.filter-chip {
-    padding: 8px 12px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    background-color: #f3f3f3;
-    color: #333;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.filter-chip.selected {
-    background-color: #ff6b6b;
-    color: #fff;
-    border-color: #ff6b6b;
 }
 
 /* Carousel Section */
@@ -99,30 +73,20 @@ body, html {
 .carousel-item {
     background: white;
     border-radius: 10px;
-    padding: 15px;
+    padding: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.2s ease;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     position: relative;
 }
 
-.carousel-item:hover {
-    transform: scale(1.03);
-}
-
-/* Image Container with Aspect Ratio for Symmetry */
+/* Image Container */
 .img-container {
     position: relative;
     width: 100%;
     padding-top: 75%;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-bottom: 15px; /* Space between image and content */
 }
 
 .carousel-image {
@@ -132,50 +96,49 @@ body, html {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
     border-radius: 8px;
 }
 
-/* Image Indicator Dots */
-.image-indicator {
-    position: absolute;
-    bottom: 10px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.indicator-dot {
-    width: 8px;
-    height: 8px;
-    margin: 0 3px;
-    border-radius: 50%;
-    background-color: #ccc;
-    transition: background-color 0.3s ease;
-}
-
-.indicator-dot.active {
-    background-color: #333;
-}
-
-/* Text Styling for Product Details */
-.title, .description, .price {
-    margin: 10px 0;
-    text-align: left;
+/* Product Title and Description */
+.title {
+    font-family: 'Josefin_Bold', sans-serif;
+    font-size: 18px;
     color: #333;
+    margin-bottom: 5px;
 }
 
-/* Vote Button Styling */
-.vote-button {
+.description {
+    font-family: 'Josefin_Light', sans-serif;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 40px; /* Ensures space above footer elements */
+}
+
+/* Price Positioning */
+.price {
+    font-family: 'Josefin_Medium', sans-serif;
+    font-size: 16px;
+    color: #333;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    border-radius: 5px;
     position: absolute;
     bottom: 15px;
-    right: 15px;
+    left: 15px;
+}
+
+/* Vote Button Positioning */
+.vote-button {
+    font-family: 'Josefin_Bold', sans-serif;
+    font-size: 14px;
     background-color: #e74c3c;
     color: #fff;
     border: none;
     padding: 8px 15px;
     border-radius: 5px;
-    font-size: 14px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }

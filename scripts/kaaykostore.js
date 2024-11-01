@@ -1,8 +1,7 @@
-// Import necessary Firebase modules for Firebase v9
+// Import necessary Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getFirestore, collection, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { getStorage, ref, listAll, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
-import { doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -17,22 +16,22 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app); // Firestore instance for database operations
-const storage = getStorage(app); // Storage instance for accessing images
+const db = getFirestore(app); // Firestore instance
+const storage = getStorage(app); // Storage instance for images
+
+// Expose filter functions to the global window object
 window.toggleFilterChips = toggleFilterChips;
 window.toggleChip = toggleChip;
 
-// Event listener for DOM content load to ensure elements are available
+// DOM content load event to initialize fetching product data and setting up modal handlers
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Document loaded. Fetching product data...');
-    fetchProductData(); // Load product data from Firestore
-    setupModalCloseHandlers(); // Initialize modal close functionality
+    fetchProductData(); // Load product data
+    setupModalCloseHandlers(); // Set up modal close functionality
 });
 
 /**
- * fetchProductData()
- * Retrieves product data from the Firestore 'kaaykoproducts' collection.
- * Each product is then augmented with image URLs from Firebase Storage.
+ * Fetch product data from Firestore 'kaaykoproducts' collection and augment with images from Firebase Storage.
  */
 async function fetchProductData() {
     try {
@@ -41,16 +40,14 @@ async function fetchProductData() {
 
         querySnapshot.forEach(doc => {
             const item = doc.data();
-            item.id = doc.id; // Store the document ID
+            item.id = doc.id; // Save document ID
 
-            // Fetch images for each product based on its productID
             fetchImagesByProductId(item.productID).then(images => {
-                item.imgSrc = images; // Attach fetched image URLs to the item
+                item.imgSrc = images; // Attach images to item
                 items.push(item);
 
-                // Populate the carousel once all items have been processed
                 if (items.length === querySnapshot.size) {
-                    window.carouselItems = items; // Store globally for filtering
+                    window.carouselItems = items; // Store items for filtering
                     populateCarousel(window.carouselItems);
                 }
             });
@@ -61,10 +58,9 @@ async function fetchProductData() {
 }
 
 /**
- * fetchImagesByProductId(productID)
- * Retrieves all image URLs for a product from Firebase Storage using the productID.
- * @param {string} productID - Unique identifier for each product used to locate its images.
- * @returns {Promise<Array<string>>} - Array of URLs for product images.
+ * Retrieve image URLs for a product from Firebase Storage.
+ * @param {string} productID - Unique ID for product images.
+ * @returns {Promise<Array<string>>} - Array of image URLs.
  */
 async function fetchImagesByProductId(productID) {
     try {
@@ -78,9 +74,8 @@ async function fetchImagesByProductId(productID) {
 }
 
 /**
- * populateCarousel(items)
- * Renders the products in the carousel, displaying one image at a time for each product with swipe support and a vote button.
- * @param {Array<Object>} items - Array of product objects to display.
+ * Populate the carousel with product items, displaying images, details, price, and vote button.
+ * @param {Array<Object>} items - Array of product objects.
  */
 function populateCarousel(items) {
     const carousel = document.getElementById('carousel');
@@ -90,37 +85,31 @@ function populateCarousel(items) {
         const carouselItem = document.createElement('div');
         carouselItem.className = 'carousel-item';
 
-        // Create the image container
+        // Image container and images
         const imgContainer = document.createElement('div');
         imgContainer.className = 'img-container';
-
-        // Initialize image index and create image elements
         let currentImageIndex = 0;
         const images = item.imgSrc.map((src, index) => {
             const img = document.createElement('img');
             img.src = src;
-            img.alt = item.title;
             img.className = 'carousel-image';
             img.style.display = index === currentImageIndex ? 'block' : 'none';
             return img;
         });
-
         images.forEach(img => imgContainer.appendChild(img));
 
-        // Create image indicator dots
+        // Image indicator dots
         const imageIndicator = document.createElement('div');
         imageIndicator.className = 'image-indicator';
-
         item.imgSrc.forEach((_, index) => {
             const dot = document.createElement('span');
             dot.className = 'indicator-dot' + (index === currentImageIndex ? ' active' : '');
             imageIndicator.appendChild(dot);
         });
-
         imgContainer.appendChild(imageIndicator);
         carouselItem.appendChild(imgContainer);
 
-        // Create product details
+        // Product details: title, description, price, and vote button
         const title = document.createElement('h3');
         title.className = 'title';
         title.textContent = item.title;
@@ -131,14 +120,12 @@ function populateCarousel(items) {
 
         const price = document.createElement('p');
         price.className = 'price';
-        price.textContent = formatPrice(item.price);
+        price.textContent = item.price; // Use price range symbol (e.g., "$$")
 
-        // Voting functionality
         const voteButton = document.createElement('button');
         voteButton.className = 'vote-button';
         voteButton.textContent = 'Vote';
 
-        // Check if the user has already voted for this item
         const hasVoted = checkVoteCookie(item.id);
         if (hasVoted) {
             voteButton.classList.add('voted');
@@ -153,7 +140,6 @@ function populateCarousel(items) {
                     await updateDoc(productRef, {
                         votes: (item.votes || 0) + 1
                     });
-
                     item.votes = (item.votes || 0) + 1;
                     voteButton.classList.add('voted');
                     voteButton.textContent = `${item.votes} Votes`;
@@ -169,32 +155,20 @@ function populateCarousel(items) {
         carouselItem.appendChild(description);
         carouselItem.appendChild(price);
         carouselItem.appendChild(voteButton);
-
         carousel.appendChild(carouselItem);
 
+        // Swipe functionality
         let startX = 0;
-        imgContainer.addEventListener('mousedown', (e) => {
-            startX = e.clientX;
-        });
-        imgContainer.addEventListener('mouseup', (e) => {
-            handleSwipe(e.clientX - startX);
-        });
-        imgContainer.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-        });
-        imgContainer.addEventListener('touchend', (e) => {
-            handleSwipe(e.changedTouches[0].clientX - startX);
-        });
+        imgContainer.addEventListener('mousedown', (e) => { startX = e.clientX; });
+        imgContainer.addEventListener('mouseup', (e) => { handleSwipe(e.clientX - startX); });
+        imgContainer.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; });
+        imgContainer.addEventListener('touchend', (e) => { handleSwipe(e.changedTouches[0].clientX - startX); });
 
         function handleSwipe(deltaX) {
             if (Math.abs(deltaX) > 50) {
                 images[currentImageIndex].style.display = 'none';
                 imageIndicator.children[currentImageIndex].classList.remove('active');
-
-                currentImageIndex = deltaX < 0
-                    ? (currentImageIndex + 1) % images.length
-                    : (currentImageIndex - 1 + images.length) % images.length;
-
+                currentImageIndex = deltaX < 0 ? (currentImageIndex + 1) % images.length : (currentImageIndex - 1 + images.length) % images.length;
                 images[currentImageIndex].style.display = 'block';
                 imageIndicator.children[currentImageIndex].classList.add('active');
             }
@@ -203,27 +177,7 @@ function populateCarousel(items) {
 }
 
 /**
- * setVoteCookie(id)
- * Sets a cookie to track that the user has voted for a specific item.
- * @param {string} id - The ID of the item the user has voted for.
- */
-function setVoteCookie(id) {
-    document.cookie = `voted_${id}=true; path=/; max-age=${60 * 60 * 24 * 30};`;
-}
-
-/**
- * checkVoteCookie(id)
- * Checks if the user has already voted for a specific item.
- * @param {string} id - The ID of the item to check.
- * @returns {boolean} - True if the user has voted for this item, false otherwise.
- */
-function checkVoteCookie(id) {
-    return document.cookie.split(';').some(cookie => cookie.trim().startsWith(`voted_${id}=true`));
-}
-
-/**
- * toggleFilterChips()
- * Toggles the display of the filter chips section when the filter button is clicked.
+ * Filter management: toggle filter chips visibility and apply filters.
  */
 function toggleFilterChips() {
     const filterChips = document.getElementById('filter-chips');
@@ -231,36 +185,39 @@ function toggleFilterChips() {
     filterChips.classList.toggle('active');
 }
 
-/**
- * toggleChip(chip)
- * Toggles the selection of individual chips when clicked and applies the filter.
- * @param {HTMLElement} chip - The clicked filter chip element.
- */
 function toggleChip(chip) {
     chip.classList.toggle('selected');
     applyFilter();
 }
 
-/**
- * applyFilter()
- * Filters products based on selected chips and repopulates the carousel with the filtered list.
- */
 function applyFilter() {
-    const selectedChips = Array.from(document.querySelectorAll('.filter-chip.selected'));
-    const activeFilters = selectedChips.map(chip => chip.getAttribute('data-filter'));
+    const selectedAvailability = Array.from(document.querySelectorAll('.filter-chip.selected[data-filter]')).map(chip => chip.getAttribute('data-filter'));
+    const selectedPrices = Array.from(document.querySelectorAll('.filter-chip.selected[data-price]')).map(chip => chip.getAttribute('data-price'));
 
-    const carouselItems = window.carouselItems || [];
-
-    const filteredItems = activeFilters.length
-        ? carouselItems.filter(item => activeFilters.includes(item.availability))
-        : carouselItems;
+    let filteredItems = window.carouselItems;
+    if (selectedAvailability.length > 0) {
+        filteredItems = filteredItems.filter(item => selectedAvailability.includes(item.availability));
+    }
+    if (selectedPrices.length > 0) {
+        filteredItems = filteredItems.filter(item => selectedPrices.includes(item.price));
+    }
 
     populateCarousel(filteredItems);
 }
 
 /**
- * setupModalCloseHandlers()
- * Adds event listeners to close the modal when clicking outside the modal content or on the close button.
+ * Sets a cookie to track that the user has voted for a specific item.
+ */
+function setVoteCookie(id) {
+    document.cookie = `voted_${id}=true; path=/; max-age=${60 * 60 * 24 * 30};`;
+}
+
+function checkVoteCookie(id) {
+    return document.cookie.split(';').some(cookie => cookie.trim().startsWith(`voted_${id}=true`));
+}
+
+/**
+ * Modal functionality
  */
 function setupModalCloseHandlers() {
     const modal = document.getElementById('modal');
@@ -268,20 +225,6 @@ function setupModalCloseHandlers() {
     document.getElementsByClassName("close")[0].onclick = closeModal;
 }
 
-/**
- * closeModal()
- * Closes the currently open modal window.
- */
 function closeModal() {
     document.getElementById('modal').style.display = "none";
-}
-
-/**
- * formatPrice(price)
- * Formats a numeric price value as a currency string.
- * @param {number} price - The price to format.
- * @returns {string} - Formatted price with a dollar sign and two decimal places.
- */
-function formatPrice(price) {
-    return `$${Number(price).toFixed(2)}`;
 }
