@@ -4,48 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script>
-        window.location.href = "https://listentowater.org/comingsoon.html";
-        // If JavaScript is disabled, use the meta refresh as a fallback
-        document.write('<meta http-equiv="refresh" content="0;url=https://listentowater.org/comingsoon.html">');
-    </script>
+    <title>Vote for Your Favorite Designs | ListenToWater</title>
     <link rel="stylesheet" href="/styles/storestyle.css">
 </head>
-<div class="filter-controls" style="text-align: center; margin-top: 20px;">
-    <select id="category-filter">
-        <option value="All">All Categories</option>
-        <option value="Witty">Witty</option>
-        <option value="Dim Witty">Dim Witty</option>
-        <option value="Places">Places</option>
-    </select>
-    <select id="size-filter">
-        <option value="All">All Sizes</option>
-        <option value="small">Small</option>
-        <option value="medium">Medium</option>
-        <option value="large">Large</option>
-        <option value="infant">Infant</option>
-    </select>
-    <select id="color-filter">
-        <option value="All">All Colors</option>
-        <option value="white">White</option>
-        <option value="black">Black</option>
-        <option value="red">Red</option>
-    </select>
-</div>
-<div id="carousel" class="carousel"></div>
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <img id="modal-image" src="" alt="T-shirt image" style="width:100%; max-height: 300px; object-fit: contain;">
-        <h2 id="modal-title"></h2>
-        <p id="modal-description"></p>
-        <p id="modal-price"></p>
-        <p id="modal-sizes"></p>
-        <p id="modal-colors"></p>
+
+<body>
+    <!-- Updated filter controls -->
+    <div class="filter-controls" aria-label="Filter controls">
+        <select id="availability-filter" aria-label="Availability Filter">
+            <option value="All">All Availability</option>
+            <option value="Available">Available</option>
+            <option value="Unavailable">Unavailable</option>
+        </select>
     </div>
-</div>
-<script src="/scripts/kaaykostore.js"></script>
+
+    <div id="carousel" class="carousel" aria-live="polite"></div>
+
+    <div id="modal" class="modal" aria-modal="true" role="dialog">
+        <div class="modal-content">
+            <button class="close" aria-label="Close modal">&times;</button>
+            <div id="modal-image" class="modal-image-container"></div>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <p id="modal-price"></p>
+        </div>
+    </div>
+
+    <!-- Store script after Firebase initialization -->
+    <script type="module" src="/scripts/kaaykostore.js"></script>
 </body>
 
 </html>
