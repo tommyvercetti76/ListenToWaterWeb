@@ -1,0 +1,71 @@
+/* modalstyles.css */
+
+/* General Modal Styling */
+.modal {
+    display: none; /* Hidden by default, shown when active */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent scroll on the background */
+}
+
+.modal.active {
+    display: flex; /* Show modal when active */
+}
+
+/* Modal Content Container */
+.modal-content {
+    position: relative;
+    background: #fff;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* Close Button */
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 11;
+}
+
+/* Image Container with Zoom and Fixed Area */
+.modal-image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 75%; /* Aspect ratio */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: pinch-zoom;
+}
+
+/* Zoomable Image */
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease; /* Smooth zoom transition */
+}
+
+/* Prevent Close Button Overlap */
+.modal-image-container img {
+    border-radius: 8px;
+}

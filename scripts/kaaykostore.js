@@ -16,18 +16,17 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app); // Firestore instance
-const storage = getStorage(app); // Storage instance for images
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-// Expose filter functions to the global window object
 window.toggleFilterChips = toggleFilterChips;
 window.toggleChip = toggleChip;
 
-// DOM content load event to initialize fetching product data and setting up modal handlers
+// Initialize app content on load
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Document loaded. Fetching product data...');
-    fetchProductData(); // Load product data
-    setupModalCloseHandlers(); // Set up modal close functionality
+    fetchProductData();
+    setupModalCloseHandlers();
+    setupPinchToZoom();
 });
 
 /**
@@ -40,14 +39,14 @@ async function fetchProductData() {
 
         querySnapshot.forEach(doc => {
             const item = doc.data();
-            item.id = doc.id; // Save document ID
+            item.id = doc.id;
 
             fetchImagesByProductId(item.productID).then(images => {
-                item.imgSrc = images; // Attach images to item
+                item.imgSrc = images;
                 items.push(item);
 
                 if (items.length === querySnapshot.size) {
-                    window.carouselItems = items; // Store items for filtering
+                    window.carouselItems = items;
                     populateCarousel(window.carouselItems);
                 }
             });
@@ -97,17 +96,17 @@ function populateCarousel(items) {
             return img;
         });
         images.forEach(img => imgContainer.appendChild(img));
+        carouselItem.appendChild(imgContainer);
 
-        // Image indicator dots
+        // Image indicator dots placed below image container
         const imageIndicator = document.createElement('div');
         imageIndicator.className = 'image-indicator';
         item.imgSrc.forEach((_, index) => {
             const dot = document.createElement('span');
-            dot.className = 'indicator-dot' + (index === currentImageIndex ? ' active' : '');
+            dot.className = `indicator-dot${index === currentImageIndex ? ' active' : ''}`;
             imageIndicator.appendChild(dot);
         });
-        imgContainer.appendChild(imageIndicator);
-        carouselItem.appendChild(imgContainer);
+        carouselItem.appendChild(imageIndicator); // Place indicator below image container
 
         // Product details: title, description, price, and vote button
         const title = document.createElement('h3');
@@ -120,7 +119,7 @@ function populateCarousel(items) {
 
         const price = document.createElement('p');
         price.className = 'price';
-        price.textContent = item.price; // Use price range symbol (e.g., "$$")
+        price.textContent = item.price;
 
         const voteButton = document.createElement('button');
         voteButton.className = 'vote-button';
@@ -157,7 +156,7 @@ function populateCarousel(items) {
         carouselItem.appendChild(voteButton);
         carousel.appendChild(carouselItem);
 
-        // Swipe functionality
+        // Swipe functionality for images
         let startX = 0;
         imgContainer.addEventListener('mousedown', (e) => { startX = e.clientX; });
         imgContainer.addEventListener('mouseup', (e) => { handleSwipe(e.clientX - startX); });
@@ -177,22 +176,35 @@ function populateCarousel(items) {
 }
 
 /**
- * Filter management: toggle filter chips visibility and apply filters.
+ * Toggle the visibility of the filter chips section.
  */
 function toggleFilterChips() {
     const filterChips = document.getElementById('filter-chips');
-    filterChips.classList.toggle('hidden');
-    filterChips.classList.toggle('active');
+    if (filterChips) {
+        filterChips.classList.toggle('hidden');
+        filterChips.classList.toggle('active');
+    } else {
+        console.warn("Filter chips element not found.");
+    }
 }
 
+/**
+ * Toggle individual filter chips selection and reapply filters.
+ * @param {HTMLElement} chip - The clicked filter chip element.
+ */
 function toggleChip(chip) {
     chip.classList.toggle('selected');
     applyFilter();
 }
 
+/**
+ * Apply filters based on selected chips and re-render the carousel with filtered items.
+ */
 function applyFilter() {
-    const selectedAvailability = Array.from(document.querySelectorAll('.filter-chip.selected[data-filter]')).map(chip => chip.getAttribute('data-filter'));
-    const selectedPrices = Array.from(document.querySelectorAll('.filter-chip.selected[data-price]')).map(chip => chip.getAttribute('data-price'));
+    const selectedAvailability = Array.from(document.querySelectorAll('.filter-chip.selected[data-filter]'))
+        .map(chip => chip.getAttribute('data-filter'));
+    const selectedPrices = Array.from(document.querySelectorAll('.filter-chip.selected[data-price]'))
+        .map(chip => chip.getAttribute('data-price'));
 
     let filteredItems = window.carouselItems;
     if (selectedAvailability.length > 0) {
@@ -212,19 +224,101 @@ function setVoteCookie(id) {
     document.cookie = `voted_${id}=true; path=/; max-age=${60 * 60 * 24 * 30};`;
 }
 
+/**
+ * Checks if the user has already voted for a specific item.
+ */
 function checkVoteCookie(id) {
     return document.cookie.split(';').some(cookie => cookie.trim().startsWith(`voted_${id}=true`));
 }
 
 /**
- * Modal functionality
+ * Opens a modal with the selected item's image and sets up for pinch-to-zoom functionality.
+ */
+function openModal(item) {
+    const modal = document.getElementById('modal');
+    const modalImageContainer = document.getElementById('modal-image-container');
+    const modalImage = document.getElementById('modal-image');
+
+    modalImage.src = item.imgSrc[0];
+    modal.style.display = 'block';
+
+    modalImageContainer.style.transform = 'scale(1) translate(0, 0)';
+    modalImageContainer.dataset.scale = 1;
+    modalImageContainer.dataset.translateX = 0;
+    modalImageContainer.dataset.translateY = 0;
+}
+
+/**
+ * Set up event listeners for the modal's close button and modal background.
  */
 function setupModalCloseHandlers() {
     const modal = document.getElementById('modal');
-    modal.onclick = event => { if (event.target === modal) closeModal(); };
-    document.getElementsByClassName("close")[0].onclick = closeModal;
+    const closeButton = document.getElementById('close-modal-button');
+
+    if (closeButton) {
+        closeButton.addEventListener('click', closeModal);
+    } else {
+        console.warn("Close button not found in the DOM.");
+    }
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    } else {
+        console.warn("Modal element not found in the DOM.");
+    }
 }
 
+/**
+ * Close the modal.
+ */
 function closeModal() {
-    document.getElementById('modal').style.display = "none";
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+/**
+ * Adds pinch-to-zoom functionality to the modal image container.
+ */
+function setupPinchToZoom() {
+    const modalImageContainer = document.getElementById('modal-image-container');
+    
+    if (!modalImageContainer) {
+        console.warn("Modal image container not found in the DOM.");
+        return;
+    }
+
+    let scale = 1;
+    let startX = 0, startY = 0;
+
+    modalImageContainer.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const zoomAmount = e.deltaY > 0 ? 0.9 : 1.1;
+        scale = Math.max(1, Math.min(scale * zoomAmount, 3));
+        modalImageContainer.style.transform = `scale(${scale}) translate(${startX}px, ${startY}px)`;
+    });
+
+    modalImageContainer.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 2) {
+            const distance = getTouchDistance(e);
+            modalImageContainer.dataset.startDistance = distance;
+            modalImageContainer.dataset.startScale = scale;
+        }
+    });
+
+    modalImageContainer.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 2) {
+            e.preventDefault();
+            const distance = getTouchDistance(e);
+            scale = Math.min(3, Math.max(1, modalImageContainer.dataset.startScale * (distance / modalImageContainer.dataset.startDistance)));
+            modalImageContainer.style.transform = `scale(${scale}) translate(${startX}px, ${startY}px)`;
+        }
+    });
+
+    function getTouchDistance(e) {
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
 }

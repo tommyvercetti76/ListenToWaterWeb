@@ -77,6 +77,7 @@ body, html {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: relative;
 }
 
@@ -84,11 +85,12 @@ body, html {
 .img-container {
     position: relative;
     width: 100%;
-    padding-top: 75%;
+    padding-top: 75%; /* Maintains aspect ratio */
     overflow: hidden;
-    margin-bottom: 15px; /* Space between image and content */
+    margin-bottom: 4px; /* Space below the image */
 }
 
+/* Carousel Image */
 .carousel-image {
     position: absolute;
     top: 0;
@@ -99,22 +101,45 @@ body, html {
     border-radius: 8px;
 }
 
+/* Image Indicator Dots positioned below the image container */
+.image-indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 4px; /* Space above dots */
+    margin-bottom: 8px; /* Space below dots */
+}
+
+/* Dots Styling */
+.indicator-dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+    border-radius: 50%;
+    background-color: #ccc;
+    transition: background-color 0.3s ease;
+}
+
+.indicator-dot.active {
+    background-color: #333;
+}
+
 /* Product Title and Description */
 .title {
     font-family: 'Josefin_Bold', sans-serif;
     font-size: 18px;
     color: #333;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 12px;
 }
 
 .description {
     font-family: 'Josefin_Light', sans-serif;
     font-size: 14px;
     color: #666;
-    margin-bottom: 40px; /* Ensures space above footer elements */
+    margin-bottom: 24px;
 }
 
-/* Price Positioning */
+/* Footer Elements: Price and Vote Button */
 .price {
     font-family: 'Josefin_Medium', sans-serif;
     font-size: 16px;
@@ -127,7 +152,6 @@ body, html {
     left: 15px;
 }
 
-/* Vote Button Positioning */
 .vote-button {
     font-family: 'Josefin_Bold', sans-serif;
     font-size: 14px;

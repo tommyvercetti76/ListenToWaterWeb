@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vote for Your Favorite Designs | Kaayko Store</title>
     <link rel="stylesheet" href="/styles/storestyle.css">
+    <link rel="stylesheet" href="/styles/kaayko_itemview.css">
 </head>
 <body>
     <!-- Elegant Header with Title and Subtitle -->
@@ -12,18 +13,33 @@
         <div class="header-content">
             <h1 class="header-title">Kaayko Store</h1>
             <p class="header-subtitle">Vote now, pay later.</p>
-            <button id="filter-button" class="filter-button" onclick="toggleFilterChips()">&#x1F5D0;</button>
+        <!-- <button id="filter-button" class="filter-button" onclick="toggleFilterChips()">&#x1F5D0;</button> -->
         </div>
     </header>
 
-    <!-- Filter Chips Section -->
+    <!-- Filter Chips Section
     <section id="filter-chips" class="filter-chips hidden">
         <span class="filter-chip" data-filter="Available" onclick="toggleChip(this)">Available</span>
         <span class="filter-chip" data-filter="Unavailable" onclick="toggleChip(this)">Unavailable</span>
-    </section>
+        <span class="filter-chip" data-price="$$" onclick="toggleChip(this)">$$</span>
+        <span class="filter-chip" data-price="$$$" onclick="toggleChip(this)">$$$</span>
+        <span class="filter-chip" data-price="$$$$" onclick="toggleChip(this)">$$$$</span>
+    </section> -->
 
     <!-- Carousel for Product Display -->
-    <section id="carousel" class="carousel" aria-live="polite"></section>
+    <section id="carousel" class="carousel" aria-live="polite">
+        <!-- Carousel items will be dynamically injected here by kaaykostore.js -->
+    </section>
+
+    <!-- Modal for Zoomable Product Image -->
+    <div id="modal" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <button id="close-modal-button" class="modal-close" aria-label="Close modal">&times;</button>
+            <div id="modal-image-container" class="modal-image-container">
+                <img src="" alt="Product Image" id="modal-image" class="modal-image">
+            </div>
+        </div>
+    </div>
 
     <!-- Store script after Firebase initialization -->
     <script type="module" src="/scripts/kaaykostore.js"></script>
