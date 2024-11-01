@@ -19,12 +19,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); // Firestore instance for database operations
 const storage = getStorage(app); // Storage instance for accessing images
+window.toggleFilterChips = toggleFilterChips;
+window.toggleChip = toggleChip;
 
 // Event listener for DOM content load to ensure elements are available
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Document loaded. Fetching product data...');
     fetchProductData(); // Load product data from Firestore
-    setupFilterHandlers(); // Initialize filter controls for user selection
     setupModalCloseHandlers(); // Initialize modal close functionality
 });
 
@@ -35,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 async function fetchProductData() {
     try {
-        // Fetch products from the Firestore 'kaaykoproducts' collection
         const querySnapshot = await getDocs(collection(db, "kaaykoproducts"));
         const items = [];
 
@@ -68,12 +68,12 @@ async function fetchProductData() {
  */
 async function fetchImagesByProductId(productID) {
     try {
-        const storageRef = ref(storage, `kaaykoStoreTShirtImages/${productID}`); // Reference to product images
-        const result = await listAll(storageRef); // List all items (images) in the product's folder
-        return await Promise.all(result.items.map(imageRef => getDownloadURL(imageRef))); // Get URLs for all images
+        const storageRef = ref(storage, `kaaykoStoreTShirtImages/${productID}`);
+        const result = await listAll(storageRef);
+        return await Promise.all(result.items.map(imageRef => getDownloadURL(imageRef)));
     } catch (error) {
         console.error("Error fetching images:", error);
-        return []; // Return an empty array if an error occurs
+        return [];
     }
 }
 
@@ -84,7 +84,7 @@ async function fetchImagesByProductId(productID) {
  */
 function populateCarousel(items) {
     const carousel = document.getElementById('carousel');
-    carousel.innerHTML = ''; // Clear any existing items
+    carousel.innerHTML = '';
 
     items.forEach(item => {
         const carouselItem = document.createElement('div');
@@ -137,7 +137,7 @@ function populateCarousel(items) {
         const voteButton = document.createElement('button');
         voteButton.className = 'vote-button';
         voteButton.textContent = 'Vote';
-        
+
         // Check if the user has already voted for this item
         const hasVoted = checkVoteCookie(item.id);
         if (hasVoted) {
@@ -149,18 +149,16 @@ function populateCarousel(items) {
         voteButton.addEventListener('click', async () => {
             if (!hasVoted) {
                 try {
-                    // Reference to the Firestore document
-                    const productRef = doc(db, "kaaykoproducts", item.id); // Corrected doc usage
+                    const productRef = doc(db, "kaaykoproducts", item.id);
                     await updateDoc(productRef, {
-                        votes: (item.votes || 0) + 1 // Increment vote count in Firestore
+                        votes: (item.votes || 0) + 1
                     });
-        
-                    // Update UI and cookie after successful vote
+
                     item.votes = (item.votes || 0) + 1;
                     voteButton.classList.add('voted');
                     voteButton.textContent = `${item.votes} Votes`;
                     voteButton.disabled = true;
-                    setVoteCookie(item.id); // Store the vote in a cookie
+                    setVoteCookie(item.id);
                 } catch (error) {
                     console.error("Error updating vote count:", error);
                 }
@@ -172,10 +170,8 @@ function populateCarousel(items) {
         carouselItem.appendChild(price);
         carouselItem.appendChild(voteButton);
 
-        // Append the item to the carousel
         carousel.appendChild(carouselItem);
 
-        // Swipe Functionality for Touch and Mouse
         let startX = 0;
         imgContainer.addEventListener('mousedown', (e) => {
             startX = e.clientX;
@@ -191,17 +187,13 @@ function populateCarousel(items) {
         });
 
         function handleSwipe(deltaX) {
-            if (Math.abs(deltaX) > 50) { // Only trigger on a significant horizontal swipe
+            if (Math.abs(deltaX) > 50) {
                 images[currentImageIndex].style.display = 'none';
                 imageIndicator.children[currentImageIndex].classList.remove('active');
 
-                if (deltaX < 0) {
-                    // Swipe left to go to the next image
-                    currentImageIndex = (currentImageIndex + 1) % images.length;
-                } else {
-                    // Swipe right to go to the previous image
-                    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-                }
+                currentImageIndex = deltaX < 0
+                    ? (currentImageIndex + 1) % images.length
+                    : (currentImageIndex - 1 + images.length) % images.length;
 
                 images[currentImageIndex].style.display = 'block';
                 imageIndicator.children[currentImageIndex].classList.add('active');
@@ -230,61 +222,50 @@ function checkVoteCookie(id) {
 }
 
 /**
- * setupFilterHandlers()
- * Sets up event listeners for category and availability filters,
- * allowing users to filter displayed products based on selected criteria.
+ * toggleFilterChips()
+ * Toggles the display of the filter chips section when the filter button is clicked.
  */
-function setupFilterHandlers() {
-    const categoryFilter = document.getElementById('category-filter');
-    const availabilityFilter = document.getElementById('availability-filter');
-
-    if (categoryFilter) {
-        categoryFilter.addEventListener('change', filterItems);
-    } else {
-        console.warn('Category filter element not found');
-    }
-
-    if (availabilityFilter) {
-        availabilityFilter.addEventListener('change', filterItems);
-    } else {
-        console.warn('Availability filter element not found');
-    }
+function toggleFilterChips() {
+    const filterChips = document.getElementById('filter-chips');
+    filterChips.classList.toggle('hidden');
+    filterChips.classList.toggle('active');
 }
 
 /**
- * filterItems()
- * Filters products based on selected category and availability values,
- * then repopulates the carousel with the filtered list.
+ * toggleChip(chip)
+ * Toggles the selection of individual chips when clicked and applies the filter.
+ * @param {HTMLElement} chip - The clicked filter chip element.
  */
-function filterItems() {
-    const category = document.getElementById('category-filter').value;
-    const availability = document.getElementById('availability-filter').value;
-
-    let filteredItems = window.carouselItems; // Start with the full list of items
-
-    // Apply category filter if a specific category is selected
-    if (category !== "All") filteredItems = filteredItems.filter(item => item.category === category);
-
-    // Apply availability filter
-    if (availability === "Available") filteredItems = filteredItems.filter(item => item.isAvailable);
-    if (availability === "Unavailable") filteredItems = filteredItems.filter(item => !item.isAvailable);
-
-    populateCarousel(filteredItems); // Repopulate carousel with filtered items
+function toggleChip(chip) {
+    chip.classList.toggle('selected');
+    applyFilter();
 }
 
 /**
- * openModal(item)
- * Opens a modal window to display detailed information about a selected product.
- * @param {Object} item - Product object containing details to display in the modal.
+ * applyFilter()
+ * Filters products based on selected chips and repopulates the carousel with the filtered list.
  */
-function openModal(item) {
-    // Generate HTML for each image to display in the modal
-    const imagesHtml = item.imgSrc.map(src => `<img src="${src}" alt="${item.title}" style="width:100%;">`).join('');
-    document.getElementById('modal-image').innerHTML = imagesHtml;
-    document.getElementById('modal-title').textContent = item.title;
-    document.getElementById('modal-description').textContent = item.description;
-    document.getElementById('modal-price').textContent = `Price: ${formatPrice(item.price)}`;
-    document.getElementById('modal').style.display = "block"; // Show the modal
+function applyFilter() {
+    const selectedChips = Array.from(document.querySelectorAll('.filter-chip.selected'));
+    const activeFilters = selectedChips.map(chip => chip.getAttribute('data-filter'));
+
+    const carouselItems = window.carouselItems || [];
+
+    const filteredItems = activeFilters.length
+        ? carouselItems.filter(item => activeFilters.includes(item.availability))
+        : carouselItems;
+
+    populateCarousel(filteredItems);
+}
+
+/**
+ * setupModalCloseHandlers()
+ * Adds event listeners to close the modal when clicking outside the modal content or on the close button.
+ */
+function setupModalCloseHandlers() {
+    const modal = document.getElementById('modal');
+    modal.onclick = event => { if (event.target === modal) closeModal(); };
+    document.getElementsByClassName("close")[0].onclick = closeModal;
 }
 
 /**
@@ -296,22 +277,11 @@ function closeModal() {
 }
 
 /**
- * setupModalCloseHandlers()
- * Adds event listeners to close the modal when clicking outside the modal content
- * or on the close button.
- */
-function setupModalCloseHandlers() {
-    const modal = document.getElementById('modal');
-    modal.onclick = event => { if (event.target === modal) closeModal(); }; // Close on outside click
-    document.getElementsByClassName("close")[0].onclick = closeModal; // Close on button click
-}
-
-/**
  * formatPrice(price)
  * Formats a numeric price value as a currency string.
  * @param {number} price - The price to format.
  * @returns {string} - Formatted price with a dollar sign and two decimal places.
  */
 function formatPrice(price) {
-    return `$${Number(price).toFixed(2)}`; // Format price with two decimal places
+    return `$${Number(price).toFixed(2)}`;
 }

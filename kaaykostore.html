@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vote for Your Favorite Designs | ListenToWater</title>
+    <title>Vote for Your Favorite Designs | Kaayko Store</title>
     <link rel="stylesheet" href="/styles/storestyle.css">
 </head>
-
 <body>
-    <!-- Updated filter controls -->
-    <div class="filter-controls" aria-label="Filter controls">
-        <select id="availability-filter" aria-label="Availability Filter">
-            <option value="All">All Availability</option>
-            <option value="Available">Available</option>
-            <option value="Unavailable">Unavailable</option>
-        </select>
-    </div>
+    <!-- Elegant Header with Title and Subtitle -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="header-title">Kaayko Store</h1>
+            <p class="header-subtitle">Vote now, pay later.</p>
+            <button id="filter-button" class="filter-button" onclick="toggleFilterChips()">&#x1F5D0;</button>
+        </div>
+    </header>
 
-    <div id="carousel" class="carousel" aria-live="polite"></div>
+    <!-- Filter Chips Section -->
+    <section id="filter-chips" class="filter-chips hidden">
+        <span class="filter-chip" data-filter="Available" onclick="toggleChip(this)">Available</span>
+        <span class="filter-chip" data-filter="Unavailable" onclick="toggleChip(this)">Unavailable</span>
+    </section>
 
+    <!-- Carousel for Product Display -->
+    <section id="carousel" class="carousel" aria-live="polite"></section>
+
+    <!-- Modal for Product Details -->
     <div id="modal" class="modal" aria-modal="true" role="dialog">
         <div class="modal-content">
             <button class="close" aria-label="Close modal">&times;</button>
@@ -33,5 +39,4 @@
     <!-- Store script after Firebase initialization -->
     <script type="module" src="/scripts/kaaykostore.js"></script>
 </body>
-
 </html>
