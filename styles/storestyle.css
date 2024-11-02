@@ -77,8 +77,8 @@ body, html {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center;
     position: relative;
+    align-items: flex-start; /* Left-align content */
 }
 
 /* Image Container */
@@ -87,7 +87,7 @@ body, html {
     width: 100%;
     padding-top: 75%; /* Maintains aspect ratio */
     overflow: hidden;
-    margin-bottom: 4px; /* Space below the image */
+    margin-bottom: 8px; /* 8px space below image */
 }
 
 /* Carousel Image */
@@ -104,9 +104,10 @@ body, html {
 /* Image Indicator Dots positioned below the image container */
 .image-indicator {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Center-align dots */
     margin-top: 4px; /* Space above dots */
     margin-bottom: 8px; /* Space below dots */
+    width: 100%; /* Ensure the indicator takes full width */
 }
 
 /* Dots Styling */
@@ -128,15 +129,19 @@ body, html {
     font-family: 'Josefin_Bold', sans-serif;
     font-size: 18px;
     color: #333;
-    margin-top: 8px;
-    margin-bottom: 12px;
+    margin-top: 8px; /* 8px space above title */
+    margin-bottom: 8px; /* 8px space below title */
+    text-align: left; /* Left-align the title */
+    width: 100%; /* Ensure title takes full width */
 }
 
 .description {
     font-family: 'Josefin_Light', sans-serif;
     font-size: 14px;
     color: #666;
-    margin-bottom: 24px;
+    margin-bottom: 48px; /* 24px space below description to footer */
+    text-align: left; /* Left-align the description */
+    width: 100%; /* Ensure description takes full width */
 }
 
 /* Footer Elements: Price and Vote Button */
