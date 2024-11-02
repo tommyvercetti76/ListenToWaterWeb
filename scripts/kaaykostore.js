@@ -19,13 +19,14 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
+// Event listener to trigger data fetching and modal setup when the page content is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     fetchProductData();
     setupModalCloseHandlers();
 });
 
 /**
- * Fetch product data from Firestore and populate the carousel.
+ * Fetches product data from Firestore and populates the carousel.
  */
 async function fetchProductData() {
     try {
@@ -49,6 +50,8 @@ async function fetchProductData() {
 
 /**
  * Fetches images for a specific product from Firebase Storage.
+ * @param {string} productID - The unique ID of the product.
+ * @returns {Promise<Array<string>>} - Array of image URLs.
  */
 async function fetchImagesByProductId(productID) {
     try {
@@ -63,6 +66,7 @@ async function fetchImagesByProductId(productID) {
 
 /**
  * Populates the carousel with product items.
+ * @param {Array<Object>} items - The product items to display in the carousel.
  */
 function populateCarousel(items) {
     const carousel = document.getElementById('carousel');
@@ -72,7 +76,6 @@ function populateCarousel(items) {
         const carouselItem = document.createElement('div');
         carouselItem.className = 'carousel-item';
 
-        // Create and populate image container
         const imgContainer = document.createElement('div');
         imgContainer.className = 'img-container';
 
@@ -86,17 +89,19 @@ function populateCarousel(items) {
 
         imgContainer.addEventListener('click', () => openModal(item));
 
-        // Add image indicator dots below the image container for the carousel
+        // Image indicators for the carousel
         const imageIndicator = createImageIndicator(item.imgSrc.length, 0);
         carouselItem.appendChild(imgContainer);
         carouselItem.appendChild(imageIndicator);
 
+        // Add text elements (title, description, price) and the like button
         const title = createTextElement('h3', 'title', item.title);
         const description = createTextElement('p', 'description', item.description);
         const price = createTextElement('p', 'price', item.price);
-        const voteButton = createVoteButton(item);
+        const likeButtonContainer = createLikeButton(item);
 
-        carouselItem.append(title, description, price, voteButton);
+        // Append text and buttons to the carousel item
+        carouselItem.append(title, description, price, likeButtonContainer);
         carousel.appendChild(carouselItem);
 
         // Add swipe functionality for images within imgContainer
@@ -106,6 +111,9 @@ function populateCarousel(items) {
 
 /**
  * Creates an image indicator for the carousel images.
+ * @param {number} length - The number of images.
+ * @param {number} currentImageIndex - The index of the currently displayed image.
+ * @returns {HTMLElement} - A div containing indicator dots.
  */
 function createImageIndicator(length, currentImageIndex) {
     const imageIndicator = document.createElement('div');
@@ -120,6 +128,10 @@ function createImageIndicator(length, currentImageIndex) {
 
 /**
  * Adds swipe functionality to the image container.
+ * Allows users to swipe through images in the carousel.
+ * @param {HTMLElement} container - The image container element.
+ * @param {number} length - The number of images in the container.
+ * @param {HTMLElement} indicator - The indicator for tracking the current image.
  */
 function addSwipeFunctionality(container, length, indicator) {
     let startX = 0, currentImageIndex = 0;
@@ -143,27 +155,32 @@ function addSwipeFunctionality(container, length, indicator) {
 
 /**
  * Opens a modal to display images of the selected product.
+ * @param {Object} item - The product item data.
  */
 function openModal(item) {
     const modal = document.getElementById('modal');
     const modalImageContainer = document.getElementById('modal-image-container');
-    modalImageContainer.innerHTML = ''; // Clear previous images
+    modalImageContainer.innerHTML = '';
 
     item.imgSrc.forEach((src, index) => {
         const img = document.createElement('img');
         img.src = src;
         img.className = 'modal-image';
-        img.style.display = index === 0 ? 'block' : 'none'; // Show only the first image initially
+        img.style.display = index === 0 ? 'block' : 'none';
         modalImageContainer.appendChild(img);
     });
 
-    modal.classList.add('active'); // Show modal
+    modal.classList.add('active');
     let currentImageIndex = 0;
     setupModalNavigation(modalImageContainer, item.imgSrc.length, currentImageIndex);
 }
 
 /**
  * Sets up navigation within the modal for swipe and button navigation.
+ * Allows users to navigate images in the modal with buttons and swipe.
+ * @param {HTMLElement} container - The modal image container element.
+ * @param {number} length - The number of images in the container.
+ * @param {number} currentImageIndex - Tracks the current image being displayed.
  */
 function setupModalNavigation(container, length, currentImageIndex) {
     const images = container.querySelectorAll('.modal-image');
@@ -184,7 +201,6 @@ function setupModalNavigation(container, length, currentImageIndex) {
     leftButton.onclick = () => updateImageIndex(currentImageIndex - 1);
     rightButton.onclick = () => updateImageIndex(currentImageIndex + 1);
 
-    // Swipe functionality
     let startX = 0;
     container.addEventListener('mousedown', e => { startX = e.clientX; });
     container.addEventListener('mouseup', e => handleSwipe(e.clientX - startX));
@@ -200,6 +216,10 @@ function setupModalNavigation(container, length, currentImageIndex) {
 
 /**
  * Creates a text element (title or description) for a product.
+ * @param {string} tag - The HTML tag for the element.
+ * @param {string} className - The class name to apply to the element.
+ * @param {string} text - The text content of the element.
+ * @returns {HTMLElement} - The created text element.
  */
 function createTextElement(tag, className, text) {
     const element = document.createElement(tag);
@@ -209,29 +229,60 @@ function createTextElement(tag, className, text) {
 }
 
 /**
- * Creates a vote button for a product item with voting functionality.
+ * Creates a like button for a product item with toggle functionality to track likes.
+ * @param {Object} item - The product item.
+ * @returns {HTMLElement} - The created heart button container with like count.
  */
-function createVoteButton(item) {
+function createLikeButton(item) {
     const button = document.createElement('button');
-    button.className = 'vote-button';
-    button.textContent = 'Vote';
-    
+    button.className = 'heart-button';
+    let isLiked = item.isLiked || false;  // Track if the user has liked the item
+    let currentLikes = item.likes || 0;
+
+    // Display current likes beside the button
+    const likesCount = document.createElement('span');
+    likesCount.className = 'likes-count';
+    likesCount.textContent = `${currentLikes} Likes`;
+
+    // Set initial visual state
+    updateHeartButtonVisuals();
+
     button.addEventListener('click', async () => {
         try {
+            // Toggle like state
+            isLiked = !isLiked;
+            currentLikes = isLiked ? currentLikes + 1 : currentLikes - 1;
+
+            // Update Firestore with new like count and state
             const productRef = doc(db, "kaaykoproducts", item.id);
-            await updateDoc(productRef, { votes: (item.votes || 0) + 1 });
-            button.textContent = `${(item.votes || 0) + 1} Votes`;
-            button.disabled = true;
+            await updateDoc(productRef, { likes: currentLikes, isLiked: isLiked });
+
+            // Update visual state and like count display
+            updateHeartButtonVisuals();
+            likesCount.textContent = `${currentLikes} Likes`;
         } catch (error) {
-            console.error("Error updating vote count:", error);
+            console.error("Error updating like count:", error);
         }
     });
 
-    return button;
+    // Update the button’s appearance based on the like state
+    function updateHeartButtonVisuals() {
+        if (isLiked) {
+            button.classList.add('liked');
+        } else {
+            button.classList.remove('liked');
+        }
+    }
+
+    // Create a container for the heart button and like count
+    const container = document.createElement('div');
+    container.append(button, likesCount);
+    return container;
 }
 
 /**
  * Sets up modal close functionality.
+ * Allows closing the modal by clicking the close button or clicking outside the modal content.
  */
 function setupModalCloseHandlers() {
     const modal = document.getElementById('modal');
@@ -247,6 +298,7 @@ function setupModalCloseHandlers() {
 
 /**
  * Closes the modal.
+ * @param {HTMLElement} modal - The modal element to close.
  */
 function closeModal(modal) {
     modal.classList.remove('active');

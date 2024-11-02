@@ -144,7 +144,7 @@ body, html {
     width: 100%; /* Ensure description takes full width */
 }
 
-/* Footer Elements: Price and Vote Button */
+/* Footer Elements: Price */
 .price {
     font-family: 'Josefin_Medium', sans-serif;
     font-size: 16px;
@@ -157,26 +157,54 @@ body, html {
     left: 15px;
 }
 
-.vote-button {
-    font-family: 'Josefin_Bold', sans-serif;
-    font-size: 14px;
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
+/* Heart Button Styling */
+.heart-button {
+    width: 36px;
+    height: 36px;
     position: absolute;
     bottom: 15px;
     right: 15px;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
+    outline: none;
+    transition: color 0.2s ease;
+}
+
+/* Heart Shape */
+.heart-button::before,
+.heart-button::after {
+    content: "";
+    width: 18px;
+    height: 28px;
+    position: absolute;
+    top: 4px;
+    left: 9px;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 50% 50% 0 0;
+    transform: rotate(-45deg);
     transition: background-color 0.3s ease;
 }
 
-.vote-button.voted {
-    background-color: #555;
-    cursor: default;
+.heart-button::after {
+    left: 9px;
+    transform: rotate(45deg);
 }
 
-.vote-button:hover:not(.voted) {
-    background-color: #d62c1a;
+/* Filled heart when liked */
+.heart-button.liked::before,
+.heart-button.liked::after {
+    background-color: red;
+    border-color: red;
+}
+
+/* Likes count styling */
+.likes-count {
+    font-family: 'Josefin_Medium', sans-serif;
+    font-size: 14px;
+    color: #333;
+    position: absolute;
+    bottom: 15px;
+    right: 60px; /* Space from the heart button */
 }
