@@ -231,18 +231,18 @@ function createTextElement(tag, className, text) {
 /**
  * Creates a like button for a product item with toggle functionality to track likes.
  * @param {Object} item - The product item.
- * @returns {HTMLElement} - The created heart button container with like count.
+ * @returns {HTMLElement} - The created heart button container with vote count.
  */
 function createLikeButton(item) {
     const button = document.createElement('button');
     button.className = 'heart-button';
-    let isLiked = item.isLiked || false;  // Track if the user has liked the item
-    let currentLikes = item.likes || 0;
+    let isLiked = false;  // Track if the user has liked the item
+    let currentVotes = item.votes || 0;
 
-    // Display current likes beside the button
-    const likesCount = document.createElement('span');
-    likesCount.className = 'likes-count';
-    likesCount.textContent = `${currentLikes} Likes`;
+    // Display current votes beside the button
+    const votesCount = document.createElement('span');
+    votesCount.className = 'likes-count';
+    votesCount.textContent = `${currentVotes} Votes`;
 
     // Set initial visual state
     updateHeartButtonVisuals();
@@ -251,17 +251,17 @@ function createLikeButton(item) {
         try {
             // Toggle like state
             isLiked = !isLiked;
-            currentLikes = isLiked ? currentLikes + 1 : currentLikes - 1;
+            currentVotes = isLiked ? currentVotes + 1 : currentVotes - 1;
 
-            // Update Firestore with new like count and state
+            // Update Firestore with new vote count
             const productRef = doc(db, "kaaykoproducts", item.id);
-            await updateDoc(productRef, { likes: currentLikes, isLiked: isLiked });
+            await updateDoc(productRef, { votes: currentVotes });
 
-            // Update visual state and like count display
+            // Update visual state and vote count display
             updateHeartButtonVisuals();
-            likesCount.textContent = `${currentLikes} Likes`;
+            votesCount.textContent = `${currentVotes} Votes`;
         } catch (error) {
-            console.error("Error updating like count:", error);
+            console.error("Error updating vote count:", error);
         }
     });
 
@@ -274,9 +274,9 @@ function createLikeButton(item) {
         }
     }
 
-    // Create a container for the heart button and like count
+    // Create a container for the heart button and vote count
     const container = document.createElement('div');
-    container.append(button, likesCount);
+    container.append(button, votesCount);
     return container;
 }
 
