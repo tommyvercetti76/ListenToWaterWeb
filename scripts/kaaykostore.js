@@ -26,8 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /**
  * Fetch product data from Firestore and populate the carousel.
- * This function retrieves products from the 'kaaykoproducts' collection,
- * fetches associated images from Firebase Storage, and populates the carousel.
  */
 async function fetchProductData() {
     try {
@@ -51,8 +49,6 @@ async function fetchProductData() {
 
 /**
  * Fetches images for a specific product from Firebase Storage.
- * @param {string} productID - The unique ID of the product.
- * @returns {Promise<Array<string>>} - A promise that resolves to an array of image URLs.
  */
 async function fetchImagesByProductId(productID) {
     try {
@@ -67,8 +63,6 @@ async function fetchImagesByProductId(productID) {
 
 /**
  * Populates the carousel with product items.
- * Each item includes images, title, description, price, and a vote button.
- * @param {Array<Object>} items - The product items to display in the carousel.
  */
 function populateCarousel(items) {
     const carousel = document.getElementById('carousel');
@@ -112,9 +106,6 @@ function populateCarousel(items) {
 
 /**
  * Creates an image indicator for the carousel images.
- * @param {number} length - The number of images.
- * @param {number} currentImageIndex - The index of the currently displayed image.
- * @returns {HTMLElement} - A div containing indicator dots.
  */
 function createImageIndicator(length, currentImageIndex) {
     const imageIndicator = document.createElement('div');
@@ -129,10 +120,6 @@ function createImageIndicator(length, currentImageIndex) {
 
 /**
  * Adds swipe functionality to the image container.
- * Allows users to swipe through images in the carousel.
- * @param {HTMLElement} container - The image container element.
- * @param {number} length - The number of images in the container.
- * @param {HTMLElement} indicator - The indicator for tracking the current image.
  */
 function addSwipeFunctionality(container, length, indicator) {
     let startX = 0, currentImageIndex = 0;
@@ -155,16 +142,13 @@ function addSwipeFunctionality(container, length, indicator) {
 }
 
 /**
- * Opens a modal to display all images of the selected product with swipe functionality.
- * No indicators are included within the modal.
- * @param {Object} item - The product item data.
+ * Opens a modal to display images of the selected product.
  */
 function openModal(item) {
     const modal = document.getElementById('modal');
     const modalImageContainer = document.getElementById('modal-image-container');
     modalImageContainer.innerHTML = ''; // Clear previous images
 
-    // Add all product images to modal
     item.imgSrc.forEach((src, index) => {
         const img = document.createElement('img');
         img.src = src;
@@ -173,20 +157,35 @@ function openModal(item) {
         modalImageContainer.appendChild(img);
     });
 
-    modal.style.display = 'block';
-    setupModalSwipeFunctionality(modalImageContainer, item.imgSrc.length);
+    modal.classList.add('active'); // Show modal
+    let currentImageIndex = 0;
+    setupModalNavigation(modalImageContainer, item.imgSrc.length, currentImageIndex);
 }
 
 /**
- * Adds swipe functionality within the modal.
- * Allows users to swipe through images in the modal.
- * @param {HTMLElement} container - The modal image container element.
- * @param {number} length - The number of images in the container.
+ * Sets up navigation within the modal for swipe and button navigation.
  */
-function setupModalSwipeFunctionality(container, length) {
-    let startX = 0, currentImageIndex = 0;
+function setupModalNavigation(container, length, currentImageIndex) {
     const images = container.querySelectorAll('.modal-image');
+    const leftButton = document.querySelector('.modal-nav-left');
+    const rightButton = document.querySelector('.modal-nav-right');
 
+    if (!leftButton || !rightButton) {
+        console.error("Modal navigation buttons not found.");
+        return;
+    }
+
+    function updateImageIndex(newIndex) {
+        images[currentImageIndex].style.display = 'none';
+        currentImageIndex = (newIndex + length) % length;
+        images[currentImageIndex].style.display = 'block';
+    }
+
+    leftButton.onclick = () => updateImageIndex(currentImageIndex - 1);
+    rightButton.onclick = () => updateImageIndex(currentImageIndex + 1);
+
+    // Swipe functionality
+    let startX = 0;
     container.addEventListener('mousedown', e => { startX = e.clientX; });
     container.addEventListener('mouseup', e => handleSwipe(e.clientX - startX));
     container.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
@@ -194,19 +193,13 @@ function setupModalSwipeFunctionality(container, length) {
 
     function handleSwipe(deltaX) {
         if (Math.abs(deltaX) > 50) {
-            images[currentImageIndex].style.display = 'none';
-            currentImageIndex = deltaX < 0 ? (currentImageIndex + 1) % length : (currentImageIndex - 1 + length) % length;
-            images[currentImageIndex].style.display = 'block';
+            updateImageIndex(deltaX < 0 ? currentImageIndex + 1 : currentImageIndex - 1);
         }
     }
 }
 
 /**
  * Creates a text element (title or description) for a product.
- * @param {string} tag - The HTML tag for the element.
- * @param {string} className - The class name to apply to the element.
- * @param {string} text - The text content of the element.
- * @returns {HTMLElement} - The created text element.
  */
 function createTextElement(tag, className, text) {
     const element = document.createElement(tag);
@@ -217,8 +210,6 @@ function createTextElement(tag, className, text) {
 
 /**
  * Creates a vote button for a product item with voting functionality.
- * @param {Object} item - The product item.
- * @returns {HTMLElement} - The created vote button.
  */
 function createVoteButton(item) {
     const button = document.createElement('button');
@@ -241,13 +232,22 @@ function createVoteButton(item) {
 
 /**
  * Sets up modal close functionality.
- * The modal can be closed by clicking the close button or clicking outside the modal content.
  */
 function setupModalCloseHandlers() {
     const modal = document.getElementById('modal');
+    const closeButton = document.getElementById('close-modal-button');
+
+    if (closeButton) {
+        closeButton.onclick = () => closeModal(modal);
+    }
     modal.addEventListener('click', (e) => {
-        if (e.target === modal || e.target.id === 'close-modal-button') {
-            modal.style.display = 'none';
-        }
+        if (e.target === modal) closeModal(modal);
     });
+}
+
+/**
+ * Closes the modal.
+ */
+function closeModal(modal) {
+    modal.classList.remove('active');
 }
