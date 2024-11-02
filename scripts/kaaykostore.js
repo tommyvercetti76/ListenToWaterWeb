@@ -92,70 +92,18 @@ function populateCarousel(items) {
 
         imgContainer.addEventListener('click', () => openModal(item));
 
-        // Add image indicator dots below the image container
-        const imageIndicator = createImageIndicator(item.imgSrc.length, 0);
-        carouselItem.appendChild(imgContainer);
-        carouselItem.appendChild(imageIndicator);
-
         const title = createTextElement('h3', 'title', item.title);
         const description = createTextElement('p', 'description', item.description);
         const price = createTextElement('p', 'price', item.price);
         const voteButton = createVoteButton(item);
 
-        carouselItem.append(title, description, price, voteButton);
+        carouselItem.append(imgContainer, title, description, price, voteButton);
         carousel.appendChild(carouselItem);
-
-        // Add swipe functionality for images within imgContainer
-        addSwipeFunctionality(imgContainer, item.imgSrc.length, imageIndicator);
     });
 }
 
 /**
- * Creates an image indicator for the carousel images.
- * @param {number} length - The number of images.
- * @param {number} currentImageIndex - The index of the currently displayed image.
- * @returns {HTMLElement} - A div containing indicator dots.
- */
-function createImageIndicator(length, currentImageIndex) {
-    const imageIndicator = document.createElement('div');
-    imageIndicator.className = 'image-indicator';
-    for (let i = 0; i < length; i++) {
-        const dot = document.createElement('span');
-        dot.className = 'indicator-dot' + (i === currentImageIndex ? ' active' : '');
-        imageIndicator.appendChild(dot);
-    }
-    return imageIndicator;
-}
-
-/**
- * Adds swipe functionality to the image container.
- * Allows users to swipe through images in the carousel.
- * @param {HTMLElement} container - The image container element.
- * @param {number} length - The number of images in the container.
- * @param {HTMLElement} indicator - The indicator for tracking the current image.
- */
-function addSwipeFunctionality(container, length, indicator) {
-    let startX = 0, currentImageIndex = 0;
-
-    container.addEventListener('mousedown', e => { startX = e.clientX; });
-    container.addEventListener('mouseup', e => handleSwipe(e.clientX - startX));
-    container.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-    container.addEventListener('touchend', e => handleSwipe(e.changedTouches[0].clientX - startX));
-
-    function handleSwipe(deltaX) {
-        if (Math.abs(deltaX) > 50) {
-            const images = container.querySelectorAll('.carousel-image');
-            images[currentImageIndex].style.display = 'none';
-            indicator.children[currentImageIndex].classList.remove('active');
-            currentImageIndex = deltaX < 0 ? (currentImageIndex + 1) % length : (currentImageIndex - 1 + length) % length;
-            images[currentImageIndex].style.display = 'block';
-            indicator.children[currentImageIndex].classList.add('active');
-        }
-    }
-}
-
-/**
- * Opens a modal to display all images of the selected product with swipe functionality.
+ * Opens a modal to display all images of the selected product with navigation and swipe functionality.
  * @param {Object} item - The product item data.
  */
 function openModal(item) {
@@ -172,12 +120,35 @@ function openModal(item) {
         modalImageContainer.appendChild(img);
     });
 
+    // Track the current image index
+    let currentImageIndex = 0;
+
+    // Set up left and right navigation
+    const prevButton = document.querySelector('.modal-nav-left');
+    const nextButton = document.querySelector('.modal-nav-right');
+    prevButton.onclick = () => navigateImages(-1);
+    nextButton.onclick = () => navigateImages(1);
+
+    /**
+     * Navigate images in the modal.
+     * @param {number} direction - The direction to navigate, -1 for left, 1 for right.
+     */
+    function navigateImages(direction) {
+        const images = modalImageContainer.querySelectorAll('.modal-image');
+        images[currentImageIndex].style.display = 'none';
+        currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+        images[currentImageIndex].style.display = 'block';
+    }
+
+    // Display modal
     modal.style.display = 'block';
+
+    // Setup swipe functionality for mobile
     setupModalSwipeFunctionality(modalImageContainer, item.imgSrc.length);
 }
 
 /**
- * Adds swipe functionality within the modal.
+ * Adds swipe functionality within the modal for mobile support.
  * Allows users to swipe through images in the modal.
  * @param {HTMLElement} container - The modal image container element.
  * @param {number} length - The number of images in the container.
@@ -191,6 +162,10 @@ function setupModalSwipeFunctionality(container, length) {
     container.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
     container.addEventListener('touchend', e => handleSwipe(e.changedTouches[0].clientX - startX));
 
+    /**
+     * Handle swipe navigation within the modal.
+     * @param {number} deltaX - The change in X position during the swipe.
+     */
     function handleSwipe(deltaX) {
         if (Math.abs(deltaX) > 50) {
             images[currentImageIndex].style.display = 'none';

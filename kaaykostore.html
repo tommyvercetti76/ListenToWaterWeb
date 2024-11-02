@@ -6,6 +6,7 @@
     <title>Vote for Your Favorite Designs | Kaayko Store</title>
     <link rel="stylesheet" href="/styles/storestyle.css">
     <link rel="stylesheet" href="/styles/kaayko_itemview.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Material Icons for close and navigation buttons -->
 </head>
 <body>
     <!-- Elegant Header with Title and Subtitle -->
@@ -35,9 +36,16 @@
     </section>
 
     <!-- Modal for Zoomable Product Image -->
-    <div id="modal" class="modal" role="dialog" aria-modal="true" style="display: none;">
+    <div id="modal" class="modal" role="dialog" aria-modal="true">
         <div class="modal-content">
-            <button id="close-modal-button" class="modal-close" aria-label="Close modal">&times;</button>
+            <!-- Close Button -->
+            <button id="close-modal-button" class="modal-close material-icons" aria-label="Close modal">close</button>
+            
+            <!-- Left and Right Navigation Buttons -->
+            <button class="modal-nav modal-nav-left material-icons" aria-label="Previous image">chevron_left</button>
+            <button class="modal-nav modal-nav-right material-icons" aria-label="Next image">chevron_right</button>
+            
+            <!-- Image Container -->
             <div id="modal-image-container" class="modal-image-container">
                 <img src="" alt="Product Image" id="modal-image" class="modal-image">
             </div>
