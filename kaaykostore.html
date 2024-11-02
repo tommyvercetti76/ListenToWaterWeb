@@ -13,18 +13,21 @@
         <div class="header-content">
             <h1 class="header-title">Kaayko Store</h1>
             <p class="header-subtitle">Vote now, pay later.</p>
-        <!-- <button id="filter-button" class="filter-button" onclick="toggleFilterChips()">&#x1F5D0;</button> -->
+            <!-- Filter button hidden as requested -->
+            <!-- <button id="filter-button" class="filter-button" onclick="toggleFilterChips()">&#x1F5D0;</button> -->
         </div>
     </header>
 
-    <!-- Filter Chips Section
+    <!-- Filter Chips Section (Commented out as per requirement) -->
+    <!--
     <section id="filter-chips" class="filter-chips hidden">
         <span class="filter-chip" data-filter="Available" onclick="toggleChip(this)">Available</span>
         <span class="filter-chip" data-filter="Unavailable" onclick="toggleChip(this)">Unavailable</span>
         <span class="filter-chip" data-price="$$" onclick="toggleChip(this)">$$</span>
         <span class="filter-chip" data-price="$$$" onclick="toggleChip(this)">$$$</span>
         <span class="filter-chip" data-price="$$$$" onclick="toggleChip(this)">$$$$</span>
-    </section> -->
+    </section>
+    -->
 
     <!-- Carousel for Product Display -->
     <section id="carousel" class="carousel" aria-live="polite">
@@ -32,7 +35,7 @@
     </section>
 
     <!-- Modal for Zoomable Product Image -->
-    <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div id="modal" class="modal" role="dialog" aria-modal="true" style="display: none;">
         <div class="modal-content">
             <button id="close-modal-button" class="modal-close" aria-label="Close modal">&times;</button>
             <div id="modal-image-container" class="modal-image-container">
