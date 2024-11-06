@@ -5,16 +5,28 @@
         "appID": "3C2C5UW48Y.com.wander.listen.to.water",
         "components": [
           {
-            "paths": [ "/paddlingout.html*", "/kaaykostore.html*" ],
-            "comment": "Include all URLs under /paddlingout.html and /kaaykostore.html"
+            "paths": [ "/paddlingout.html" ],
+            "exclude": true,
+            "comment": "Exclude URL with specific cardID values",
+            "query": {
+              "cardID": "5"
+            }
           },
           {
             "paths": [ "/paddlingout.html" ],
             "exclude": true,
-            "comment": "Exclude specific URL with cardID=5",
+            "comment": "Exclude URL with specific cardID values",
             "query": {
-              "cardID": "5"
+              "cardID": "7"
             }
+          },
+          {
+            "paths": [ "/paddlingout.html*" ],
+            "comment": "Include all other URLs under /paddlingout.html"
+          },
+          {
+            "paths": [ "/kaaykostore.html*" ],
+            "comment": "Include all URLs under /kaaykostore.html"
           }
         ]
       }
