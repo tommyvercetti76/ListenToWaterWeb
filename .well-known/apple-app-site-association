@@ -12,9 +12,10 @@
           {
             "/": "/paddlingout.html",
             "?": {
-              "status": "redirect2MBOL"
+              "status": "redirect2MBOL",
+              "cardID": "*"
             },
-            "comment": "Show banner only for URL with exact status=redirect2MBOL"
+            "comment": "Only open the app when both status=redirect2MBOL and cardID are present"
           }
         ]
       }
