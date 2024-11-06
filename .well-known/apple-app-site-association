@@ -8,7 +8,7 @@
             "paths": [ "/paddlingout.html" ],
             "exclude": true,
             "comment": "Exclude URL with specific cardID values",
-            "query": {
+            "?": {
               "cardID": "5"
             }
           },
@@ -16,7 +16,7 @@
             "paths": [ "/paddlingout.html" ],
             "exclude": true,
             "comment": "Exclude URL with specific cardID values",
-            "query": {
+            "?": {
               "cardID": "7"
             }
           },
