@@ -14,11 +14,7 @@
             "?": {
               "status": "redirect2MBOL"
             },
-            "comment": "Only launch in app if status=redirect2MBOL"
-          },
-          {
-            "/": "/kaaykostore.html*",
-            "comment": "Include all URLs under /kaaykostore.html without query restrictions"
+            "comment": "Show banner only for URL with exact status=redirect2MBOL"
           }
         ]
       }
