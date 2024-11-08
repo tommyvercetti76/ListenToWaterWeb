@@ -1,29 +1,3 @@
 {
-  "applinks": {
-    "details": [
-      {
-        "appIDs": [
-          "3C2C5UW48Y.com.wander.listen.to.water"
-        ],
-        "defaults": {
-          "caseSensitive": false
-        },
-        "components": [
-          {
-            "/": "/paddlingout.html",
-            "?": {
-              "status": "redirect2MBOL",
-              "cardID": "*"
-            },
-            "comment": "Only open the app when both status=redirect2MBOL and any cardID are present"
-          }
-        ]
-      }
-    ]
-  },
-  "appclips": {
-    "apps": [
-      "3C2C5UW48Y.com.wander.listen.to.water.Clip"
-    ]
-  }
+  
 }
