@@ -12,7 +12,7 @@
           {
             "/": "/paddlingout.html",
             "?": {
-              "status": "redirect2MBOL",
+              "status": "redirect2mbol",
               "cardID": "*"
             },
             "comment": "Only open the app when both status=redirect2MBOL and any cardID are present"
