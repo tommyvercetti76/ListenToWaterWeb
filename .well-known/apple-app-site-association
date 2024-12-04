@@ -10,12 +10,23 @@
         },
         "components": [
           {
-            "/": "/paddlingout.html",
+            "/": "/paddlingout",
             "?": {
-              "status": "redirect2mbol",
-              "cardID": "*"
+              "cardID": "5"
             },
-            "comment": "Only open the app when both status=redirect2MBOL and any cardID are present"
+            "comment": "Open app only when cardID=5"
+          },
+          {
+            "/": "/paddlingout",
+            "?": {
+              "cardID": "7"
+            },
+            "comment": "Open app only when cardID=7"
+          },
+          {
+            "/": "/paddlingout",
+            "exclude": true,
+            "comment": "Exclude all other cardID values or queries"
           }
         ]
       }
