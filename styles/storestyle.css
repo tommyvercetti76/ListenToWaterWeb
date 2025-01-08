@@ -40,6 +40,7 @@ body, html {
 .header-title {
     font-size: 28px;
     font-family: 'Josefin_Bold', sans-serif;
+    margin-bottom: 8px; /* Padding below title */
 }
 
 .header-subtitle {
@@ -48,37 +49,27 @@ body, html {
     color: #ccc;
 }
 
-/* Filter Button */
-.filter-button {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    padding: 8px;
-    font-size: 20px;
-    background: none;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
 /* Carousel Section */
 .carousel {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 24px; /* Add space between carousel items */
     padding: 20px;
+    overflow: hidden; /* Prevent items from overflowing the carousel container */
 }
 
 /* Carousel Item Styling */
 .carousel-item {
+    position: relative; /* Constrain absolutely positioned children */
     background: white;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 12px; /* Rounded corners for aesthetics */
+    padding: 16px; /* Sufficient padding inside the card */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    position: relative;
-    align-items: flex-start; /* Left-align content */
+    justify-content: flex-start; /* Stack content vertically */
+    height: 380px; /* Uniform height for all items */
+    overflow: hidden; /* Prevent content overflow */
 }
 
 /* Image Container */
@@ -87,7 +78,7 @@ body, html {
     width: 100%;
     padding-top: 75%; /* Maintains aspect ratio */
     overflow: hidden;
-    margin-bottom: 8px; /* 8px space below image */
+    margin-bottom: 12px; /* Space between image and content */
 }
 
 /* Carousel Image */
@@ -98,15 +89,15 @@ body, html {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 8px; /* Rounded edges for images */
 }
 
 /* Image Indicator Dots positioned below the image container */
 .image-indicator {
     display: flex;
     justify-content: center; /* Center-align dots */
-    margin-top: 4px; /* Space above dots */
-    margin-bottom: 8px; /* Space below dots */
+    margin-top: 8px; /* Space above dots */
+    margin-bottom: 16px; /* Space below dots */
     width: 100%; /* Ensure the indicator takes full width */
 }
 
@@ -129,19 +120,17 @@ body, html {
     font-family: 'Josefin_Bold', sans-serif;
     font-size: 18px;
     color: #333;
-    margin-top: 8px; /* 8px space above title */
-    margin-bottom: 8px; /* 8px space below title */
-    text-align: left; /* Left-align the title */
-    width: 100%; /* Ensure title takes full width */
+    margin-bottom: 6px; /* Smaller space below title */
+    text-align: left;
+    line-height: 1.4;
 }
 
 .description {
     font-family: 'Josefin_Light', sans-serif;
     font-size: 14px;
     color: #666;
-    margin-bottom: 48px; /* 24px space below description to footer */
-    text-align: left; /* Left-align the description */
-    width: 100%; /* Ensure description takes full width */
+    margin-bottom: 24px; /* Larger space below description for separation */
+    line-height: 1.5;
 }
 
 /* Footer Elements: Price */
@@ -155,56 +144,66 @@ body, html {
     position: absolute;
     bottom: 15px;
     left: 15px;
+    z-index: 2; /* Ensure it's above background elements */
 }
 
 /* Heart Button Styling */
 .heart-button {
-    width: 36px;
-    height: 36px;
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
+    width: 24px; /* Larger size for better visibility */
+    height: 24px;
     background-color: transparent;
     border: none;
+    position: absolute; /* Anchored to bottom-right of card */
+    bottom: 36px; /* Ensure space for likes count below */
+    right: 15px;
     cursor: pointer;
-    outline: none;
-    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
 }
 
-/* Heart Shape */
-.heart-button::before,
-.heart-button::after {
+/* Smooth Rhombus Shape using Clip-Path */
+.heart-button::before {
     content: "";
-    width: 18px;
-    height: 28px;
-    position: absolute;
-    top: 4px;
-    left: 9px;
-    background-color: transparent;
-    border: 2px solid black;
-    border-radius: 50% 50% 0 0;
-    transform: rotate(-45deg);
-    transition: background-color 0.3s ease;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc; /* Default rhombus color */
+    clip-path: polygon(
+        50% 0%,  /* Top center */
+        100% 50%, /* Right center */
+        50% 100%, /* Bottom center */
+        0% 50%   /* Left center */
+    ); /* Perfect smooth rhombus */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.heart-button::after {
-    left: 9px;
-    transform: rotate(45deg);
-}
-
-/* Filled heart when liked */
-.heart-button.liked::before,
-.heart-button.liked::after {
+/* Liked State */
+.heart-button.liked::before {
     background-color: red;
-    border-color: red;
+    transform: scale(1.2); /* Slight pop effect */
 }
 
-/* Likes count styling */
+/* Hover Effect */
+.heart-button:hover {
+    transform: scale(1.1); /* Slight enlarge on hover */
+}
+
+/* Votes Styling */
 .likes-count {
     font-family: 'Josefin_Medium', sans-serif;
-    font-size: 14px;
+    font-size: 12px; /* Subtle size for votes */
     color: #333;
+    text-align: center;
     position: absolute;
-    bottom: 15px;
-    right: 60px; /* Space from the heart button */
+    bottom: 15px; /* Positioned below the heart button */
+    right: 15px; /* Horizontally aligned with the heart button */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Additional Aesthetic Touches */
+.carousel-item:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Elevate on hover */
+    transform: translateY(-4px); /* Subtle lift effect */
+    transition: all 0.3s ease;
 }
